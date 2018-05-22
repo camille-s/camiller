@@ -17,3 +17,5 @@ Imports:
     forcats,
     rlang,
     purrr
+URL: https://github.com/camille-s/camiller
+BugReports: https://github.com/camille-s/camiller/issues
