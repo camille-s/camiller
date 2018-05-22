@@ -1,0 +1,39 @@
+#' Significance testing of differences with MOEs
+#' @param df A data frame
+#' @param est1 Estimate for first group
+#' @param moe1 Margin of error for first group
+#' @param est2 Estimate for second group
+#' @param moe2 Margin of error for second group
+#' @param cl Confidence level used in calculating MOEs given; defaults to 0.9, per ACS data
+#' @param alpha Alpha used for significance testing; defaults to 0.05
+#' @param show_calc Logical, whether to keep intermediary calculations (default) or only result of testing
+#' @return A tibble/data frame with testing-related columns added
+#' @examples
+#' med_age <- tibble(name = c("Hamden", "New Haven"),
+#'     men_est = c(37.2, 29.5), men_moe = c(1.9, 0.8),
+#'     women_est = c(37.8, 31.9), women_moe = c(1.9, 0.8))
+#' med_age %>%
+#'   moe_test(men_est, men_moe, women_est, women_moe, alpha = 0.9, show_calc = T)
+#' @export
+moe_test <- function(df, est1, moe1, est2, moe2, cl = 0.9, alpha = 0.05, show_calc = T) {
+  est1 <- rlang::enquo(est1)
+  est2 <- rlang::enquo(est2)
+  moe1 <- rlang::enquo(moe1)
+  moe2 <- rlang::enquo(moe2)
+  z <- 1 - (1 - cl) / 2
+  test_z <- 1 - alpha / 2
+  lvl <- (1 - alpha) * 100
+  sig_name <- rlang::sym(paste("isSig", sprintf("0%s", lvl), sep = "_"))
+
+  out <- df %>%
+    dplyr::mutate(diff = !!est1 - !!est2) %>%
+    dplyr::mutate(se1 = !!moe1 / qnorm(z), se2 = !!moe2 / qnorm(z)) %>%
+    dplyr::mutate(se = sqrt(se1^2 + se2^2)) %>%
+    dplyr::mutate(z_score = diff / se) %>%
+    dplyr::mutate(!!sig_name := abs(z_score) > abs(qnorm(test_z)))
+  if (show_calc) {
+    out
+  } else {
+    out %>% dplyr::select(-diff:-z_score)
+  }
+}

@@ -1,0 +1,19 @@
+Package: camiller
+Title: Lots of convenience functions
+Version: 0.0.0.9000
+Authors@R: person("Camille", "Seaberry", email = "camille.seaberry@gmail.com", role = c("aut", "cre"))
+Description: Convenience functions, plus a ggplot theme. Basic stuff to prep analysis of Census data at DataHaven.
+Depends: R (>= 3.3.3)
+License: MIT
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.0.1
+Roxygen: list(markdown = TRUE)
+Imports: 
+    magrittr,
+    dplyr,
+    tidyr,
+    stringr,
+    forcats,
+    rlang,
+    purrr
