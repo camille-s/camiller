@@ -1,8 +1,9 @@
 #' Theme Din
 #'
 #' @description A clean theme especially suited for labeled bar charts or Cleveland dot plots. Defaults to font "Din".
+#' This defaults to `base_family = "din"`, which depends on a) using `showtext` to get a font called "din", or b) already having a font loaded with this name. Use `showtext::font_add_google("PT Sans", "ptsans"); showtext::showtext_auto()` for a good alternative, then use `base_family = "ptsans"`.
 #' @param base_size Base font size
-#' @param base_family Base font family; defaults to "din", as set by `showtext``
+#' @param base_family Base font family; defaults to "din", as set by `showtext`
 #' @param xgrid A logical for turning x-grid on or off, or "dotted", for a light dotted grid
 #' @param ygrid A logical for turning y-grid on or off, or "dotted", for a light dotted grid
 #' @inheritParams ggplot2::theme_light
