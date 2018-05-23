@@ -22,9 +22,7 @@ A character vector of formatted break labels
 Create pretty breaks labels
 }
 \examples{
-mpg \%>\%
-  mutate(cty_brk = classIntervals(cty, 5)$brk \%>\% cut(cty, breaks = ., include.lowest = T)) \%>\%
-  ggplot(aes(x = displ, y = hwy, color = cty_brk)) +
-  geom_point() +
-  scale_color_brewer(labels = brk_labels)
+brks <- c("[0.04,0.15]", "(0.15,0.25]", "(0.25,0.4]", "(0.4,0.55]", "(0.55,0.6]")
+brk_labels(brks)
+brk_labels(brks, format = "percent", mult_by = 100)
 }

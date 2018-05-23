@@ -16,6 +16,12 @@ Imports:
     stringr,
     forcats,
     rlang,
-    purrr
+    purrr,
+    tidycensus
 URL: https://github.com/camille-s/camiller
 BugReports: https://github.com/camille-s/camiller/issues
+Suggests: 
+    knitr,
+    rmarkdown,
+    ggplot2
+VignetteBuilder: knitr

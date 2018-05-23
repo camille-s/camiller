@@ -4,12 +4,14 @@
 \alias{make_wide}
 \title{Arrange estimates, MOEs, etc into wide format}
 \usage{
-make_wide(df, ...)
+make_wide(df, ..., group = variable)
 }
 \arguments{
 \item{df}{A data frame}
 
 \item{...}{Bare column names of types of measures}
+
+\item{group}{Bare column name of group or category variable for spreading into wide data}
 }
 \value{
 A tibble/data frame in wide format

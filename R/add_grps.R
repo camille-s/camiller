@@ -8,7 +8,7 @@
 #' @examples
 #' race_list <- list(black_latino = c("black", "latino"), poc = c("black", "latino", "asian"))
 #' race_pops %>%
-#'   group_by(region, name) %>%
+#'   dplyr::group_by(region, name) %>%
 #'   add_grps(race_list, variable, moe = moe)
 #' @export
 add_grps <- function(df, grp_list, group = variable, estimate = estimate, moe = NULL) {
@@ -18,7 +18,10 @@ add_grps <- function(df, grp_list, group = variable, estimate = estimate, moe = 
   group_cols <- dplyr::groups(df)
   grp_names <- names(grp_list)
 
-  group_df <- grp_list %>%
+  ## new
+  grp_list_chars <- make_grps(df %>% dplyr::pull(!!grp_var), grp_list)
+
+  group_df <- grp_list_chars %>%
     purrr::imap_dfr(function(grps, grp_name) {
       df %>%
         dplyr::filter(!!grp_var %in% grps) %>%

@@ -1,0 +1,51 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+	fig.path = "man/figures/README-",
+	message = FALSE,
+	warning = FALSE,
+	collapse = TRUE,
+	comment = "#>",
+	out.width = "100%"
+)
+```
+# camiller
+
+`camiller` is a set of convenience functions, functions for working with ACS data via `tidycensus`, and a `ggplot` theme.
+
+## Installation
+
+Install from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("camille-s/camiller")
+```
+
+## Example
+
+This is a basic example of two of the major functions in this package, `add_grps` and `calc_shares`:
+
+```{r example}
+library(tidyverse)
+library(camiller)
+
+unique(race_pops$variable)
+
+race_grps <- list(
+  total = 1,
+  black_latino = c(3, 5),
+  poc = 3:5
+)
+
+race_pops %>%
+  group_by(region, name) %>%
+  add_grps(grp_list = race_grps, group = variable, estimate = estimate, moe = moe) %>%
+  calc_shares(region, name, group = variable, denom = "total", moe = moe)
+```
+

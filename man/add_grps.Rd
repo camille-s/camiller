@@ -26,6 +26,6 @@ Collapse variable into groups and sum
 \examples{
 race_list <- list(black_latino = c("black", "latino"), poc = c("black", "latino", "asian"))
 race_pops \%>\%
-  group_by(region, name) \%>\%
+  dplyr::group_by(region, name) \%>\%
   add_grps(race_list, variable, moe = moe)
 }

@@ -4,12 +4,12 @@
 \alias{make_grps}
 \title{Collapse variable into subgroup positions}
 \usage{
-make_grps(x, grp_cols)
+make_grps(x, grps)
 }
 \arguments{
 \item{x}{Character vector}
 
-\item{grp_cols}{Named list of variable positions within vector \code{x}}
+\item{grps}{Named list of variable positions within vector \code{x}}
 }
 \value{
 Named list of variable values from given positions
@@ -20,7 +20,7 @@ Collapse variable into subgroup positions
 \examples{
 ages <- c("Under 5 years", "5 to 9 years", "10 to 14 years", "15 to 17 years",
   "18 and 19 years", "20 years", "21 years", "22 to 24 years",
-  "25 to 29 years", "30 to 34 years", "35 to 39 years", "40 to 44 years"
+  "25 to 29 years", "30 to 34 years", "35 to 39 years", "40 to 44 years")
 age_grps <- list(
   under18 = 1:4,
   ages18_24 = 5:8,

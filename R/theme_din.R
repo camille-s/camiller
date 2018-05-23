@@ -5,6 +5,7 @@
 #' @param base_family Base font family; defaults to "din", as set by `showtext``
 #' @param xgrid A logical for turning x-grid on or off, or "dotted", for a light dotted grid
 #' @param ygrid A logical for turning y-grid on or off, or "dotted", for a light dotted grid
+#' @inheritParams ggplot2::theme_light
 #' @export
 theme_din <- function(base_size = 14, base_family = "din", xgrid = F, ygrid = T) {
   out <- theme_light(base_size = base_size, base_family = base_family) +

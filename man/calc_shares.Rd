@@ -12,7 +12,7 @@ calc_shares(df, ..., group = variable, denom = "Total",
 
 \item{...}{Bare column names of IDs, town names, etc to exclude from \code{gather}ing}
 
-\item{group}{Bare column name where groups are given}
+\item{group}{Bare column name where groups are given--that is, the denominator value should be found in this column}
 
 \item{denom}{String; denominator to filter from `group``}
 
@@ -28,6 +28,6 @@ Make table of rates given a denominator
 }
 \examples{
 edu \%>\%
-  rename(est = estimate) \%>\%
+  dplyr::rename(est = estimate) \%>\%
   calc_shares(name, denom = "age25plus", estimate = est, moe = moe)
 }

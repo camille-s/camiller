@@ -5,7 +5,7 @@
 \title{Significance testing of differences with MOEs}
 \usage{
 moe_test(df, est1, moe1, est2, moe2, cl = 0.9, alpha = 0.05,
-  show_calc = T)
+  show_calc = TRUE)
 }
 \arguments{
 \item{df}{A data frame}
@@ -31,9 +31,9 @@ A tibble/data frame with testing-related columns added
 Significance testing of differences with MOEs
 }
 \examples{
-med_age <- tibble(name = c("Hamden", "New Haven"),
+med_age <- data.frame(name = c("Hamden", "New Haven"),
     men_est = c(37.2, 29.5), men_moe = c(1.9, 0.8),
     women_est = c(37.8, 31.9), women_moe = c(1.9, 0.8))
 med_age \%>\%
-  moe_test(men_est, men_moe, women_est, women_moe, alpha = 0.9, show_calc = T)
+  moe_test(men_est, men_moe, women_est, women_moe, alpha = 0.9, show_calc = TRUE)
 }
