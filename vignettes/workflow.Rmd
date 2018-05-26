@@ -23,7 +23,10 @@ knitr::opts_chunk$set(
 This is a simple workflow that makes use of functions in `camiller` to analyze and visualize some Census American Community Survey data. The data was downloaded with `tidycensus`, cleaned up a little bit, and is all included in this package.
 
 ```{r libraries}
-library(tidyverse)
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(forcats)
 library(camiller)
 library(showtext)
 ```
@@ -84,19 +87,20 @@ The function `brk_labels` allows for cleaning up break labels, such as those gen
 This legend is unnecessary and not a good idea, just a place to display the output of `brk_labels`.
 
 ```{r pov_rate_dots, fig.height=3, fig.width=5}
+pal <- c("#FDCC8A", "#FC8D59", "#D7301F")
 pov_rates %>%
   filter(ratio == "low_income", age == "children") %>%
   mutate(share = signif(share, digits = 2)) %>%
   mutate(name = as.factor(name) %>% fct_reorder(share, max)) %>%
-  arrange(name) %>%
-  mutate(brk = classInt::classIntervals(share, n = 3, style = "jenks")$brk %>% cut(share, breaks = ., include.lowest = T)) %>%
+  arrange(name) %>% 
+  mutate(brk = cut(share, breaks = c(min(share), 0.14, 0.3, max(share)), include.lowest = T)) %>%
   ggplot(aes(x = name, y = share, color = brk)) +
     geom_point(size = 4) +
     coord_flip() +
-    scale_color_manual(values = RColorBrewer::brewer.pal(4, "OrRd")[2:4], 
+    scale_color_manual(values = pal, 
                        labels = function(x) brk_labels(x, format = "percent", mult_by = 100)) +
     theme_din(base_family = "ptsans", base_size = 10, xgrid = T, ygrid = "dotted") +
-    scale_y_continuous(labels = scales::percent) +
+    scale_y_continuous(labels = function(x) sprintf("%0g", x * 100)) +
     labs(x = NULL, y = NULL, color = "Rate", title = "Child low-income rate by town", subtitle = "Greater New Haven towns, 2016", caption = "Source: US Census Bureau 2016 ACS 5-year estimate")
 ```
 

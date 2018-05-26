@@ -17,11 +17,13 @@ Imports:
     forcats,
     rlang,
     purrr,
-    tidycensus
+    tidycensus,
+    stats,
+    ggplot2
 URL: https://github.com/camille-s/camiller
 BugReports: https://github.com/camille-s/camiller/issues
 Suggests: 
     knitr,
     rmarkdown,
-    ggplot2
+    showtext
 VignetteBuilder: knitr

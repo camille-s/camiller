@@ -9,7 +9,7 @@ theme_din(base_size = 14, base_family = "din", xgrid = F, ygrid = T)
 \arguments{
 \item{base_size}{Base font size}
 
-\item{base_family}{Base font family; defaults to "din", as set by `showtext``}
+\item{base_family}{Base font family; defaults to "din", as set by \code{showtext}}
 
 \item{xgrid}{A logical for turning x-grid on or off, or "dotted", for a light dotted grid}
 
@@ -17,4 +17,5 @@ theme_din(base_size = 14, base_family = "din", xgrid = F, ygrid = T)
 }
 \description{
 A clean theme especially suited for labeled bar charts or Cleveland dot plots. Defaults to font "Din".
+This defaults to \code{base_family = "din"}, which depends on a) using \code{showtext} to get a font called "din", or b) already having a font loaded with this name. Use \code{showtext::font_add_google("PT Sans", "ptsans"); showtext::showtext_auto()} for a good alternative, then use \code{base_family = "ptsans"}.
 }

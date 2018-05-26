@@ -27,10 +27,10 @@ moe_test <- function(df, est1, moe1, est2, moe2, cl = 0.9, alpha = 0.05, show_ca
 
   out <- df %>%
     dplyr::mutate(diff = !!est2 - !!est1) %>%
-    dplyr::mutate(se1 = !!moe1 / qnorm(z), se2 = !!moe2 / qnorm(z)) %>%
+    dplyr::mutate(se1 = !!moe1 / stats::qnorm(z), se2 = !!moe2 / stats::qnorm(z)) %>%
     dplyr::mutate(se = sqrt(se1^2 + se2^2)) %>%
     dplyr::mutate(z_score = diff / se) %>%
-    dplyr::mutate(!!sig_name := abs(z_score) > abs(qnorm(test_z)))
+    dplyr::mutate(!!sig_name := abs(z_score) > abs(stats::qnorm(test_z)))
   if (show_calc) {
     out
   } else {
