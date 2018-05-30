@@ -1,6 +1,5 @@
 #' Make table of rates given a denominator
 #' @param df A data frame
-#' @param ... Bare column names of IDs, town names, etc to exclude from `gather`ing
 #' @param group Bare column name where groups are given--that is, the denominator value should be found in this column
 #' @param denom String; denominator to filter from `group``
 #' @param estimate Bare column name of estimates or values
@@ -11,13 +10,13 @@
 #'   dplyr::rename(est = estimate) %>%
 #'   calc_shares(name, denom = "age25plus", estimate = est, moe = moe)
 #' @export
-calc_shares <- function(df, ..., group = variable, denom = "Total", estimate = estimate, moe = NULL) {
+calc_shares <- function(df, group = variable, denom = "Total", estimate = estimate, moe = NULL) {
   grp_var <- rlang::enquo(group)
   est_var <- rlang::enquo(estimate)
   group_cols <- dplyr::groups(df)
-  join_cols <- rlang::quos(...)
-  # join_cols <- quos(c(!!!group_cols), c(!!!quos(...)))
-  join_names <- purrr::map_chr(rlang::exprs(...), as.character)
+  join_cols <- quos(!!!group_cols)
+  join_names <- tidyselect::vars_select(names(df), !!!group_cols)
+
   est_name <- rlang::quo_name(est_var)
 
   df2 <- df %>%
