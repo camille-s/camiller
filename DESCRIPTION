@@ -19,7 +19,9 @@ Imports:
     purrr,
     tidycensus,
     stats,
-    ggplot2
+    ggplot2,
+    tidyselect,
+    ggfittext
 URL: https://github.com/camille-s/camiller
 BugReports: https://github.com/camille-s/camiller/issues
 Suggests: 

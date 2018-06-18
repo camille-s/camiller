@@ -4,7 +4,7 @@
 \alias{make_wide}
 \title{Arrange estimates, MOEs, etc into wide format}
 \usage{
-make_wide(df, ..., group = variable)
+make_wide(df, ..., group = group)
 }
 \arguments{
 \item{df}{A data frame}
@@ -21,5 +21,5 @@ Arrange estimates, MOEs, etc into wide format
 }
 \examples{
 edu \%>\%
-  make_wide(estimate, moe)
+  make_wide(estimate, moe, group = variable)
 }

@@ -75,7 +75,7 @@ pov_rates <- pov_age %>%
   add_grps(age_grps, group = age, estimate = estimate, moe = moe) %>%
   group_by(name, age) %>%
   add_grps(ratio_grps, group = ratio, estimate = estimate, moe = moe) %>%
-  calc_shares(name, age, group = ratio, denom = "determined", estimate = estimate, moe = moe)
+  calc_shares(group = ratio, denom = "determined", estimate = estimate, moe = moe)
 ```
 
 ```{r pov_rates_out}
@@ -91,6 +91,7 @@ pal <- c("#FDCC8A", "#FC8D59", "#D7301F")
 pov_rates %>%
   filter(ratio == "low_income", age == "children") %>%
   mutate(share = signif(share, digits = 2)) %>%
+  ungroup() %>%
   mutate(name = as.factor(name) %>% fct_reorder(share, max)) %>%
   arrange(name) %>% 
   mutate(brk = cut(share, breaks = c(min(share), 0.14, 0.3, max(share)), include.lowest = T)) %>%
@@ -113,7 +114,7 @@ pov_trend <- pov_age_10_16 %>%
   add_grps(age_grps, group = age, estimate = estimate, moe = moe) %>%
   group_by(name, year, age) %>%
   add_grps(ratio_grps, group = ratio, estimate = estimate, moe = moe) %>%
-  calc_shares(name, year, age, group = ratio, denom = "determined", estimate = estimate, moe = moe)
+  calc_shares(group = ratio, denom = "determined", estimate = estimate, moe = moe)
 ```
 
 The output of `moe_test` includes optional intermediary calculations, such as standard errors and Z-scores used for significance testing.
@@ -122,6 +123,7 @@ The output of `moe_test` includes optional intermediary calculations, such as st
 pov_sigs <- pov_trend %>%
   filter(ratio == "low_income") %>%
   select(-estimate, -moe, -ratio) %>%
+  ungroup() %>%
   mutate(year = paste0("y", year)) %>%
   make_wide(share, sharemoe, group = year) %>%
   moe_test(est1 = y2010_share, moe1 = y2010_sharemoe, est2 = y2016_share, moe2 = y2016_sharemoe, alpha = 0.1)

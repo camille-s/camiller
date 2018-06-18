@@ -1,20 +1,20 @@
 #' Make table of rates given a denominator
 #' @param df A data frame
 #' @param group Bare column name where groups are given--that is, the denominator value should be found in this column
-#' @param denom String; denominator to filter from `group``
+#' @param denom String; denominator to filter from `group`
 #' @param estimate Bare column name of estimates or values
 #' @param moe Bare column name of margins of error; if supplied, MOE of shares will be included in output
 #' @return A tibble/data frame with shares (and optionally MOE of shares) of subgroup values within a denominator group. Shares given for denominator group will be blank.
 #' @examples
 #' edu %>%
-#'   dplyr::rename(est = estimate) %>%
-#'   calc_shares(name, denom = "age25plus", estimate = est, moe = moe)
+#'   dplyr::group_by(name) %>%
+#'   calc_shares(group = variable, denom = "age25plus", moe = moe)
 #' @export
-calc_shares <- function(df, group = variable, denom = "Total", estimate = estimate, moe = NULL) {
+calc_shares <- function(df, group = group, denom = "Total", estimate = estimate, moe = NULL) {
   grp_var <- rlang::enquo(group)
   est_var <- rlang::enquo(estimate)
   group_cols <- dplyr::groups(df)
-  join_cols <- quos(!!!group_cols)
+  join_cols <- rlang::quos(!!!group_cols)
   join_names <- tidyselect::vars_select(names(df), !!!group_cols)
 
   est_name <- rlang::quo_name(est_var)

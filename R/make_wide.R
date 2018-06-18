@@ -5,9 +5,9 @@
 #' @return A tibble/data frame in wide format
 #' @examples
 #' edu %>%
-#'   make_wide(estimate, moe)
+#'   make_wide(estimate, moe, group = variable)
 #' @export
-make_wide <- function(df, ..., group = variable) {
+make_wide <- function(df, ..., group = group) {
   gather_cols <- rlang::quos(...)
   grp_var <- rlang::enquo(group)
   gather_names <- tidyselect::vars_select(names(df), !!!gather_cols)

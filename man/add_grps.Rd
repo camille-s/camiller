@@ -4,7 +4,7 @@
 \alias{add_grps}
 \title{Collapse variable into groups and sum}
 \usage{
-add_grps(df, grp_list, group = variable, estimate = estimate, moe = NULL)
+add_grps(df, grp_list, group = group, estimate = estimate, moe = NULL)
 }
 \arguments{
 \item{df}{A data frame; will honor grouping}
@@ -18,14 +18,15 @@ add_grps(df, grp_list, group = variable, estimate = estimate, moe = NULL)
 \item{moe}{Bare column name of margins of error; if supplied, MOEs of sums will be included in output}
 }
 \value{
-A data frame/tibble, grouped by \code{group}, with sums of \code{estimate}
+A data frame/tibble with sums of \code{estimate}. Retains grouping columns
 }
 \description{
 Collapse variable into groups and sum
 }
 \examples{
-race_list <- list(black_latino = c("black", "latino"), poc = c("black", "latino", "asian"))
+unique(race_pops$variable)
+race_list <- list(black_latino = c(3, 5), poc = 3:5)
 race_pops \%>\%
   dplyr::group_by(region, name) \%>\%
-  add_grps(race_list, variable, moe = moe)
+  add_grps(race_list, group = variable, moe = moe)
 }

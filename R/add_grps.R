@@ -4,14 +4,15 @@
 #' @param group Bare column name giving groups in data; will be converted to factor
 #' @param estimate Bare column name of estimates or values
 #' @param moe Bare column name of margins of error; if supplied, MOEs of sums will be included in output
-#' @return A data frame/tibble, grouped by `group`, with sums of `estimate`
+#' @return A data frame/tibble with sums of `estimate`. Retains grouping columns
 #' @examples
-#' race_list <- list(black_latino = c("black", "latino"), poc = c("black", "latino", "asian"))
+#' unique(race_pops$variable)
+#' race_list <- list(black_latino = c(3, 5), poc = 3:5)
 #' race_pops %>%
 #'   dplyr::group_by(region, name) %>%
-#'   add_grps(race_list, variable, moe = moe)
+#'   add_grps(race_list, group = variable, moe = moe)
 #' @export
-add_grps <- function(df, grp_list, group = variable, estimate = estimate, moe = NULL) {
+add_grps <- function(df, grp_list, group = group, estimate = estimate, moe = NULL) {
   grp_var <- rlang::enquo(group)
   est_var <- rlang::enquo(estimate)
   # moe_var <- enquo(moe)
@@ -40,5 +41,6 @@ add_grps <- function(df, grp_list, group = variable, estimate = estimate, moe = 
   }
   out %>%
     dplyr::ungroup() %>%
-    dplyr::mutate(!!rlang::quo_name(grp_var) := as.factor(!!grp_var) %>% forcats::fct_relevel(grp_names))
+    dplyr::mutate(!!rlang::quo_name(grp_var) := as.factor(!!grp_var) %>% forcats::fct_relevel(grp_names)) %>%
+    dplyr::group_by(!!!group_cols)
 }
