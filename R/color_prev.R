@@ -22,6 +22,6 @@ color_prev <- function(colors, labels = T, label_color = "black", border = F, bo
     p <- p + ggfittext::geom_fit_text(ggplot2::aes(label = fill), color = label_color)
   }
   p +
-    ggplot2::geom_text(aes(label = x, x = x + 0.5, y = y + 1, color = fill),
+    ggplot2::geom_text(ggplot2::aes(label = x, x = x + 0.5, y = y + 1, color = fill),
                        fontface = "bold", vjust = 0.5, hjust = 0.5, nudge_y = 0.05)
 }
