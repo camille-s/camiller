@@ -21,7 +21,8 @@ Imports:
     stats,
     ggplot2,
     tidyselect,
-    ggfittext
+    ggfittext,
+    cowplot
 URL: https://github.com/camille-s/camiller
 BugReports: https://github.com/camille-s/camiller/issues
 Suggests: 
