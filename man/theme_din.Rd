@@ -4,18 +4,24 @@
 \alias{theme_din}
 \title{Theme Din}
 \usage{
-theme_din(base_size = 14, base_family = "din", xgrid = F, ygrid = T)
+theme_din(base_size = 14, base_family = "roboto", xgrid = FALSE,
+  ygrid = TRUE, fallback_google = TRUE)
 }
 \arguments{
 \item{base_size}{Base font size}
 
-\item{base_family}{Base font family; defaults to "din", as set by \code{showtext}}
+\item{base_family}{Base font family; defaults to "roboto", as set by \code{showtext}}
 
 \item{xgrid}{A logical for turning x-grid on or off, or "dotted", for a light dotted grid}
 
 \item{ygrid}{A logical for turning y-grid on or off, or "dotted", for a light dotted grid}
+
+\item{fallback_google}{Logical: if \code{TRUE} and \code{base_family} not currently loaded, will load Roboto Condensed from Google. If \code{FALSE}, will load system sans font. Defaults \code{TRUE}.}
 }
 \description{
-A clean theme especially suited for labeled bar charts or Cleveland dot plots. Defaults to font "Din".
-This defaults to \code{base_family = "din"}, which depends on a) using \code{showtext} to get a font called "din", or b) already having a font loaded with this name. Use \code{showtext::font_add_google("PT Sans", "ptsans"); showtext::showtext_auto()} for a good alternative, then use \code{base_family = "ptsans"}.
+A clean theme especially suited for labeled bar charts or Cleveland dot plots. Designed based on the DIN family of fonts, but now defaults to font "Roboto Condensed".
+This defaults to \code{base_family = "roboto"}, which depends on a) using \code{showtext} and \code{sysfonts} to get a font called "roboto", or b) already having a font loaded with this name. Use \code{sysfonts::font_add_google} or \code{sysfonts::font_add} to set a different font.
+}
+\seealso{
+\code{\link[sysfonts:font_add]{sysfonts::font_add()}}, \code{\link[sysfonts:font_add_google]{sysfonts::font_add_google()}}
 }
