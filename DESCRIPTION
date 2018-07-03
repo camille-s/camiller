@@ -22,7 +22,8 @@ Imports:
     ggplot2,
     tidyselect,
     ggfittext,
-    cowplot
+    cowplot,
+    sysfonts
 URL: https://github.com/camille-s/camiller
 BugReports: https://github.com/camille-s/camiller/issues
 Suggests: 

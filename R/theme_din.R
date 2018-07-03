@@ -1,14 +1,28 @@
 #' Theme Din
 #'
-#' @description A clean theme especially suited for labeled bar charts or Cleveland dot plots. Defaults to font "Din".
-#' This defaults to `base_family = "din"`, which depends on a) using `showtext` to get a font called "din", or b) already having a font loaded with this name. Use `showtext::font_add_google("PT Sans", "ptsans"); showtext::showtext_auto()` for a good alternative, then use `base_family = "ptsans"`.
+#' @description A clean theme especially suited for labeled bar charts or Cleveland dot plots. Designed based on the DIN family of fonts, but now defaults to font "Roboto Condensed".
+#' This defaults to `base_family = "roboto"`, which depends on a) using `showtext` and `sysfonts` to get a font called "roboto", or b) already having a font loaded with this name. Use `sysfonts::font_add_google` or `sysfonts::font_add` to set a different font.
 #' @param base_size Base font size
-#' @param base_family Base font family; defaults to "din", as set by `showtext`
+#' @param base_family Base font family; defaults to "roboto", as set by `showtext`
 #' @param xgrid A logical for turning x-grid on or off, or "dotted", for a light dotted grid
 #' @param ygrid A logical for turning y-grid on or off, or "dotted", for a light dotted grid
+#' @param fallback_google Logical: if `TRUE` and `base_family` not currently loaded, will load Roboto Condensed from Google. If `FALSE`, will load system sans font. Defaults `TRUE`.
 #' @inheritParams ggplot2::theme_light
+#' @seealso [sysfonts::font_add()], [sysfonts::font_add_google()]
 #' @export
-theme_din <- function(base_size = 14, base_family = "din", xgrid = F, ygrid = T) {
+theme_din <- function(base_size = 14, base_family = "roboto", xgrid = FALSE, ygrid = TRUE, fallback_google = TRUE) {
+  showtext::showtext_auto(enable = TRUE)
+  loaded_fonts <- sysfonts::font_families()
+  if (!base_family %in% loaded_fonts) {
+    if (fallback_google) {
+      message(sprintf("Font %s not found. ", base_family), "Substituting with font Roboto Condensed as family 'roboto'")
+      sysfonts::font_add_google(name = "Roboto Condensed", family = "roboto")
+      base_family <- "roboto"
+    } else {
+      message(sprintf("Font %s not found. ", base_family), "Substituting with system sans font.")
+      base_family <- "sans"
+    }
+  }
   out <- ggplot2::theme_light(base_size = base_size, base_family = base_family) +
     ggplot2::theme(
       plot.caption = ggplot2::element_text(vjust = 1, size = ggplot2::rel(0.7), color = "gray30", margin = ggplot2::margin(12, 0, 0, 0)),
