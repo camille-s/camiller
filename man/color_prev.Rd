@@ -24,5 +24,10 @@ color_prev(colors, labels = T, label_color = "black", border = F,
 \code{ggplot} object showing rects for each color
 }
 \description{
-Preview color palette
+This makes a simple \code{ggplot} with boxes side by side of each color in a vector. Numbers along the top show the position of the color in the vector. Optional labels are shown with the name or hexcode of each color; if \code{ggfittext} is installed, the labels will be scaled to fit in the rectangles.
+}
+\examples{
+# Paul Tol's colorblind-friendly palette, from ggthemes
+tol <- c("#332288", "#88CCEE", "#44AA99", "#117733", "#999933", "#DDCC77", "#CC6677")
+color_prev(tol, border = TRUE, border_size = 1)
 }
