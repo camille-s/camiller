@@ -6,6 +6,6 @@
 town_names <- function(df, name_col) {
   name_var <- rlang::enquo(name_col)
   df %>%
-    dplyr::mutate(!!rlang::quo_name(name_var) := stringr::str_remove(!!name_var, " town,.+")) %>%
+    dplyr::mutate(!!rlang::quo_name(name_var) := stringr::str_remove(!!name_var, " town(,.)*")) %>%
     dplyr::filter(!stringr::str_detect(!!name_var, "not defined"))
 }
