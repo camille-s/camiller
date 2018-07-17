@@ -2,6 +2,7 @@
 
 export("%>%")
 export(add_grps)
+export(bind_self)
 export(brk_labels)
 export(calc_shares)
 export(cap_first)
