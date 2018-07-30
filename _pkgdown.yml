@@ -1,6 +1,7 @@
 url: https://camille-s.github.io/camiller
 development:
   mode: auto
+  remote_only: true
 template:
   params:
     bootswatch: yeti
