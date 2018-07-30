@@ -1,0 +1,43 @@
+a {
+  color: #BA2BB3;
+}
+
+a:hover, a:focus {
+  color: #E635DE;
+}
+
+.navbar-default {
+  background-color: #6A4783;
+}
+
+.navbar-nav > .active > a,
+.navbar-nav > .active > a:hover,
+.navbar-nav > .active > a:focus {
+  background-color: #2c1554;
+}
+
+/* syntax highlighting: murphy */
+.fl {
+  color: #6000e0;
+}
+.fu {
+  color: #50e0d0;
+}
+.ch, .st {
+  color: #8080f0;
+}
+.kw {
+  color: #208090;
+}
+.co {
+  color: #606060;
+}
+.message {
+  color: #808080;
+}
+.error {
+  color: #ff0000;
+}
+.warning {
+  color: #0040d0;
+}
