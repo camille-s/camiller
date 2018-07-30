@@ -11,7 +11,8 @@ knitr::opts_chunk$set(
 	warning = FALSE,
 	collapse = TRUE,
 	comment = "#>",
-	out.width = "100%"
+	out.width = "100%",
+	fig.showtext = TRUE
 )
 ```
 # camiller
@@ -48,26 +49,33 @@ edu_rates
 
 Plus this `ggplot` theme.
 
-```{r}
+```{r chart}
 library(ggplot2)
 library(forcats)
 library(showtext)
 
 font_add_google("Archivo Narrow", "archivo")
+showtext_auto()
 
 edu_rates %>%
   ungroup() %>%
   filter(!is.na(share)) %>%
   arrange(variable, share) %>%
   mutate(name = as.factor(name) %>% fct_inorder() %>% fct_rev()) %>%
-  mutate(variable = fct_relabel(variable, function(x) stringr::str_replace_all(x, "_", " ") %>% cap_first()) %>%
-           fct_recode("Bachelor's or higher" = "Bachelors plus", "Some college or Associate's" = "Some college or aa") %>%
-           fct_rev()) %>%
+  mutate(variable = fct_relabel(variable, function(x) {
+    stringr::str_replace_all(x, "_", " ") %>% cap_first()
+    })) %>%
+  mutate(variable = fct_recode(variable, "Bachelor's or higher" = "Bachelors plus", 
+                               "Some college or Associate's" = "Some college or aa")) %>%
+  mutate(variable = fct_rev(variable)) %>%
   ggplot(aes(x = name, y = share, fill = variable)) +
     geom_col(position = "fill", width = 0.8, alpha = 0.9) +
     scale_y_continuous(labels = scales::percent) +
     scale_fill_manual(values = c("#FBB4B9", "#F768A1", "#C51B8A", "#7A0177")) +
-    labs(x = NULL, y = "Share of adults 25+", fill = "Education level", title = "Educational attainment level by town", subtitle = "Among adults ages 25 or over, 2016", caption = "Source: US Census Bureau ACS 2016 5-year estimates") +
+    labs(x = NULL, y = "Share of adults 25+", fill = "Education level", 
+         title = "Educational attainment level by town", 
+         subtitle = "Among adults ages 25 or over, 2016", 
+         caption = "Source: US Census Bureau ACS 2016 5-year estimates") +
     theme_din(base_family = "archivo")
 ```
 
