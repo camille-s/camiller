@@ -3,33 +3,35 @@ Title: Lots of convenience functions
 Version: 0.0.0.9000
 Authors@R: person("Camille", "Seaberry", email = "camille.seaberry@gmail.com", role = c("aut", "cre"))
 Description: Convenience functions, plus a ggplot theme. Basic stuff to prep analysis of Census data at DataHaven.
-Depends: R (>= 3.5.0)
 License: MIT + file LICENSE
+URL: https://camille-s.github.io/camiller,https://github.com/camille-s/camiller
+BugReports: https://github.com/camille-s/camiller/issues
+Depends: 
+    R (>= 3.5.0)
+Imports: 
+    assertthat (>= 0.2.0),
+    cowplot (>= 0.9.3),
+    dplyr (>= 0.7.6),
+    forcats (>= 0.3.0),
+    ggplot2 (>= 3.0.0),
+    magrittr (>= 1.5),
+    purrr (>= 0.2.5),
+    rlang (>= 0.1.2),
+    stats,
+    stringr (>= 1.3.1),
+    sysfonts (>= 0.7.2),
+    tidycensus (>= 0.4.6),
+    tidyr (>= 0.8.1),
+    tidyselect (>= 0.2.4)
+Suggests: 
+    ggfittext,
+    knitr (>= 1.20),
+    pkgdown (>= 1.1.0),
+    rmarkdown (>= 1.10),
+    showtext (>= 0.5.1),
+    testthat (>= 2.0.0)
+VignetteBuilder: knitr
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 6.0.1
 Roxygen: list(markdown = TRUE)
-Imports: 
-    magrittr,
-    dplyr,
-    tidyr,
-    stringr,
-    forcats,
-    rlang,
-    purrr,
-    tidycensus,
-    stats,
-    ggplot2,
-    tidyselect,
-    cowplot,
-    sysfonts,
-    assertthat
-URL: https://github.com/camille-s/camiller
-BugReports: https://github.com/camille-s/camiller/issues
-Suggests: 
-    knitr,
-    rmarkdown,
-    ggfittext,
-    showtext,
-    testthat
-VignetteBuilder: knitr
+RoxygenNote: 6.0.1

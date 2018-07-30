@@ -128,5 +128,5 @@ pov_sigs <- pov_trend %>%
 
 pov_sigs %>%
   select(name, age, diff:isSig_90) %>%
-  head()
+  filter(name %in% c("New Haven", "Hamden"))
 ```

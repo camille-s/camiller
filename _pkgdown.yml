@@ -1,0 +1,30 @@
+url: https://CT-Data-Haven.github.io/cwi
+development:
+  mode: auto
+template:
+  params:
+    bootswatch: yeti
+reference:
+- title: Functions
+  desc: ~
+  contents:
+  - '`add_grps`'
+  - '`bind_self`'
+  - '`brk_labels`'
+  - '`calc_shares`'
+  - '`cap_first`'
+  - '`color_prev`'
+  - '`make_grps`'
+  - '`make_wide`'
+  - '`moe_test`'
+  - '`theme_din`'
+  - '`themed_label`'
+  - '`town_names`'
+- title: Datasets
+  contents:
+  - '`acs_vars`'
+  - '`edu`'
+  - '`gnh`'
+  - '`pov_age`'
+  - '`pov_age_10_16`'
+  - '`race_pops`'
