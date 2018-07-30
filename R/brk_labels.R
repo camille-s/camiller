@@ -15,7 +15,7 @@
 #' brk_labels(percentage_brks, format = "percent", mult_by = 100)
 #'
 #' scientific_brks <- c("[-15500,0]", "(0,20000]", "(20000,25000]")
-#' brks_labels(scientific_brks, format = "e", custom = TRUE, digits = 2)
+#' brk_labels(scientific_brks, format = "e", custom = TRUE, digits = 2)
 #' @export
 brk_labels <- function(x, format = NULL, custom = FALSE, mult_by = 1, round_digits = NULL, sep = " to ", ...) {
   assertthat::assert_that(class(x) == "character", msg = "x should be a character vector.")

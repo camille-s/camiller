@@ -24,7 +24,8 @@ A data frame/tibble with sums of \code{estimate}. Retains grouping columns
 Collapse variable into groups and sum
 }
 \examples{
-edu_list <- list(ages25plus = 1, less_than_high_school = 2:16, high_school = 17:18, some_college_or_aa = 19:21, bachelors_plus = 22:25)
+edu_list <- list(ages25plus = 1, less_than_high_school = 2:16,
+    high_school = 17:18, some_college_or_aa = 19:21, bachelors_plus = 22:25)
 
 edu_detail \%>\%
   dplyr::group_by(name) \%>\%
@@ -32,5 +33,8 @@ edu_detail \%>\%
 
 edu_detail \%>\%
   dplyr::group_by(name) \%>\%
-  add_grps(list(total = "ages25plus", aa_or_bach = c("Associate's degree", "Bachelor's degree"), bachelors_plus = c("Bachelor's degree", "Master's degree", "Professional school degree", "Doctorate degree")))
+  add_grps(list(total = "ages25plus",
+      aa_or_bach = c("Associate's degree", "Bachelor's degree"),
+      bachelors_plus = c("Bachelor's degree", "Master's degree", "Professional school degree", "Doctorate degree")),
+    group = variable, moe = moe)
 }

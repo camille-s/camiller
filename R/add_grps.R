@@ -6,7 +6,8 @@
 #' @param moe Bare column name of margins of error; if supplied, MOEs of sums will be included in output
 #' @return A data frame/tibble with sums of `estimate`. Retains grouping columns
 #' @examples
-#' edu_list <- list(ages25plus = 1, less_than_high_school = 2:16, high_school = 17:18, some_college_or_aa = 19:21, bachelors_plus = 22:25)
+#' edu_list <- list(ages25plus = 1, less_than_high_school = 2:16,
+#'     high_school = 17:18, some_college_or_aa = 19:21, bachelors_plus = 22:25)
 #'
 #' edu_detail %>%
 #'   dplyr::group_by(name) %>%
@@ -14,7 +15,10 @@
 #'
 #' edu_detail %>%
 #'   dplyr::group_by(name) %>%
-#'   add_grps(list(total = "ages25plus", aa_or_bach = c("Associate's degree", "Bachelor's degree"), bachelors_plus = c("Bachelor's degree", "Master's degree", "Professional school degree", "Doctorate degree")))
+#'   add_grps(list(total = "ages25plus",
+#'       aa_or_bach = c("Associate's degree", "Bachelor's degree"),
+#'       bachelors_plus = c("Bachelor's degree", "Master's degree", "Professional school degree", "Doctorate degree")),
+#'     group = variable, moe = moe)
 #' @export
 
 add_grps <- function(df, grp_list, group = group, estimate = estimate, moe = NULL) {
