@@ -3,6 +3,8 @@
 camiller
 ========
 
+[![Travis build status](https://travis-ci.org/camille-s/camiller.svg?branch=master)](https://travis-ci.org/camille-s/camiller)
+
 `camiller` is a set of convenience functions, functions for working with ACS data via `tidycensus`, and a `ggplot` theme.
 
 Installation
@@ -21,34 +23,65 @@ Example
 This is a basic example of two of the major functions in this package, `add_grps` and `calc_shares`:
 
 ``` r
-library(tidyverse)
+library(dplyr)
 library(camiller)
 
-unique(race_pops$variable)
-#> [1] "total"  "white"  "black"  "asian"  "latino"
+edu_list <- list(ages25plus = 1, less_than_high_school = 2:16,
+   high_school = 17:18, some_college_or_aa = 19:21, bachelors_plus = 22:25)
 
-race_grps <- list(
-  total = 1,
-  black_latino = c(3, 5),
-  poc = 3:5
-)
+edu_rates <- edu_detail %>%
+  dplyr::group_by(name) %>%
+  add_grps(edu_list, group = variable, moe = moe) %>%
+  calc_shares(group = variable, denom = "ages25plus", moe = moe)
 
-race_pops %>%
-  group_by(region, name) %>%
-  add_grps(grp_list = race_grps, group = variable, estimate = estimate, moe = moe) %>%
-  calc_shares(region, name, group = variable, denom = "total", moe = moe)
-#> # A tibble: 39 x 7
-#>    region     name       variable     estimate   moe  share sharemoe
-#>    <fct>      <chr>      <fct>           <dbl> <dbl>  <dbl>    <dbl>
-#>  1 New Haven  New Haven  total          130405    60 NA       NA    
-#>  2 New Haven  New Haven  black_latino    80201  2182  0.615    0.017
-#>  3 New Haven  New Haven  poc             86243  2291  0.661    0.018
-#>  4 Inner Ring East Haven total           29015    24 NA       NA    
-#>  5 Inner Ring East Haven black_latino     4513   756  0.156    0.026
-#>  6 Inner Ring East Haven poc              5636   962  0.194    0.033
-#>  7 Inner Ring Hamden     total           61476    31 NA       NA    
-#>  8 Inner Ring Hamden     black_latino    19659  1330  0.32     0.022
-#>  9 Inner Ring Hamden     poc             22944  1435  0.373    0.023
-#> 10 Inner Ring West Haven total           54972    42 NA       NA    
-#> # ... with 29 more rows
+edu_rates
+#> # A tibble: 25 x 6
+#> # Groups:   name [5]
+#>    name       variable              estimate   moe  share sharemoe
+#>    <chr>      <fct>                    <dbl> <dbl>  <dbl>    <dbl>
+#>  1 Bethany    ages25plus                4013   148 NA       NA    
+#>  2 Bethany    less_than_high_school      120    83  0.03     0.021
+#>  3 Bethany    high_school                866   177  0.216    0.043
+#>  4 Bethany    some_college_or_aa        1053   208  0.262    0.051
+#>  5 Bethany    bachelors_plus            1974   257  0.492    0.061
+#>  6 East Haven ages25plus               21230   490 NA       NA    
+#>  7 East Haven less_than_high_school     2380   363  0.112    0.017
+#>  8 East Haven high_school               8612   554  0.406    0.024
+#>  9 East Haven some_college_or_aa        5334   511  0.251    0.023
+#> 10 East Haven bachelors_plus            4904   468  0.231    0.021
+#> # ... with 15 more rows
 ```
+
+Plus this `ggplot` theme.
+
+``` r
+library(ggplot2)
+library(forcats)
+library(showtext)
+
+font_add_google("Archivo Narrow", "archivo")
+showtext_auto()
+
+edu_rates %>%
+  ungroup() %>%
+  filter(!is.na(share)) %>%
+  arrange(variable, share) %>%
+  mutate(name = as.factor(name) %>% fct_inorder() %>% fct_rev()) %>%
+  mutate(variable = fct_relabel(variable, function(x) {
+    stringr::str_replace_all(x, "_", " ") %>% cap_first()
+    })) %>%
+  mutate(variable = fct_recode(variable, "Bachelor's or higher" = "Bachelors plus", 
+                               "Some college or Associate's" = "Some college or aa")) %>%
+  mutate(variable = fct_rev(variable)) %>%
+  ggplot(aes(x = name, y = share, fill = variable)) +
+    geom_col(position = "fill", width = 0.8, alpha = 0.9) +
+    scale_y_continuous(labels = scales::percent) +
+    scale_fill_manual(values = c("#FBB4B9", "#F768A1", "#C51B8A", "#7A0177")) +
+    labs(x = NULL, y = "Share of adults 25+", fill = "Education level", 
+         title = "Educational attainment level by town", 
+         subtitle = "Among adults ages 25 or over, 2016", 
+         caption = "Source: US Census Bureau ACS 2016 5-year estimates") +
+    theme_din(base_family = "archivo")
+```
+
+<img src="man/figures/README-chart-1.png" width="100%" />
