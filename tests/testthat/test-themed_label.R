@@ -4,7 +4,7 @@ library(testthat)
 
 test_that("handles theme argument", {
   el1 <- themed_label("the title", element = "plot.title")
-  el2 <- themed_label("the title", theme = ggthemes::theme_economist(), element = "plot.title")
+  el2 <- themed_label("the title", theme = ggplot2::theme_void(), element = "plot.title")
 
   expect_is(el1, "ggproto")
   expect_is(el2, "ggproto")
