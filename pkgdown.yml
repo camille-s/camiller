@@ -4,6 +4,6 @@ pkgdown_sha: ~
 articles:
   workflow: workflow.html
 urls:
-  reference: https://CT-Data-Haven.github.io/cwi/reference
-  article: https://CT-Data-Haven.github.io/cwi/articles
+  reference: https://camille-s.github.io/camiller/reference
+  article: https://camille-s.github.io/camiller/articles
 
