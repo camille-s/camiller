@@ -4,11 +4,13 @@
 \alias{calc_shares}
 \title{Make table of rates given a denominator}
 \usage{
-calc_shares(df, group = group, denom = "Total", estimate = estimate,
+calc_shares(df, ..., group = group, denom = "Total", estimate = estimate,
   moe = NULL)
 }
 \arguments{
 \item{df}{A data frame}
+
+\item{...}{Optional; bare column names to be used for groupings.}
 
 \item{group}{Bare column name where groups are given--that is, the denominator value should be found in this column}
 
@@ -22,10 +24,13 @@ calc_shares(df, group = group, denom = "Total", estimate = estimate,
 A tibble/data frame with shares (and optionally MOE of shares) of subgroup values within a denominator group. Shares given for denominator group will be blank.
 }
 \description{
-Make table of rates given a denominator
+\code{calc_shares} makes it easy to divide values by some denominator within the same long-shaped data frame. For example, it works well for a table of population groups for multiple locations where you want to divide population counts by some total population. It optionally handles dividing margins of error. Denote locations or other groupings by using a grouped data frame, passing bare column names to \code{...}, or both.
 }
 \examples{
 edu \%>\%
   dplyr::group_by(name) \%>\%
   calc_shares(group = variable, denom = "age25plus", moe = moe)
+
+race_pops \%>\%
+  calc_shares(region, name, group = variable, denom = "total", moe = moe)
 }

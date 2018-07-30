@@ -4,25 +4,35 @@
 \alias{brk_labels}
 \title{Create pretty breaks labels}
 \usage{
-brk_labels(x, format = NULL, mult_by = 1, sep = " to ")
+brk_labels(x, format = NULL, custom = FALSE, mult_by = 1,
+  round_digits = NULL, sep = " to ", ...)
 }
 \arguments{
-\item{x}{A character vector}
+\item{x}{A character vector.}
 
-\item{format}{A string ("percent", "dollar", "dollark") giving desired output format, or `NULL`` for no formatting}
+\item{format}{A string giving desired output format, or \code{NULL} (the default) for no formatting. Built-in shorthands are \code{"percent"}, \code{"dollar"}, and \code{"dollark"}, the last of which formats numbers like \code{$12.3k}. Alternatively, provide a character argument to be used by \code{base::formatC} and set \code{custom = TRUE}.}
 
-\item{mult_by}{A number by which to multiply values in breaks}
+\item{custom}{Logical, whether to use custom formatting, triggering a call to \code{formatC} with the arguments supplied to \code{format} and \code{...}. Defaults \code{FALSE}.}
 
-\item{sep}{A string by which to separate values in breaks}
+\item{mult_by}{A number by which to multiply values in breaks. Defaults to 1, i.e. just the numbers input. Note that multiplication is carried out \emph{before} rounding and formatting.}
+
+\item{round_digits}{If not \code{NULL} (the default), the number of digits to round to. Note that this takes place after multiplying by \code{mult_by}.}
+
+\item{sep}{A string by which to separate values in breaks.}
+
+\item{...}{Any additional arguments to pass on to \code{base::formatC} if \code{custom} is \code{TRUE}.}
 }
 \value{
-A character vector of formatted break labels
+A character vector of formatted break labels.
 }
 \description{
-Create pretty breaks labels
+This function maps over a vector of labels, such as those returned by \code{base::cut}. It works well in formatting \code{ggplot} scales, and can optionally pass parameters to an underlying call to \code{base::formatC}.
 }
 \examples{
-brks <- c("[0.04,0.15]", "(0.15,0.25]", "(0.25,0.4]", "(0.4,0.55]", "(0.55,0.6]")
-brk_labels(brks)
-brk_labels(brks, format = "percent", mult_by = 100)
+percentage_brks <- c("[0.04,0.15]", "(0.15,0.25]", "(0.25,0.4]")
+brk_labels(percentage_brks)
+brk_labels(percentage_brks, format = "percent", mult_by = 100)
+
+scientific_brks <- c("[-15500,0]", "(0,20000]", "(20000,25000]")
+brks_labels(scientific_brks, format = "e", custom = TRUE, digits = 2)
 }

@@ -1,7 +1,7 @@
 #' Capitalize first letter in string
 #' @param x A character vector
 #'
-#' @return A character vector with first character of each capitalized
+#' @return A character vector with first character of each item capitalized
 #' @examples
 #' cap_first("camille")
 #' cap_first(c("camille", "new haven"))

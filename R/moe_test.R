@@ -1,4 +1,6 @@
 #' Significance testing of differences with MOEs
+#'
+#' This function uses 2 estimates and 2 margins of error to do significance testing. It optionally returns the input data frame with the calculations used for testing, or just the data frame with results attached.
 #' @param df A data frame
 #' @param est1 Estimate for first group
 #' @param moe1 Margin of error for first group

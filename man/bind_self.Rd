@@ -2,7 +2,7 @@
 % Please edit documentation in R/bind_self.R
 \name{bind_self}
 \alias{bind_self}
-\title{Neatly a data frame to itself, with a column changed}
+\title{Neatly bind a data frame to itself, with a column changed}
 \usage{
 bind_self(data, group, new_value, append = TRUE, .id = NULL)
 }

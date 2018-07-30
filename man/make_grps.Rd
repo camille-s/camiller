@@ -9,7 +9,7 @@ make_grps(x, grps)
 \arguments{
 \item{x}{Character vector}
 
-\item{grps}{Named list of variable positions within vector \code{x}}
+\item{grps}{Named list of variable values or positions within vector \code{x}}
 }
 \value{
 Named list of variable values from given positions

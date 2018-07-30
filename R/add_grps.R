@@ -6,12 +6,17 @@
 #' @param moe Bare column name of margins of error; if supplied, MOEs of sums will be included in output
 #' @return A data frame/tibble with sums of `estimate`. Retains grouping columns
 #' @examples
-#' unique(race_pops$variable)
-#' race_list <- list(black_latino = c(3, 5), poc = 3:5)
-#' race_pops %>%
-#'   dplyr::group_by(region, name) %>%
-#'   add_grps(race_list, group = variable, moe = moe)
+#' edu_list <- list(ages25plus = 1, less_than_high_school = 2:16, high_school = 17:18, some_college_or_aa = 19:21, bachelors_plus = 22:25)
+#'
+#' edu_detail %>%
+#'   dplyr::group_by(name) %>%
+#'   add_grps(edu_list, group = variable, moe = moe)
+#'
+#' edu_detail %>%
+#'   dplyr::group_by(name) %>%
+#'   add_grps(list(total = "ages25plus", aa_or_bach = c("Associate's degree", "Bachelor's degree"), bachelors_plus = c("Bachelor's degree", "Master's degree", "Professional school degree", "Doctorate degree")))
 #' @export
+
 add_grps <- function(df, grp_list, group = group, estimate = estimate, moe = NULL) {
   grp_var <- rlang::enquo(group)
   est_var <- rlang::enquo(estimate)
@@ -19,7 +24,6 @@ add_grps <- function(df, grp_list, group = group, estimate = estimate, moe = NUL
   group_cols <- dplyr::groups(df)
   grp_names <- names(grp_list)
 
-  ## new
   grp_list_chars <- make_grps(df %>% dplyr::pull(!!grp_var), grp_list)
 
   group_df <- grp_list_chars %>%
@@ -42,5 +46,6 @@ add_grps <- function(df, grp_list, group = group, estimate = estimate, moe = NUL
   out %>%
     dplyr::ungroup() %>%
     dplyr::mutate(!!rlang::quo_name(grp_var) := as.factor(!!grp_var) %>% forcats::fct_relevel(grp_names)) %>%
+    dplyr::arrange(!!!group_cols, !!grp_var) %>%
     dplyr::group_by(!!!group_cols)
 }

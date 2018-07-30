@@ -1,0 +1,12 @@
+context("test-town_names")
+library(dplyr)
+library(camiller)
+library(testthat)
+
+test_that("removes 'town, * County' & filters undefined", {
+  pops <- tidycensus::get_acs(geography = "county subdivision", variables = "B01003_001", state = "09", county = "09")
+  cleaned <- town_names(pops, NAME)
+  # removes one observation of County subdivisions undefined
+  expect_equal(nrow(cleaned), nrow(pops) - 1)
+  expect_false(any(stringr::str_detect(cleaned$NAME, "County")))
+})

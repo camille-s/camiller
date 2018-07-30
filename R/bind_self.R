@@ -1,4 +1,4 @@
-#' Neatly a data frame to itself, with a column changed
+#' Neatly bind a data frame to itself, with a column changed
 #'
 #' This function changes the value of a data frame's column, then binds back to itself in order to fit into a pipeline. This preserves grouping, and if `group` is a factor, returns `group` as a factor with expanded levels.
 #' @param data A data frame.
@@ -39,7 +39,7 @@ bind_self <- function(data, group, new_value, append = TRUE, .id = NULL) {
     new_data <- ungrouped %>%
       dplyr::mutate(!!rlang::quo_name(grp_var) := factor(new_value, levels = all_lvls))
     ungrouped <- ungrouped %>%
-      dplyr::mutate(!!rlang::quo_name(grp_var) := fct_expand(!!grp_var, new_value))
+      dplyr::mutate(!!rlang::quo_name(grp_var) := forcats::fct_expand(!!grp_var, new_value))
   } else {
     new_data <- ungrouped %>%
       dplyr::mutate(!!rlang::quo_name(grp_var) := new_value)

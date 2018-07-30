@@ -1,6 +1,6 @@
 #' Collapse variable into subgroup positions
 #' @param x Character vector
-#' @param grps Named list of variable positions within vector `x`
+#' @param grps Named list of variable values or positions within vector `x`
 #' @return Named list of variable values from given positions
 #' @examples
 #' ages <- c("Under 5 years", "5 to 9 years", "10 to 14 years", "15 to 17 years",
@@ -13,4 +13,15 @@
 #' )
 #' make_grps(ages, age_grps)
 #' @export
-make_grps <- function(x, grps) purrr::map(grps, ~unique(x)[.])
+make_grps <- function(x, grps) {
+  x_uniq <- unique(x)
+
+  purrr::map(grps, function(grp) {
+    if (is.numeric(grp)) {
+      x_uniq[grp]
+    } else {
+      assertthat::assert_that(all(grp %in% x), msg = sprintf("Invalid values in %s", paste(grp, collapse = ", ")))
+      grp
+    }
+  })
+}

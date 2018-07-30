@@ -3,8 +3,10 @@
 \docType{data}
 \name{edu}
 \alias{edu}
+\alias{edu}
+\alias{edu_detail}
 \title{Education levels}
-\format{A tibble with 15 rows and 4 columns
+\format{A tibble with 4 columns. For \code{edu}, 15 rows; for \code{edu_detail}, 125 rows.
 \describe{
 \item{name}{Town name}
 \item{variable}{Education level}
@@ -16,8 +18,10 @@ US Census Bureau, American Community Survey 2016 5-year estimates
 }
 \usage{
 edu
+
+edu_detail
 }
 \description{
-Educational attainment data for 5 New Haven-area towns, 2016
+Educational attainment data for adults ages 25 and over for 5 New Haven-area towns, 2016. \code{edu} is an abridged version with just counts of adults with Bachelor's and Master's degrees. \code{edu_detail} contains detailed education levels from no schooling through Doctorate.
 }
 \keyword{datasets}

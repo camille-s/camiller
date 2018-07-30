@@ -10,7 +10,7 @@ cap_first(x)
 \item{x}{A character vector}
 }
 \value{
-A character vector with first character of each capitalized
+A character vector with first character of each item capitalized
 }
 \description{
 Capitalize first letter in string

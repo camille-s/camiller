@@ -22,12 +22,14 @@ Imports:
     ggplot2,
     tidyselect,
     cowplot,
-    sysfonts
+    sysfonts,
+    assertthat
 URL: https://github.com/camille-s/camiller
 BugReports: https://github.com/camille-s/camiller/issues
 Suggests: 
     knitr,
     rmarkdown,
     ggfittext,
-    showtext
+    showtext,
+    testthat
 VignetteBuilder: knitr
