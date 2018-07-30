@@ -10,9 +10,9 @@ a:hover, a:focus {
   background-color: #6A4783;
 }
 
-.navbar-nav > .active > a,
-.navbar-nav > .active > a:hover,
-.navbar-nav > .active > a:focus {
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
   background-color: #2c1554;
 }
 
@@ -21,13 +21,13 @@ a:hover, a:focus {
   color: #6000e0;
 }
 .fu {
-  color: #50e0d0;
+  color: #20b4a4;
 }
 .ch, .st {
   color: #8080f0;
 }
 .kw {
-  color: #208090;
+  color: #791293;
 }
 .co {
   color: #606060;
