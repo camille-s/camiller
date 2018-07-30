@@ -1,19 +1,41 @@
-# R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
-
-language: R
-sudo: false
+language: r
 cache: packages
+sudo: required
+dist: trusty
+
+branches:
+  only:
+    - master
+os: osx
+osx_image: xcode9.3
+brewpackages: libgit2
+r_packages:
+  - devtools
+  - pkgdown
+r_build_args: '--no-build-vignettes'
+r_check_args: '--ignore-vignettes --no-examples'
+
+addons:
+  apt:
+    packages:
+    - libgdal-dev
+    - libproj-dev
+    - libmagick++-dev
 warnings_are_errors: false
 latex: false
+env:
+  global:
+  - NOT_CRAN=true
 
 after_success:
-  - Rscript -e 'pkgdown::build_site()'
+  - Rscript -e "devtools::install_github('camille-s/camiller')"
+  - "Rscript -e 'pkgdown::build_site(run_dont_run = TRUE)'"
 
 deploy:
   provider: pages
-  skip-cleanup: true
-  github-token: $GITHUB_PAT
-  keep-history: true
-  local-dir: docs
+  skip_cleanup: true
+  github_token: $GITHUB_PAT
   on:
     branch: master
+  local_dir: docs
+  keep_history: true
