@@ -32,20 +32,42 @@ devtools::install_github("camille-s/camiller")
 This is a basic example of two of the major functions in this package, `add_grps` and `calc_shares`:
 
 ```{r example}
-library(tidyverse)
+library(dplyr)
 library(camiller)
 
-unique(race_pops$variable)
+edu_list <- list(ages25plus = 1, less_than_high_school = 2:16,
+   high_school = 17:18, some_college_or_aa = 19:21, bachelors_plus = 22:25)
 
-race_grps <- list(
-  total = 1,
-  black_latino = c(3, 5),
-  poc = 3:5
-)
+edu_rates <- edu_detail %>%
+  dplyr::group_by(name) %>%
+  add_grps(edu_list, group = variable, moe = moe) %>%
+  calc_shares(group = variable, denom = "ages25plus", moe = moe)
 
-race_pops %>%
-  group_by(region, name) %>%
-  add_grps(grp_list = race_grps, group = variable, estimate = estimate, moe = moe) %>%
-  calc_shares(region, name, group = variable, denom = "total", moe = moe)
+edu_rates
+```
+
+Plus this `ggplot` theme.
+
+```{r}
+library(ggplot2)
+library(forcats)
+library(showtext)
+
+font_add_google("Archivo Narrow", "archivo")
+
+edu_rates %>%
+  ungroup() %>%
+  filter(!is.na(share)) %>%
+  arrange(variable, share) %>%
+  mutate(name = as.factor(name) %>% fct_inorder() %>% fct_rev()) %>%
+  mutate(variable = fct_relabel(variable, function(x) stringr::str_replace_all(x, "_", " ") %>% cap_first()) %>%
+           fct_recode("Bachelor's or higher" = "Bachelors plus", "Some college or Associate's" = "Some college or aa") %>%
+           fct_rev()) %>%
+  ggplot(aes(x = name, y = share, fill = variable)) +
+    geom_col(position = "fill", width = 0.8, alpha = 0.9) +
+    scale_y_continuous(labels = scales::percent) +
+    scale_fill_manual(values = c("#FBB4B9", "#F768A1", "#C51B8A", "#7A0177")) +
+    labs(x = NULL, y = "Share of adults 25+", fill = "Education level", title = "Educational attainment level by town", subtitle = "Among adults ages 25 or over, 2016", caption = "Source: US Census Bureau ACS 2016 5-year estimates") +
+    theme_din(base_family = "archivo")
 ```
 
