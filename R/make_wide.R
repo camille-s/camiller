@@ -13,6 +13,7 @@ make_wide <- function(df, ..., group = group) {
   gather_names <- tidyselect::vars_select(names(df), !!!gather_cols)
 
   df %>%
+    dplyr::mutate(!!rlang::quo_name(grp_var) := as.character(!!grp_var)) %>%
     tidyr::gather(key = type, value = value, !!!gather_cols) %>%
     dplyr::mutate(!!rlang::quo_name(grp_var) := !!grp_var %>% forcats::fct_inorder() %>% forcats::fct_rev()) %>%
     dplyr::mutate(type = as.factor(type) %>% forcats::fct_relevel(gather_names)) %>%
