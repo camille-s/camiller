@@ -16,9 +16,9 @@ make_wide <- function(df, ..., group = group) {
     dplyr::mutate(!!rlang::quo_name(grp_var) := as.character(!!grp_var)) %>%
     tidyr::gather(key = type, value = value, !!!gather_cols) %>%
     dplyr::mutate(!!rlang::quo_name(grp_var) := !!grp_var %>% forcats::fct_inorder() %>% forcats::fct_rev()) %>%
-    dplyr::mutate(type = as_factor(type) %>% forcats::fct_relevel(gather_names)) %>%
+    dplyr::mutate(type = forcats::as_factor(type) %>% forcats::fct_relevel(gather_names)) %>%
     tidyr::unite("grp", !!grp_var, type, sep = "_", remove = F) %>%
-    dplyr::mutate(grp = as_factor(grp) %>% forcats::fct_reorder2(!!grp_var, type, dplyr::first)) %>%
+    dplyr::mutate(grp = forcats::as_factor(grp) %>% forcats::fct_reorder2(!!grp_var, type, dplyr::first)) %>%
     dplyr::select(-!!grp_var, -type) %>%
     dplyr::filter(!is.na(value)) %>%
     tidyr::spread(key = grp, value = value)
