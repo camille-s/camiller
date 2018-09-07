@@ -3,7 +3,6 @@
 \docType{data}
 \name{edu}
 \alias{edu}
-\alias{edu}
 \alias{edu_detail}
 \title{Education levels}
 \format{A tibble with 4 columns. For \code{edu}, 15 rows; for \code{edu_detail}, 125 rows.

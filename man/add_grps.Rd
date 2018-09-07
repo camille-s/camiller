@@ -4,7 +4,8 @@
 \alias{add_grps}
 \title{Collapse variable into groups and sum}
 \usage{
-add_grps(df, grp_list, group = group, estimate = estimate, moe = NULL)
+add_grps(df, grp_list, group = group, estimate = estimate,
+  moe = NULL)
 }
 \arguments{
 \item{df}{A data frame; will honor grouping}
