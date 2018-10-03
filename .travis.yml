@@ -29,7 +29,7 @@ env:
 
 after_success:
   - Rscript -e "devtools::install_github('camille-s/camiller')"
-  - "Rscript -e 'pkgdown::build_site(run_dont_run = TRUE)'"
+  - Rscript -e "pkgdown::build_site(run_dont_run = TRUE)"
 
 deploy:
   provider: pages
