@@ -26,7 +26,7 @@ brk_labels(x, format = NULL, custom = FALSE, mult_by = 1,
 A character vector of formatted break labels.
 }
 \description{
-This function maps over a vector of labels, such as those returned by \code{base::cut}. It works well in formatting \code{ggplot} scales, and can optionally pass parameters to an underlying call to \code{base::formatC}.
+This function maps over a vector of labels, such as those returned by \code{base::cut}. It works well in formatting \code{ggplot} scales, and can optionally pass parameters to an underlying call to \code{base::formatC}. Any \code{NA} values will be retained.
 }
 \examples{
 percentage_brks <- c("[0.04,0.15]", "(0.15,0.25]", "(0.25,0.4]")

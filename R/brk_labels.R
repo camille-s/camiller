@@ -1,6 +1,6 @@
 #' Create pretty breaks labels
 #'
-#' This function maps over a vector of labels, such as those returned by `base::cut`. It works well in formatting `ggplot` scales, and can optionally pass parameters to an underlying call to `base::formatC`.
+#' This function maps over a vector of labels, such as those returned by `base::cut`. It works well in formatting `ggplot` scales, and can optionally pass parameters to an underlying call to `base::formatC`. Any `NA` values will be retained.
 #' @param x A character vector.
 #' @param format A string giving desired output format, or `NULL` (the default) for no formatting. Built-in shorthands are `"percent"`, `"dollar"`, and `"dollark"`, the last of which formats numbers like `$12.3k`. Alternatively, provide a character argument to be used by `base::formatC` and set `custom = TRUE`.
 #' @param custom Logical, whether to use custom formatting, triggering a call to `formatC` with the arguments supplied to `format` and `...`. Defaults `FALSE`.
@@ -20,34 +20,37 @@
 brk_labels <- function(x, format = NULL, custom = FALSE, mult_by = 1, round_digits = NULL, sep = " to ", ...) {
   assertthat::assert_that(class(x) == "character", msg = "x should be a character vector.")
   purrr::map_chr(x, function(lab) {
-    splits <- stringr::str_split(lab, ",") %>% purrr::flatten()
-    x1 <- stringr::str_remove_all(splits[1], "[\\(\\[]") %>%
-      as.numeric() %>%
-      magrittr::multiply_by(mult_by)
-    x2 <- stringr::str_remove_all(splits[2], "[\\)\\]]") %>%
-      as.numeric() %>%
-      magrittr::multiply_by(mult_by)
-
-    if (!is.null(round_digits)) {
-      x1 <- round(x1, digits = round_digits)
-      x2 <- round(x2, digits = round_digits)
-    }
-
-    if (custom) {
-      out_nums <- formatC(c(x1, x2), format = format, ...)
-    } else if (is.null(format)) {
-        out_nums <- c(x1, x2)
+    if (is.na(lab)) {
+      NA_character_
     } else {
-        out_nums <- dplyr::case_when(
-          format == "percent" ~ c(x1, paste0(x2, "%")),
-          format == "dollar" ~ paste0("$", c(x1, x2)),
-          format == "dollark" ~ sprintf("$%sk", c(x1, x2)),
-          TRUE ~ paste0(c(x1, x2))
-        )
+      splits <- stringr::str_split(lab, ",") %>% purrr::flatten()
+      x1 <- stringr::str_remove_all(splits[1], "[\\(\\[]") %>%
+        as.numeric() %>%
+        magrittr::multiply_by(mult_by)
+      x2 <- stringr::str_remove_all(splits[2], "[\\)\\]]") %>%
+        as.numeric() %>%
+        magrittr::multiply_by(mult_by)
+
+      if (!is.null(round_digits)) {
+        x1 <- round(x1, digits = round_digits)
+        x2 <- round(x2, digits = round_digits)
+      }
+
+      if (custom) {
+        out_nums <- formatC(c(x1, x2), format = format, ...)
+      } else if (is.null(format)) {
+          out_nums <- c(x1, x2)
+      } else {
+          out_nums <- dplyr::case_when(
+            format == "percent" ~ c(x1, paste0(x2, "%")),
+            format == "dollar" ~ paste0("$", c(x1, x2)),
+            format == "dollark" ~ sprintf("$%sk", c(x1, x2)),
+            TRUE ~ paste0(c(x1, x2))
+          )
+      }
+
+      paste(out_nums, collapse = sep)
     }
 
-    paste(out_nums, collapse = sep)
   })
 }
-
-
