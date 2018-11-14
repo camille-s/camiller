@@ -9,6 +9,6 @@
 cap_first <- function(x) {
   paste0(
     stringr::str_sub(x, 1, 1) %>% stringr::str_to_upper(),
-    stringr::str_sub(x, 2, -1)
+    stringr::str_sub(x, 2, -1) %>% stringr::str_to_lower()
   )
 }
