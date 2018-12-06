@@ -10,7 +10,6 @@ os: osx
 osx_image: xcode9.3
 brewpackages:
   - libgit2
-  - udunits
 r_packages:
   - devtools
   - pkgdown
@@ -23,6 +22,7 @@ addons:
     - libgdal-dev
     - libproj-dev
     - libmagick++-dev
+    - libudunits2-dev
 warnings_are_errors: false
 latex: false
 env:
