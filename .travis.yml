@@ -8,8 +8,6 @@ branches:
     - master
 os: osx
 osx_image: xcode9.3
-brewpackages:
-  - libgit2
 r_packages:
   - devtools
   - pkgdown
@@ -22,7 +20,10 @@ addons:
     - libgdal-dev
     - libproj-dev
     - libmagick++-dev
-    - libudunits2-dev
+  homebrew:
+    packages:
+      - libgit2
+      - udunits
 warnings_are_errors: false
 latex: false
 env:
