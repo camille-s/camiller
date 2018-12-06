@@ -17,7 +17,7 @@
 #' race_pops %>%
 #'   calc_shares(region, name, group = variable, denom = "total", moe = moe)
 #' @export
-calc_shares <- function(df, ..., group = group, denom = "Total", estimate = estimate, moe = NULL) {
+calc_shares <- function(df, ..., group = group, denom = "total_pop", estimate = estimate, moe = NULL) {
   grp_var <- rlang::enquo(group)
   est_var <- rlang::enquo(estimate)
 

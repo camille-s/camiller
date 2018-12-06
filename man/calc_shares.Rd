@@ -4,7 +4,7 @@
 \alias{calc_shares}
 \title{Make table of rates given a denominator}
 \usage{
-calc_shares(df, ..., group = group, denom = "Total",
+calc_shares(df, ..., group = group, denom = "total_pop",
   estimate = estimate, moe = NULL)
 }
 \arguments{

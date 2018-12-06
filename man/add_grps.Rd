@@ -36,6 +36,7 @@ edu_detail \%>\%
   dplyr::group_by(name) \%>\%
   add_grps(list(total = "ages25plus",
       aa_or_bach = c("Associate's degree", "Bachelor's degree"),
-      bachelors_plus = c("Bachelor's degree", "Master's degree", "Professional school degree", "Doctorate degree")),
+      bachelors_plus = c("Bachelor's degree", "Master's degree",
+                         "Professional school degree", "Doctorate degree")),
     group = variable, moe = moe)
 }
