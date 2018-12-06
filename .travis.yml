@@ -8,7 +8,9 @@ branches:
     - master
 os: osx
 osx_image: xcode9.3
-brewpackages: libgit2
+brewpackages:
+  - libgit2
+  - udunits
 r_packages:
   - devtools
   - pkgdown
