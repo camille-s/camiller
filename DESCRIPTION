@@ -9,6 +9,7 @@ BugReports: https://github.com/camille-s/camiller/issues
 Depends: 
     R (>= 3.5.1)
 Imports: 
+    units (>= 0.6-2),
     assertthat (>= 0.2.0),
     cowplot (>= 0.9.3),
     dplyr (>= 0.7.8),
@@ -22,8 +23,7 @@ Imports:
     sysfonts (>= 0.8),
     tidycensus (>= 0.8.1),
     tidyr (>= 0.8.2),
-    tidyselect (>= 0.2.5),
-    units
+    tidyselect (>= 0.2.5)
 Suggests: 
     devtools (>= 2.0.1),
     ggfittext (>= 0.6.0),
