@@ -22,7 +22,8 @@ Imports:
     sysfonts (>= 0.8),
     tidycensus (>= 0.8.1),
     tidyr (>= 0.8.2),
-    tidyselect (>= 0.2.5)
+    tidyselect (>= 0.2.5),
+    units
 Suggests: 
     devtools (>= 2.0.1),
     ggfittext (>= 0.6.0),
