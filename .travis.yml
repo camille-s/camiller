@@ -22,8 +22,8 @@ addons:
     - libmagick++-dev
   homebrew:
     packages:
-      - libgit2
-      - udunits
+    - libgit2
+    - udunits
 warnings_are_errors: false
 latex: false
 env:
