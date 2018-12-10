@@ -19,7 +19,7 @@ environment:
   global:
     USE_RTOOLS: true
     R_BUILD_ARGS: '--no-build-vignettes'
-    R_CHECK_ARGS: '--ignore-vignettes --no-examples'
+    R_CHECK_ARGS: '--ignore-vignettes --no-examples --no-manual'
     NOT_CRAN: true
 
 build_script:
