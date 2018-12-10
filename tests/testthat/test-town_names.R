@@ -4,6 +4,7 @@ library(camiller)
 library(testthat)
 
 test_that("removes 'town, * County' & filters undefined", {
+  skip_on_appveyor()
   skip_on_travis()
   pops <- tidycensus::get_acs(geography = "county subdivision", variables = "B01003_001", state = "09", county = "09")
   cleaned <- town_names(pops, NAME)
