@@ -1,14 +1,18 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-camiller
-========
 
-[![Travis build status](https://travis-ci.org/camille-s/camiller.svg?branch=master)](https://travis-ci.org/camille-s/camiller)
+# camiller
 
-`camiller` is a set of convenience functions, functions for working with ACS data via `tidycensus`, and a `ggplot` theme.
+[![Travis build
+status](https://travis-ci.org/camille-s/camiller.svg?branch=master)](https://travis-ci.org/camille-s/camiller)
 
-Installation
-------------
+[![AppVeyor build
+status](https://ci.appveyor.com/api/projects/status/github/camille-s/camiller?branch=master&svg=true)](https://ci.appveyor.com/project/camille-s/camiller)
+
+`camiller` is a set of convenience functions, functions for working with
+ACS data via `tidycensus`, and a `ggplot` theme.
+
+## Installation
 
 Install from [GitHub](https://github.com/) with:
 
@@ -17,10 +21,10 @@ Install from [GitHub](https://github.com/) with:
 devtools::install_github("camille-s/camiller")
 ```
 
-Example
--------
+## Example
 
-This is a basic example of two of the major functions in this package, `add_grps` and `calc_shares`:
+This is a basic example of two of the major functions in this package,
+`add_grps` and `calc_shares`:
 
 ``` r
 library(dplyr)
@@ -61,6 +65,7 @@ library(showtext)
 
 font_add_google("Archivo Narrow", "archivo")
 showtext_auto()
+showtext_opts(dpi = 150)
 
 edu_rates %>%
   ungroup() %>%

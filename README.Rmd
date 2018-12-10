@@ -12,7 +12,9 @@ knitr::opts_chunk$set(
 	collapse = TRUE,
 	comment = "#>",
 	out.width = "100%",
-	fig.showtext = TRUE
+	fig.showtext = TRUE,
+	dev = "png",
+	dpi = 150
 )
 ```
 # camiller
@@ -60,6 +62,7 @@ library(showtext)
 
 font_add_google("Archivo Narrow", "archivo")
 showtext_auto()
+showtext_opts(dpi = 150)
 
 edu_rates %>%
   ungroup() %>%
