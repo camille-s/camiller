@@ -24,3 +24,4 @@ test_that("handles : notation", {
 
   expect_identical(edu1, edu2)
 })
+

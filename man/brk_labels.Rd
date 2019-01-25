@@ -10,7 +10,7 @@ brk_labels(x, format = NULL, custom = FALSE, mult_by = 1,
 \arguments{
 \item{x}{A character vector.}
 
-\item{format}{A string giving desired output format, or \code{NULL} (the default) for no formatting. Built-in shorthands are \code{"percent"}, \code{"dollar"}, and \code{"dollark"}, the last of which formats numbers like \code{$12.3k}. Alternatively, provide a character argument to be used by \code{base::formatC} and set \code{custom = TRUE}.}
+\item{format}{A function for formatting text, a string giving desired output format, or \code{NULL} (the default) for no formatting. Built-in shorthands are \code{"percent"}, \code{"dollar"}, and \code{"dollark"}, the last of which formats numbers like \code{$12.3k}. Alternatively, provide a character argument to be used by \code{base::formatC} and set \code{custom = TRUE}.}
 
 \item{custom}{Logical, whether to use custom formatting, triggering a call to \code{formatC} with the arguments supplied to \code{format} and \code{...}. Defaults \code{FALSE}.}
 
@@ -20,7 +20,7 @@ brk_labels(x, format = NULL, custom = FALSE, mult_by = 1,
 
 \item{sep}{A string by which to separate values in breaks.}
 
-\item{...}{Any additional arguments to pass on to \code{base::formatC} if \code{custom} is \code{TRUE}.}
+\item{...}{Any additional arguments to pass on to the function given in \code{format}, or to \code{base::formatC} if \code{custom} is \code{TRUE}.}
 }
 \value{
 A character vector of formatted break labels.
@@ -35,4 +35,5 @@ brk_labels(percentage_brks, format = "percent", mult_by = 100)
 
 scientific_brks <- c("[-15500,0]", "(0,20000]", "(20000,25000]")
 brk_labels(scientific_brks, format = "e", custom = TRUE, digits = 2)
+brk_labels(scientific_brks, format = stringr::str_pad, side = "left", pad = "0", width = 3)
 }
