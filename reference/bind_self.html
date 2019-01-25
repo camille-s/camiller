@@ -162,7 +162,7 @@
   <span class='kw'>pop</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>29015</span>, <span class='fl'>61476</span>, <span class='fl'>54972</span>)
 )
 <span class='no'>town_populations</span> <span class='kw'>%&gt;%</span>
-  <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='http://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span>(<span class='kw'>measure</span> <span class='kw'>=</span> <span class='st'>"total_pop"</span>) <span class='kw'>%&gt;%</span>
+  <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span>(<span class='kw'>measure</span> <span class='kw'>=</span> <span class='st'>"total_pop"</span>) <span class='kw'>%&gt;%</span>
   <span class='fu'>bind_self</span>(<span class='kw'>group</span> <span class='kw'>=</span> <span class='no'>name</span>, <span class='kw'>new_value</span> <span class='kw'>=</span> <span class='st'>"Inner Ring towns"</span>)</div><div class='output co'>#&gt;               name   pop   measure
 #&gt; 1       East Haven 29015 total_pop
 #&gt; 2           Hamden 61476 total_pop
@@ -171,9 +171,9 @@
 #&gt; 5 Inner Ring towns 61476 total_pop
 #&gt; 6 Inner Ring towns 54972 total_pop</div><div class='input'>
 <span class='no'>town_populations</span> <span class='kw'>%&gt;%</span>
-  <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='http://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span>(<span class='no'>name</span>) <span class='kw'>%&gt;%</span>
+  <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span>(<span class='no'>name</span>) <span class='kw'>%&gt;%</span>
   <span class='fu'>bind_self</span>(<span class='kw'>group</span> <span class='kw'>=</span> <span class='no'>name</span>, <span class='kw'>new_value</span> <span class='kw'>=</span> <span class='st'>"Inner Ring towns"</span>) <span class='kw'>%&gt;%</span>
-  <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='http://dplyr.tidyverse.org/reference/summarise.html'>summarise</a></span>(<span class='kw'>pop</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/sum'>sum</a></span>(<span class='no'>pop</span>))</div><div class='output co'>#&gt; # A tibble: 4 x 2
+  <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarise</a></span>(<span class='kw'>pop</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/sum'>sum</a></span>(<span class='no'>pop</span>))</div><div class='output co'>#&gt; # A tibble: 4 x 2
 #&gt;   name                pop
 #&gt;   &lt;fct&gt;             &lt;dbl&gt;
 #&gt; 1 East Haven        29015

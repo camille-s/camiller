@@ -162,7 +162,7 @@
     <span class='kw'>high_school</span> <span class='kw'>=</span> <span class='fl'>17</span>:<span class='fl'>18</span>, <span class='kw'>some_college_or_aa</span> <span class='kw'>=</span> <span class='fl'>19</span>:<span class='fl'>21</span>, <span class='kw'>bachelors_plus</span> <span class='kw'>=</span> <span class='fl'>22</span>:<span class='fl'>25</span>)
 
 <span class='no'>edu_detail</span> <span class='kw'>%&gt;%</span>
-  <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='http://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span>(<span class='no'>name</span>) <span class='kw'>%&gt;%</span>
+  <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span>(<span class='no'>name</span>) <span class='kw'>%&gt;%</span>
   <span class='fu'>add_grps</span>(<span class='no'>edu_list</span>, <span class='kw'>group</span> <span class='kw'>=</span> <span class='no'>variable</span>, <span class='kw'>moe</span> <span class='kw'>=</span> <span class='no'>moe</span>)</div><div class='output co'>#&gt; # A tibble: 25 x 4
 #&gt; # Groups:   name [5]
 #&gt;    name       variable              estimate   moe
@@ -177,9 +177,9 @@
 #&gt;  8 East Haven high_school               8612   554
 #&gt;  9 East Haven some_college_or_aa        5334   511
 #&gt; 10 East Haven bachelors_plus            4904   468
-#&gt; # ... with 15 more rows</div><div class='input'>
+#&gt; # … with 15 more rows</div><div class='input'>
 <span class='no'>edu_detail</span> <span class='kw'>%&gt;%</span>
-  <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='http://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span>(<span class='no'>name</span>) <span class='kw'>%&gt;%</span>
+  <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span>(<span class='no'>name</span>) <span class='kw'>%&gt;%</span>
   <span class='fu'>add_grps</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='kw'>total</span> <span class='kw'>=</span> <span class='st'>"ages25plus"</span>,
       <span class='kw'>aa_or_bach</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"Associate's degree"</span>, <span class='st'>"Bachelor's degree"</span>),
       <span class='kw'>bachelors_plus</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"Bachelor's degree"</span>, <span class='st'>"Master's degree"</span>,
