@@ -136,7 +136,7 @@
     </tr>
     <tr>
       <th>format</th>
-      <td><p>A string giving desired output format, or <code>NULL</code> (the default) for no formatting. Built-in shorthands are <code>"percent"</code>, <code>"dollar"</code>, and <code>"dollark"</code>, the last of which formats numbers like <code>$12.3k</code>. Alternatively, provide a character argument to be used by <code><a href='https://www.rdocumentation.org/packages/base/topics/formatc'>base::formatC</a></code> and set <code>custom = TRUE</code>.</p></td>
+      <td><p>A function for formatting text, a string giving desired output format, or <code>NULL</code> (the default) for no formatting. Built-in shorthands are <code>"percent"</code>, <code>"dollar"</code>, and <code>"dollark"</code>, the last of which formats numbers like <code>$12.3k</code>. Alternatively, provide a character argument to be used by <code><a href='https://www.rdocumentation.org/packages/base/topics/formatc'>base::formatC</a></code> and set <code>custom = TRUE</code>.</p></td>
     </tr>
     <tr>
       <th>custom</th>
@@ -156,7 +156,7 @@
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Any additional arguments to pass on to <code><a href='https://www.rdocumentation.org/packages/base/topics/formatc'>base::formatC</a></code> if <code>custom</code> is <code>TRUE</code>.</p></td>
+      <td><p>Any additional arguments to pass on to the function given in <code>format</code>, or to <code><a href='https://www.rdocumentation.org/packages/base/topics/formatc'>base::formatC</a></code> if <code>custom</code> is <code>TRUE</code>.</p></td>
     </tr>
     </table>
     
@@ -169,7 +169,7 @@
     <pre class="examples"><div class='input'><span class='no'>percentage_brks</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"[0.04,0.15]"</span>, <span class='st'>"(0.15,0.25]"</span>, <span class='st'>"(0.25,0.4]"</span>)
 <span class='fu'>brk_labels</span>(<span class='no'>percentage_brks</span>)</div><div class='output co'>#&gt; [1] "0.04 to 0.15" "0.15 to 0.25" "0.25 to 0.4" </div><div class='input'><span class='fu'>brk_labels</span>(<span class='no'>percentage_brks</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"percent"</span>, <span class='kw'>mult_by</span> <span class='kw'>=</span> <span class='fl'>100</span>)</div><div class='output co'>#&gt; [1] "4 to 15%"  "15 to 25%" "25 to 40%"</div><div class='input'>
 <span class='no'>scientific_brks</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"[-15500,0]"</span>, <span class='st'>"(0,20000]"</span>, <span class='st'>"(20000,25000]"</span>)
-<span class='fu'>brk_labels</span>(<span class='no'>scientific_brks</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"e"</span>, <span class='kw'>custom</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>2</span>)</div><div class='output co'>#&gt; [1] "-1.55e+04 to 0.00e+00" "0.00e+00 to 2.00e+04"  "2.00e+04 to 2.50e+04" </div></pre>
+<span class='fu'>brk_labels</span>(<span class='no'>scientific_brks</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"e"</span>, <span class='kw'>custom</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>2</span>)</div><div class='output co'>#&gt; [1] "-1.55e+04 to 0.00e+00" "0.00e+00 to 2.00e+04"  "2.00e+04 to 2.50e+04" </div><div class='input'><span class='fu'>brk_labels</span>(<span class='no'>scientific_brks</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='kw pkg'>stringr</span><span class='kw ns'>::</span><span class='no'><a href='https://stringr.tidyverse.org/reference/str_pad.html'>str_pad</a></span>, <span class='kw'>side</span> <span class='kw'>=</span> <span class='st'>"left"</span>, <span class='kw'>pad</span> <span class='kw'>=</span> <span class='st'>"0"</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>3</span>)</div><div class='output co'>#&gt; [1] "-15500 to 000"  "000 to 20000"   "20000 to 25000"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
