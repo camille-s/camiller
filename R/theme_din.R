@@ -42,14 +42,14 @@ theme_din <- function(base_size = 14, base_family = "roboto", xgrid = FALSE, ygr
       out <- out + ggplot2::theme(panel.grid.major.x = ggplot2::element_blank())
     }
   } else if(xgrid == "dotted") {
-    out <- out + ggplot2::theme(panel.grid.major.x = ggplot2::element_line(color = "gray92", size = 1.5, linetype = "12"))
+    out <- out + ggplot2::theme(panel.grid.major.x = ggplot2::element_line(color = "gray92", size = 1, linetype = "22"))
   }
   if(is.logical(ygrid)) {
     if(!ygrid) {
       out <- out + ggplot2::theme(panel.grid.major.y = ggplot2::element_blank())
     }
   } else if(ygrid == "dotted") {
-    out <- out + ggplot2::theme(panel.grid.major.y = ggplot2::element_line(color = "gray92", size = 1.5, linetype = "12"))
+    out <- out + ggplot2::theme(panel.grid.major.y = ggplot2::element_line(color = "gray92", size = 1, linetype = "22"))
   }
   return(out)
 }
