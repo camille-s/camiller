@@ -4,7 +4,8 @@
 \alias{themed_label}
 \title{Create \code{cowplot} label based on a ggplot theme}
 \usage{
-themed_label(label, theme = NULL, element = "text", ...)
+themed_label(label, theme = NULL, element = "text", x = 0.01,
+  hjust = 0, ...)
 }
 \arguments{
 \item{label}{A string of text for label.}
@@ -12,6 +13,10 @@ themed_label(label, theme = NULL, element = "text", ...)
 \item{theme}{A ggplot theme; if \code{NULL} (the default), will get current theme with \code{ggplot2::theme_get()}.}
 
 \item{element}{Name of a theme element; defaults to base text.}
+
+\item{x}{x-position; defaults to 0.01}
+
+\item{hjust}{Horizontal alignment; defaults 0}
 
 \item{...}{Any other arguments to pass to \code{cowplot::draw_label()}.}
 }

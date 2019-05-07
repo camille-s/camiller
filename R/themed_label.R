@@ -4,13 +4,15 @@
 #' @param label A string of text for label.
 #' @param theme A ggplot theme; if `NULL` (the default), will get current theme with `ggplot2::theme_get()`.
 #' @param element Name of a theme element; defaults to base text.
+#' @param x x-position; defaults to 0.01
+#' @param hjust Horizontal alignment; defaults 0
 #' @param ... Any other arguments to pass to `cowplot::draw_label()`.
 #' @return A `ggplot` object.
 #' @examples
 #' title <- cowplot::ggdraw() +
 #'   themed_label("Plot title", ggplot2::theme_bw(), element = "plot.title", x = 0.05)
 #' @export
-themed_label <- function(label, theme = NULL, element = "text", ...) {
+themed_label <- function(label, theme = NULL, element = "text", x = 0.01, hjust = 0, ...) {
   if (is.null(theme)) {
     theme <- ggplot2::theme_get()
   }
