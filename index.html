@@ -7,8 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Lots of convenience functions • camiller</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/yeti/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><link href="extra.css" rel="stylesheet">
 <meta property="og:title" content="Lots of convenience functions">
 <meta property="og:description" content="Convenience functions, plus a ggplot theme. Basic stuff to prep analysis of Census data at DataHaven.">
@@ -19,7 +20,7 @@
 <![endif]-->
 </head>
 <body>
-    <div class="container template-article">
+    <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
@@ -39,7 +40,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -62,7 +63,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/camille-s/camiller">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -75,13 +76,9 @@
 <!--/.navbar -->
 
       
-      </header><div class="row">
-  <div class="col-md-9 contents">
-    
 
-    
-    
-<!-- README.md is generated from README.Rmd. Please edit that file -->
+      </header><div class="row">
+  <div class="contents col-md-9">
 <div id="camiller" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#camiller" class="anchor"></a>camiller</h1></div>
@@ -92,16 +89,16 @@
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>Install from <a href="https://github.com/">GitHub</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># install.packages("devtools")</span></a>
-<a class="sourceLine" id="cb1-2" data-line-number="2">devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"camille-s/camiller"</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb1-2" data-line-number="2">devtools<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/devtools/man/remote-reexports.html">install_github</a></span>(<span class="st">"camille-s/camiller"</span>)</a></code></pre></div>
 </div>
 <div id="example" class="section level2">
 <h2 class="hasAnchor">
 <a href="#example" class="anchor"></a>Example</h2>
 <p>This is a basic example of two of the major functions in this package, <code>add_grps</code> and <code>calc_shares</code>:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(dplyr)</a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(camiller)</a>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(dplyr)</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(camiller)</a>
 <a class="sourceLine" id="cb2-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb2-4" data-line-number="4">edu_list &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dt">ages25plus =</span> <span class="dv">1</span>, <span class="dt">less_than_high_school =</span> <span class="dv">2</span><span class="op">:</span><span class="dv">16</span>,</a>
+<a class="sourceLine" id="cb2-4" data-line-number="4">edu_list &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="dt">ages25plus =</span> <span class="dv">1</span>, <span class="dt">less_than_high_school =</span> <span class="dv">2</span><span class="op">:</span><span class="dv">16</span>,</a>
 <a class="sourceLine" id="cb2-5" data-line-number="5">   <span class="dt">high_school =</span> <span class="dv">17</span><span class="op">:</span><span class="dv">18</span>, <span class="dt">some_college_or_aa =</span> <span class="dv">19</span><span class="op">:</span><span class="dv">21</span>, <span class="dt">bachelors_plus =</span> <span class="dv">22</span><span class="op">:</span><span class="dv">25</span>)</a>
 <a class="sourceLine" id="cb2-6" data-line-number="6"></a>
 <a class="sourceLine" id="cb2-7" data-line-number="7">edu_rates &lt;-<span class="st"> </span>edu_detail <span class="op">%&gt;%</span></a>
@@ -124,32 +121,32 @@
 <a class="sourceLine" id="cb2-24" data-line-number="24"><span class="co">#&gt;  8 East Haven high_school               8612   554  0.406    0.024</span></a>
 <a class="sourceLine" id="cb2-25" data-line-number="25"><span class="co">#&gt;  9 East Haven some_college_or_aa        5334   511  0.251    0.023</span></a>
 <a class="sourceLine" id="cb2-26" data-line-number="26"><span class="co">#&gt; 10 East Haven bachelors_plus            4904   468  0.231    0.021</span></a>
-<a class="sourceLine" id="cb2-27" data-line-number="27"><span class="co">#&gt; # … with 15 more rows</span></a></code></pre></div>
+<a class="sourceLine" id="cb2-27" data-line-number="27"><span class="co">#&gt; # ... with 15 more rows</span></a></code></pre></div>
 <p>Plus this <code>ggplot</code> theme.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(ggplot2)</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(forcats)</a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(showtext)</a>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggplot2)</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(forcats)</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(showtext)</a>
 <a class="sourceLine" id="cb3-4" data-line-number="4"></a>
 <a class="sourceLine" id="cb3-5" data-line-number="5"><span class="kw">font_add_google</span>(<span class="st">"Archivo Narrow"</span>, <span class="st">"archivo"</span>)</a>
-<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="kw"><a href="https://www.rdocumentation.org/packages/showtext/topics/showtext_auto">showtext_auto</a></span>()</a>
-<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="kw"><a href="https://www.rdocumentation.org/packages/showtext/topics/showtext_opts">showtext_opts</a></span>(<span class="dt">dpi =</span> <span class="dv">150</span>)</a>
+<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="kw"><a href="https://rdrr.io/pkg/showtext/man/showtext_auto.html">showtext_auto</a></span>()</a>
+<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="kw"><a href="https://rdrr.io/pkg/showtext/man/showtext_opts.html">showtext_opts</a></span>(<span class="dt">dpi =</span> <span class="dv">150</span>)</a>
 <a class="sourceLine" id="cb3-8" data-line-number="8"></a>
 <a class="sourceLine" id="cb3-9" data-line-number="9">edu_rates <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb3-10" data-line-number="10"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="op">!</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/NA">is.na</a></span>(share)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span>(share)) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb3-12" data-line-number="12"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(variable, share) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb3-13" data-line-number="13"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">name =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/factor">as.factor</a></span>(name) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://forcats.tidyverse.org/reference/fct_inorder.html">fct_inorder</a></span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://forcats.tidyverse.org/reference/fct_rev.html">fct_rev</a></span>()) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb3-13" data-line-number="13"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">name =</span> <span class="kw"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span>(name) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://forcats.tidyverse.org/reference/fct_inorder.html">fct_inorder</a></span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://forcats.tidyverse.org/reference/fct_rev.html">fct_rev</a></span>()) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb3-14" data-line-number="14"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">variable =</span> <span class="kw"><a href="https://forcats.tidyverse.org/reference/fct_relabel.html">fct_relabel</a></span>(variable, <span class="cf">function</span>(x) {</a>
 <a class="sourceLine" id="cb3-15" data-line-number="15">    stringr<span class="op">::</span><span class="kw"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace_all</a></span>(x, <span class="st">"_"</span>, <span class="st">" "</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="reference/cap_first.html">cap_first</a></span>()</a>
 <a class="sourceLine" id="cb3-16" data-line-number="16">    })) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb3-17" data-line-number="17"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">variable =</span> <span class="kw"><a href="https://forcats.tidyverse.org/reference/fct_recode.html">fct_recode</a></span>(variable, <span class="st">"Bachelor's or higher"</span> =<span class="st"> "Bachelors plus"</span>, </a>
 <a class="sourceLine" id="cb3-18" data-line-number="18">                               <span class="st">"Some college or Associate's"</span> =<span class="st"> "Some college or aa"</span>)) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb3-19" data-line-number="19"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">variable =</span> <span class="kw"><a href="https://forcats.tidyverse.org/reference/fct_rev.html">fct_rev</a></span>(variable)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb3-20" data-line-number="20"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">x =</span> name, <span class="dt">y =</span> share, <span class="dt">fill =</span> variable)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb3-21" data-line-number="21"><span class="st">    </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/geom_bar">geom_col</a></span>(<span class="dt">position =</span> <span class="st">"fill"</span>, <span class="dt">width =</span> <span class="fl">0.8</span>, <span class="dt">alpha =</span> <span class="fl">0.9</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb3-22" data-line-number="22"><span class="st">    </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/scale_continuous">scale_y_continuous</a></span>(<span class="dt">labels =</span> scales<span class="op">::</span>percent) <span class="op">+</span></a>
-<a class="sourceLine" id="cb3-23" data-line-number="23"><span class="st">    </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/scale_manual">scale_fill_manual</a></span>(<span class="dt">values =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"#FBB4B9"</span>, <span class="st">"#F768A1"</span>, <span class="st">"#C51B8A"</span>, <span class="st">"#7A0177"</span>)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb3-24" data-line-number="24"><span class="st">    </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/labs">labs</a></span>(<span class="dt">x =</span> <span class="ot">NULL</span>, <span class="dt">y =</span> <span class="st">"Share of adults 25+"</span>, <span class="dt">fill =</span> <span class="st">"Education level"</span>, </a>
+<a class="sourceLine" id="cb3-20" data-line-number="20"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="dt">x =</span> name, <span class="dt">y =</span> share, <span class="dt">fill =</span> variable)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb3-21" data-line-number="21"><span class="st">    </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_col</a></span>(<span class="dt">position =</span> <span class="st">"fill"</span>, <span class="dt">width =</span> <span class="fl">0.8</span>, <span class="dt">alpha =</span> <span class="fl">0.9</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb3-22" data-line-number="22"><span class="st">    </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span>(<span class="dt">labels =</span> scales<span class="op">::</span>percent) <span class="op">+</span></a>
+<a class="sourceLine" id="cb3-23" data-line-number="23"><span class="st">    </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_fill_manual</a></span>(<span class="dt">values =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"#FBB4B9"</span>, <span class="st">"#F768A1"</span>, <span class="st">"#C51B8A"</span>, <span class="st">"#7A0177"</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb3-24" data-line-number="24"><span class="st">    </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span>(<span class="dt">x =</span> <span class="ot">NULL</span>, <span class="dt">y =</span> <span class="st">"Share of adults 25+"</span>, <span class="dt">fill =</span> <span class="st">"Education level"</span>, </a>
 <a class="sourceLine" id="cb3-25" data-line-number="25">         <span class="dt">title =</span> <span class="st">"Educational attainment level by town"</span>, </a>
 <a class="sourceLine" id="cb3-26" data-line-number="26">         <span class="dt">subtitle =</span> <span class="st">"Among adults ages 25 or over, 2016"</span>, </a>
 <a class="sourceLine" id="cb3-27" data-line-number="27">         <span class="dt">caption =</span> <span class="st">"Source: US Census Bureau ACS 2016 5-year estimates"</span>) <span class="op">+</span></a>
@@ -183,7 +180,7 @@
 </ul>
 </div>
 
-      <div class="dev-status">
+  <div class="dev-status">
 <h2>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://travis-ci.org/camille-s/camiller"><img src="https://travis-ci.org/camille-s/camiller.svg?branch=master" alt="Travis build status"></a></li>
@@ -191,7 +188,6 @@
 </ul>
 </div>
 </div>
-
 </div>
 
 
@@ -200,12 +196,14 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
+
       </footer>
 </div>
 
   
+
 
   </body>
 </html>
