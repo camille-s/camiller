@@ -5,7 +5,7 @@
 \title{Make table of rates given a denominator}
 \usage{
 calc_shares(df, ..., group = group, denom = "total_pop",
-  estimate = estimate, moe = NULL)
+  estimate = estimate, moe = NULL, digits = 3)
 }
 \arguments{
 \item{df}{A data frame}
@@ -19,6 +19,8 @@ calc_shares(df, ..., group = group, denom = "total_pop",
 \item{estimate}{Bare column name of estimates or values}
 
 \item{moe}{Bare column name of margins of error; if supplied, MOE of shares will be included in output}
+
+\item{digits}{Number of digits to round to; defaults to 3.}
 }
 \value{
 A tibble/data frame with shares (and optionally MOE of shares) of subgroup values within a denominator group. Shares given for denominator group will be blank.

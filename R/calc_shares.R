@@ -8,6 +8,7 @@
 #' @param denom String; denominator to filter from `group`
 #' @param estimate Bare column name of estimates or values
 #' @param moe Bare column name of margins of error; if supplied, MOE of shares will be included in output
+#' @param digits Number of digits to round to; defaults to 3.
 #' @return A tibble/data frame with shares (and optionally MOE of shares) of subgroup values within a denominator group. Shares given for denominator group will be blank.
 #' @examples
 #' edu %>%
@@ -17,7 +18,7 @@
 #' race_pops %>%
 #'   calc_shares(region, name, group = variable, denom = "total", moe = moe)
 #' @export
-calc_shares <- function(df, ..., group = group, denom = "total_pop", estimate = estimate, moe = NULL) {
+calc_shares <- function(df, ..., group = group, denom = "total_pop", estimate = estimate, moe = NULL, digits = 3) {
   grp_var <- rlang::enquo(group)
   est_var <- rlang::enquo(estimate)
 
@@ -56,7 +57,7 @@ calc_shares <- function(df, ..., group = group, denom = "total_pop", estimate = 
         dplyr::filter(!!grp_var != denom),
       by = join_names
     ) %>%
-      dplyr::mutate(share = round((!!est_var) / total_est, digits = 3)) %>%
+      dplyr::mutate(share = round((!!est_var) / total_est, digits = digits)) %>%
       dplyr::mutate(sharemoe = round(tidycensus::moe_prop(!!est_var, total_est, !!moe_var, total_moe), digits = 3))
 
     bound <- dplyr::bind_rows(
@@ -76,7 +77,7 @@ calc_shares <- function(df, ..., group = group, denom = "total_pop", estimate = 
         dplyr::filter(!!grp_var != denom),
       by = join_names
     ) %>%
-      dplyr::mutate(share = round((!!est_var) / total_est, digits = 3))
+      dplyr::mutate(share = round((!!est_var) / total_est, digits = digits))
 
     bound <- dplyr::bind_rows(
       calcs %>%
