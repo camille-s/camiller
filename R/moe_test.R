@@ -1,7 +1,7 @@
 #' Significance testing of differences with MOEs
 #'
 #' This function uses 2 estimates and 2 margins of error to do significance testing. It optionally returns the input data frame with the calculations used for testing, or just the data frame with results attached.
-#' @param df A data frame
+#' @param .data A data frame
 #' @param est1 Estimate for first group
 #' @param moe1 Margin of error for first group
 #' @param est2 Estimate for second group
@@ -17,7 +17,7 @@
 #' med_age %>%
 #'   moe_test(men_est, men_moe, women_est, women_moe, alpha = 0.9, show_calc = TRUE)
 #' @export
-moe_test <- function(df, est1, moe1, est2, moe2, cl = 0.9, alpha = 0.05, show_calc = TRUE) {
+moe_test <- function(.data, est1, moe1, est2, moe2, cl = 0.9, alpha = 0.05, show_calc = TRUE) {
   est1 <- rlang::enquo(est1)
   est2 <- rlang::enquo(est2)
   moe1 <- rlang::enquo(moe1)
@@ -27,7 +27,7 @@ moe_test <- function(df, est1, moe1, est2, moe2, cl = 0.9, alpha = 0.05, show_ca
   lvl <- (1 - alpha) * 100
   sig_name <- rlang::sym(paste("isSig", sprintf("%02g", lvl), sep = "_"))
 
-  out <- df %>%
+  out <- .data %>%
     dplyr::mutate(diff = !!est2 - !!est1) %>%
     dplyr::mutate(se1 = !!moe1 / stats::qnorm(z), se2 = !!moe2 / stats::qnorm(z)) %>%
     dplyr::mutate(se = sqrt(se1^2 + se2^2)) %>%

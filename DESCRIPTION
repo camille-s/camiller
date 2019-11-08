@@ -31,7 +31,8 @@ Suggests:
     pkgdown,
     rmarkdown,
     showtext,
-    testthat
+    testthat,
+    crayon
 VignetteBuilder: knitr
 Encoding: UTF-8
 LazyData: true
