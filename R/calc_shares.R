@@ -6,21 +6,31 @@
 #' @param ... Optional; bare column names to be used for groupings.
 #' @param group Bare column name where groups are given--that is, the denominator value should be found in this column
 #' @param denom String; denominator to filter from `group`
-#' @param estimate Bare column name of estimates or values
+#' @param value Bare column name of values. Replaces `estimate` argument, but (for now) still defaults to a column named `estimate`
 #' @param moe Bare column name of margins of error; if supplied, MOE of shares will be included in output
 #' @param digits Number of digits to round to; defaults to 3.
+#' @param estimate *Soft deprecated; use* `value`. Bare column name of estimates or values
 #' @return A tibble/data frame with shares (and optionally MOE of shares) of subgroup values within a denominator group. Shares given for denominator group will be blank.
 #' @examples
 #' edu %>%
 #'   dplyr::group_by(name) %>%
-#'   calc_shares(group = variable, denom = "age25plus", moe = moe)
+#'   calc_shares(group = variable, denom = "age25plus",
+#'               value = estimate, moe = moe)
 #'
 #' race_pops %>%
-#'   calc_shares(region, name, group = variable, denom = "total", moe = moe)
+#'   calc_shares(region, name, group = variable, denom = "total",
+#'               value = estimate, moe = moe)
 #' @export
-calc_shares <- function(df, ..., group = group, denom = "total_pop", estimate = estimate, moe = NULL, digits = 3) {
+calc_shares <- function(df, ..., group = group, denom = "total_pop", value = estimate, moe = NULL, digits = 3, estimate = NULL) {
+  if (!missing(estimate)) {
+    warning("argument estimate is deprecated; please use value instead.", call. = TRUE)
+    # value <- estimate
+    val_var <- rlang::enquo(estimate)
+  } else {
+    val_var <- rlang::enquo(value)
+  }
+
   grp_var <- rlang::enquo(group)
-  est_var <- rlang::enquo(estimate)
 
   # check for denom in grp_var
   assertthat::assert_that(denom %in% df[[rlang::quo_name(grp_var)]], msg = sprintf("The denominator '%s' doesn\'t seem to be in %s", denom, rlang::quo_name(grp_var)))
@@ -39,7 +49,7 @@ calc_shares <- function(df, ..., group = group, denom = "total_pop", estimate = 
   join_names <- tidyselect::vars_select(names(df), !!!group_cols)
   join_cols <- rlang::quos(!!!group_cols)
 
-  est_name <- rlang::quo_name(est_var)
+  est_name <- rlang::quo_name(val_var)
 
   df2 <- df_grp %>%
     dplyr::mutate(!!rlang::quo_name(grp_var) := as.character(!!grp_var))
@@ -52,13 +62,13 @@ calc_shares <- function(df, ..., group = group, denom = "total_pop", estimate = 
       df2 %>%
         dplyr::filter(!!grp_var == denom) %>%
         dplyr::select(-!!grp_var) %>%
-        dplyr::rename(total_est = !!est_var, total_moe = !!moe_var),
+        dplyr::rename(total_est = !!val_var, total_moe = !!moe_var),
       df2 %>%
         dplyr::filter(!!grp_var != denom),
       by = join_names
     ) %>%
-      dplyr::mutate(share = round((!!est_var) / total_est, digits = digits)) %>%
-      dplyr::mutate(sharemoe = round(tidycensus::moe_prop(!!est_var, total_est, !!moe_var, total_moe), digits = 3))
+      dplyr::mutate(share = round((!!val_var) / total_est, digits = digits)) %>%
+      dplyr::mutate(sharemoe = round(tidycensus::moe_prop(!!val_var, total_est, !!moe_var, total_moe), digits = 3))
 
     bound <- dplyr::bind_rows(
       calcs %>%
@@ -72,12 +82,12 @@ calc_shares <- function(df, ..., group = group, denom = "total_pop", estimate = 
       df2 %>%
         dplyr::filter(!!grp_var == denom) %>%
         dplyr::select(-!!grp_var) %>%
-        dplyr::rename(total_est = !!est_var),
+        dplyr::rename(total_est = !!val_var),
       df2 %>%
         dplyr::filter(!!grp_var != denom),
       by = join_names
     ) %>%
-      dplyr::mutate(share = round((!!est_var) / total_est, digits = digits))
+      dplyr::mutate(share = round((!!val_var) / total_est, digits = digits))
 
     bound <- dplyr::bind_rows(
       calcs %>%
