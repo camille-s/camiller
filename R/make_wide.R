@@ -1,5 +1,5 @@
 #' Arrange estimates, MOEs, etc into wide format
-#' @param df A data frame
+#' @param .data A data frame
 #' @param ... Bare column names of types of measures
 #' @param group Bare column name of group or category variable for spreading into wide data
 #' @return A tibble/data frame in wide format
@@ -7,12 +7,12 @@
 #' edu %>%
 #'   make_wide(estimate, moe, group = variable)
 #' @export
-make_wide <- function(df, ..., group = group) {
+make_wide <- function(.data, ..., group = group) {
   gather_cols <- rlang::quos(...)
   grp_var <- rlang::enquo(group)
-  gather_names <- tidyselect::vars_select(names(df), !!!gather_cols)
+  gather_names <- tidyselect::vars_select(names(.data), !!!gather_cols)
 
-  df %>%
+  .data %>%
     dplyr::ungroup() %>%
     dplyr::mutate(!!rlang::quo_name(grp_var) := as.character(!!grp_var)) %>%
     tidyr::gather(key = type, value = value, !!!gather_cols) %>%

@@ -2,7 +2,7 @@
 #'
 #' `calc_shares` makes it easy to divide values by some denominator within the same long-shaped data frame. For example, it works well for a table of population groups for multiple locations where you want to divide population counts by some total population. It optionally handles dividing margins of error. Denote locations or other groupings by using a grouped data frame, passing bare column names to `...`, or both.
 #'
-#' @param df A data frame
+#' @param .data A data frame
 #' @param ... Optional; bare column names to be used for groupings.
 #' @param group Bare column name where groups are given--that is, the denominator value should be found in this column
 #' @param denom String; denominator to filter from `group`
@@ -21,7 +21,7 @@
 #'   calc_shares(region, name, group = variable, denom = "total",
 #'               value = estimate, moe = moe)
 #' @export
-calc_shares <- function(df, ..., group = group, denom = "total_pop", value = estimate, moe = NULL, digits = 3, estimate = NULL) {
+calc_shares <- function(.data, ..., group = group, denom = "total_pop", value = estimate, moe = NULL, digits = 3, estimate = NULL) {
   if (!missing(estimate)) {
     warning("argument estimate is deprecated; please use value instead.", call. = TRUE)
     # value <- estimate
@@ -33,20 +33,20 @@ calc_shares <- function(df, ..., group = group, denom = "total_pop", value = est
   grp_var <- rlang::enquo(group)
 
   # check for denom in grp_var
-  assertthat::assert_that(denom %in% df[[rlang::quo_name(grp_var)]], msg = sprintf("The denominator '%s' doesn\'t seem to be in %s", denom, rlang::quo_name(grp_var)))
+  assertthat::assert_that(denom %in% .data[[rlang::quo_name(grp_var)]], msg = sprintf("The denominator '%s' doesn\'t seem to be in %s", denom, rlang::quo_name(grp_var)))
 
   # should be grouped and/or have id
-  if (dplyr::is_grouped_df(df)) {
-    group_cols <- c(dplyr::groups(df), rlang::quos(...))
+  if (dplyr::is_grouped_df(.data)) {
+    group_cols <- c(dplyr::groups(.data), rlang::quos(...))
   } else {
     assertthat::assert_that(length(rlang::quos(...)) > 0, msg = "Must supply a grouped data frame and/or give column names in ...")
     group_cols <- rlang::quos(...)
   }
   # group by all group_cols
-  df_grp <- df %>%
+  df_grp <- .data %>%
     dplyr::group_by(!!!group_cols)
 
-  join_names <- tidyselect::vars_select(names(df), !!!group_cols)
+  join_names <- tidyselect::vars_select(names(.data), !!!group_cols)
   join_cols <- rlang::quos(!!!group_cols)
 
   est_name <- rlang::quo_name(val_var)
@@ -105,7 +105,7 @@ calc_shares <- function(df, ..., group = group, denom = "total_pop", value = est
     dplyr::select(!!!join_cols, !!grp_var, dplyr::everything())
 
   # ungroup if original df wasn't grouped
-  if (!dplyr::is_grouped_df(df)) {
+  if (!dplyr::is_grouped_df(.data)) {
     out <- dplyr::ungroup(out)
   }
   out

@@ -1,5 +1,5 @@
 #' Collapse variable into groups and sum
-#' @param df A data frame; will honor grouping
+#' @param .data A data frame; will honor grouping
 #' @param grp_list A named list of groups to collapse `group` into
 #' @param group Bare column name giving groups in data; will be converted to factor
 #' @param value Bare column name of values. Replaces `estimate` argument, but (for now) still defaults to a column named `estimate`
@@ -23,7 +23,7 @@
 #'     value = estimate, group = variable, moe = moe)
 #' @export
 
-add_grps <- function(df, grp_list, group = group, value = estimate, moe = NULL, estimate = NULL) {
+add_grps <- function(.data, grp_list, group = group, value = estimate, moe = NULL, estimate = NULL) {
   if (!missing(estimate)) {
     warning("argument estimate is deprecated; please use value instead.", call. = TRUE)
     # value <- estimate
@@ -33,14 +33,14 @@ add_grps <- function(df, grp_list, group = group, value = estimate, moe = NULL, 
   }
   grp_var <- rlang::enquo(group)
   # val_var <- rlang::enquo(value)
-  group_cols <- dplyr::groups(df)
+  group_cols <- dplyr::groups(.data)
   grp_names <- names(grp_list)
 
-  grp_list_chars <- make_grps(df %>% dplyr::pull(!!grp_var), grp_list)
+  grp_list_chars <- make_grps(.data %>% dplyr::pull(!!grp_var), grp_list)
 
   group_df <- grp_list_chars %>%
     purrr::imap_dfr(function(grps, grp_name) {
-      df %>%
+      .data %>%
         dplyr::filter(!!grp_var %in% grps) %>%
         dplyr::mutate(!!rlang::quo_name(grp_var) := grp_name) %>%
         dplyr::group_by(!!!group_cols, !!grp_var)
