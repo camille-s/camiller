@@ -4,10 +4,10 @@
 \alias{make_wide}
 \title{Arrange estimates, MOEs, etc into wide format}
 \usage{
-make_wide(df, ..., group = group)
+make_wide(.data, ..., group = group)
 }
 \arguments{
-\item{df}{A data frame}
+\item{.data}{A data frame}
 
 \item{...}{Bare column names of types of measures}
 

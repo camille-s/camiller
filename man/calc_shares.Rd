@@ -4,11 +4,11 @@
 \alias{calc_shares}
 \title{Make table of rates given a denominator}
 \usage{
-calc_shares(df, ..., group = group, denom = "total_pop",
-  estimate = estimate, moe = NULL, digits = 3)
+calc_shares(.data, ..., group = group, denom = "total_pop",
+  value = estimate, moe = NULL, digits = 3, estimate = NULL)
 }
 \arguments{
-\item{df}{A data frame}
+\item{.data}{A data frame}
 
 \item{...}{Optional; bare column names to be used for groupings.}
 
@@ -16,11 +16,13 @@ calc_shares(df, ..., group = group, denom = "total_pop",
 
 \item{denom}{String; denominator to filter from \code{group}}
 
-\item{estimate}{Bare column name of estimates or values}
+\item{value}{Bare column name of values. Replaces \code{estimate} argument, but (for now) still defaults to a column named \code{estimate}}
 
 \item{moe}{Bare column name of margins of error; if supplied, MOE of shares will be included in output}
 
 \item{digits}{Number of digits to round to; defaults to 3.}
+
+\item{estimate}{\emph{Soft deprecated; use} \code{value}. Bare column name of estimates or values}
 }
 \value{
 A tibble/data frame with shares (and optionally MOE of shares) of subgroup values within a denominator group. Shares given for denominator group will be blank.
@@ -31,8 +33,10 @@ A tibble/data frame with shares (and optionally MOE of shares) of subgroup value
 \examples{
 edu \%>\%
   dplyr::group_by(name) \%>\%
-  calc_shares(group = variable, denom = "age25plus", moe = moe)
+  calc_shares(group = variable, denom = "age25plus",
+              value = estimate, moe = moe)
 
 race_pops \%>\%
-  calc_shares(region, name, group = variable, denom = "total", moe = moe)
+  calc_shares(region, name, group = variable, denom = "total",
+              value = estimate, moe = moe)
 }

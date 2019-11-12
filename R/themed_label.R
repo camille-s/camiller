@@ -1,6 +1,6 @@
 #' Create `cowplot` label based on a ggplot theme
 #'
-#' This is a wrapper around `cowplot::draw_label()` that creates a `ggplot`-based label that inherits formatting from a given theme element.
+#' This is a wrapper around `cowplot::draw_label()` that creates a `ggplot`-based label that inherits formatting from a given theme element. Updated 11/2019, it's no longer necessary to add this to a `ggdraw` object; see examples.
 #' @param label A string of text for label.
 #' @param theme A ggplot theme; if `NULL` (the default), will get current theme with `ggplot2::theme_get()`.
 #' @param element Name of a theme element; defaults to base text.
@@ -9,8 +9,34 @@
 #' @param ... Any other arguments to pass to `cowplot::draw_label()`.
 #' @return A `ggplot` object.
 #' @examples
+#' \dontrun{
+#' # the old way: manually adding the label to cowplot::ggdraw()
 #' title <- cowplot::ggdraw() +
 #'   themed_label("Plot title", ggplot2::theme_bw(), element = "plot.title", x = 0.05)
+#' }
+#' # the new way: themed_label does that for you
+#' if (requireNamespace("ggplot2", quietly = TRUE)) {
+#'   town_pops <- race_pops %>%
+#'     dplyr::filter(variable == "total") %>%
+#'     tidyr::unite(key, name, region, sep = " in ") %>%
+#'     dplyr::mutate(key = forcats::fct_reorder(as.factor(key), estimate))
+#'
+#'   library(ggplot2)
+#'   p <- ggplot(town_pops, aes(x = key, y = estimate)) +
+#'     geom_col() +
+#'     coord_flip()
+#'   # With long labels on the left, ggplot's default title placement
+#'   # aligned to the panel can become awkward
+#'   p + ggtitle("Total population by town, 2017")
+#'   # Instead, make a label grob and arrange plot elements how you want
+#'   title <- themed_label("Total population by town, 2017", element = "plot.title")
+#'   cowplot::plot_grid(
+#'     title,
+#'     p,
+#'     ncol = 1,
+#'     rel_heights = c(1, 10)
+#'   )
+#' }
 #' @export
 themed_label <- function(label, theme = NULL, element = "text", x = 0.01, hjust = 0, ...) {
   if (is.null(theme)) {
@@ -18,13 +44,13 @@ themed_label <- function(label, theme = NULL, element = "text", x = 0.01, hjust 
   }
   # if theme isn't put in as theme(), invoke it
   if (is.function(theme)) {
-    theme <- rlang::invoke(theme)
+    theme <- rlang::exec(theme)
   }
   assertthat::assert_that(element %in% names(theme), msg = "Element must be a valid ggplot theme element name")
 
   elements <- ggplot2::calc_element(element, theme)
 
-  cowplot::draw_label(label,
+  lbl <- cowplot::draw_label(label,
                       fontfamily = elements$family,
                       fontface = elements$face,
                       colour = elements$color,
@@ -33,4 +59,5 @@ themed_label <- function(label, theme = NULL, element = "text", x = 0.01, hjust 
                       hjust = hjust,
                       ...
   )
+  cowplot::ggdraw() + lbl
 }

@@ -4,19 +4,21 @@
 \alias{add_grps}
 \title{Collapse variable into groups and sum}
 \usage{
-add_grps(df, grp_list, group = group, estimate = estimate,
-  moe = NULL)
+add_grps(.data, grp_list, group = group, value = estimate,
+  moe = NULL, estimate = NULL)
 }
 \arguments{
-\item{df}{A data frame; will honor grouping}
+\item{.data}{A data frame; will honor grouping}
 
 \item{grp_list}{A named list of groups to collapse \code{group} into}
 
 \item{group}{Bare column name giving groups in data; will be converted to factor}
 
-\item{estimate}{Bare column name of estimates or values}
+\item{value}{Bare column name of values. Replaces \code{estimate} argument, but (for now) still defaults to a column named \code{estimate}}
 
 \item{moe}{Bare column name of margins of error; if supplied, MOEs of sums will be included in output}
+
+\item{estimate}{\emph{Soft deprecated; use} \code{value}. Bare column name of estimates or values}
 }
 \value{
 A data frame/tibble with sums of \code{estimate}. Retains grouping columns
@@ -30,7 +32,7 @@ edu_list <- list(ages25plus = 1, less_than_high_school = 2:16,
 
 edu_detail \%>\%
   dplyr::group_by(name) \%>\%
-  add_grps(edu_list, group = variable, moe = moe)
+  add_grps(edu_list, group = variable, value = estimate, moe = moe)
 
 edu_detail \%>\%
   dplyr::group_by(name) \%>\%
@@ -38,5 +40,5 @@ edu_detail \%>\%
       aa_or_bach = c("Associate's degree", "Bachelor's degree"),
       bachelors_plus = c("Bachelor's degree", "Master's degree",
                          "Professional school degree", "Doctorate degree")),
-    group = variable, moe = moe)
+    value = estimate, group = variable, moe = moe)
 }
