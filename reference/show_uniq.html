@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create <code>cowplot</code> label based on a ggplot theme — themed_label • camiller</title>
+<title>Print unique values from a data frame column, then keep it moving — show_uniq • camiller</title>
 
 
 <!-- jquery -->
@@ -37,8 +37,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Create <code>cowplot</code> label based on a ggplot theme — themed_label" />
-<meta property="og:description" content="This is a wrapper around cowplot::draw_label() that creates a ggplot-based label that inherits formatting from a given theme element." />
+<meta property="og:title" content="Print unique values from a data frame column, then keep it moving — show_uniq" />
+<meta property="og:description" content="show_uniq gets the unique values of a column and their position within that vector, prints them neatly to the console, then returns the original data frame unchanged. It's just a convenience for showing the values in a column without breaking your workflow or train of thought, and is useful for identifying groups for add_grps." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -119,54 +119,37 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create <code>cowplot</code> label based on a ggplot theme</h1>
-    <small class="dont-index">Source: <a href='https://github.com/camille-s/camiller/blob/master/R/themed_label.R'><code>R/themed_label.R</code></a></small>
-    <div class="hidden name"><code>themed_label.Rd</code></div>
+    <h1>Print unique values from a data frame column, then keep it moving</h1>
+    <small class="dont-index">Source: <a href='https://github.com/camille-s/camiller/blob/master/R/show_uniq.R'><code>R/show_uniq.R</code></a></small>
+    <div class="hidden name"><code>show_uniq.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This is a wrapper around <code><a href='https://rdrr.io/pkg/cowplot/man/draw_label.html'>cowplot::draw_label()</a></code> that creates a <code>ggplot</code>-based label that inherits formatting from a given theme element.</p>
+    <p><code>show_uniq</code> gets the unique values of a column and their position within that vector, prints them neatly to the console, then returns the original data frame unchanged. It's just a convenience for showing the values in a column without breaking your workflow or train of thought, and is useful for identifying groups for <code>add_grps</code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>themed_label</span>(<span class='no'>label</span>, <span class='kw'>theme</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>element</span> <span class='kw'>=</span> <span class='st'>"text"</span>, <span class='kw'>x</span> <span class='kw'>=</span> <span class='fl'>0.01</span>,
-  <span class='kw'>hjust</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>show_uniq</span>(<span class='no'>.data</span>, <span class='no'>col</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>label</th>
-      <td><p>A string of text for label.</p></td>
+      <th>.data</th>
+      <td><p>A data frame</p></td>
     </tr>
     <tr>
-      <th>theme</th>
-      <td><p>A ggplot theme; if <code>NULL</code> (the default), will get current theme with <code><a href='https://ggplot2.tidyverse.org/reference/theme_get.html'>ggplot2::theme_get()</a></code>.</p></td>
-    </tr>
-    <tr>
-      <th>element</th>
-      <td><p>Name of a theme element; defaults to base text.</p></td>
-    </tr>
-    <tr>
-      <th>x</th>
-      <td><p>x-position; defaults to 0.01</p></td>
-    </tr>
-    <tr>
-      <th>hjust</th>
-      <td><p>Horizontal alignment; defaults 0</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>Any other arguments to pass to <code><a href='https://rdrr.io/pkg/cowplot/man/draw_label.html'>cowplot::draw_label()</a></code>.</p></td>
+      <th>col</th>
+      <td><p>Bare column name of interest</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code>ggplot</code> object.</p>
+    <p>Original unchanged <code>.data</code></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>title</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>cowplot</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/cowplot/man/ggdraw.html'>ggdraw</a></span>() +
-  <span class='fu'>themed_label</span>(<span class='st'>"Plot title"</span>, <span class='kw pkg'>ggplot2</span><span class='kw ns'>::</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_bw</a></span>(), <span class='kw'>element</span> <span class='kw'>=</span> <span class='st'>"plot.title"</span>, <span class='kw'>x</span> <span class='kw'>=</span> <span class='fl'>0.05</span>)</div><div class='output co'>#&gt; <span class='error'>Error: Don't know how to add themed_label("Plot title", ggplot2::theme_bw(), element = "plot.title",     x = 0.05) to a plot</span></div></pre>
+    <pre class="examples"><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

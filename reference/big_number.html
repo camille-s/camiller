@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create <code>cowplot</code> label based on a ggplot theme — themed_label • camiller</title>
+<title>Abbreviate large numbers by order of magnitude — big_number • camiller</title>
 
 
 <!-- jquery -->
@@ -37,8 +37,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Create <code>cowplot</code> label based on a ggplot theme — themed_label" />
-<meta property="og:description" content="This is a wrapper around cowplot::draw_label() that creates a ggplot-based label that inherits formatting from a given theme element." />
+<meta property="og:title" content="Abbreviate large numbers by order of magnitude — big_number" />
+<meta property="og:description" content="This picks out the order of magnitude of each number in a vector and returns a formatted abbreviation, such as 1230 --&amp;gt; 1.2k. It handles abbreviations through the trillions; after that, it's suggested that you switch over to scientific notation. The convenience of this function over those from the scales package is that you can mix &amp;amp; match orders of magnitude. Its sibling big_money tacks on a currency symbol, placed after a negative sign if applicable." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -119,54 +119,44 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create <code>cowplot</code> label based on a ggplot theme</h1>
-    <small class="dont-index">Source: <a href='https://github.com/camille-s/camiller/blob/master/R/themed_label.R'><code>R/themed_label.R</code></a></small>
-    <div class="hidden name"><code>themed_label.Rd</code></div>
+    <h1>Abbreviate large numbers by order of magnitude</h1>
+    <small class="dont-index">Source: <a href='https://github.com/camille-s/camiller/blob/master/R/big_number.R'><code>R/big_number.R</code></a></small>
+    <div class="hidden name"><code>big_number.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This is a wrapper around <code><a href='https://rdrr.io/pkg/cowplot/man/draw_label.html'>cowplot::draw_label()</a></code> that creates a <code>ggplot</code>-based label that inherits formatting from a given theme element.</p>
+    <p>This picks out the order of magnitude of each number in a vector and returns a formatted abbreviation, such as 1230 --&gt; 1.2k. It handles abbreviations through the trillions; after that, it's suggested that you switch over to scientific notation. The convenience of this function over those from the <code>scales</code> package is that you can mix &amp; match orders of magnitude. Its sibling <code>big_money</code> tacks on a currency symbol, placed after a negative sign if applicable.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>themed_label</span>(<span class='no'>label</span>, <span class='kw'>theme</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>element</span> <span class='kw'>=</span> <span class='st'>"text"</span>, <span class='kw'>x</span> <span class='kw'>=</span> <span class='fl'>0.01</span>,
-  <span class='kw'>hjust</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>big_number</span>(<span class='no'>x</span>, <span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>2</span>)
+
+<span class='fu'>big_money</span>(<span class='no'>x</span>, <span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>currency</span> <span class='kw'>=</span> <span class='st'>"$"</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>label</th>
-      <td><p>A string of text for label.</p></td>
-    </tr>
-    <tr>
-      <th>theme</th>
-      <td><p>A ggplot theme; if <code>NULL</code> (the default), will get current theme with <code><a href='https://ggplot2.tidyverse.org/reference/theme_get.html'>ggplot2::theme_get()</a></code>.</p></td>
-    </tr>
-    <tr>
-      <th>element</th>
-      <td><p>Name of a theme element; defaults to base text.</p></td>
-    </tr>
-    <tr>
       <th>x</th>
-      <td><p>x-position; defaults to 0.01</p></td>
+      <td><p>A numeric vector</p></td>
     </tr>
     <tr>
-      <th>hjust</th>
-      <td><p>Horizontal alignment; defaults 0</p></td>
+      <th>digits</th>
+      <td><p>Number of digits (significant figures) to keep; defaults to 2</p></td>
     </tr>
     <tr>
-      <th>...</th>
-      <td><p>Any other arguments to pass to <code><a href='https://rdrr.io/pkg/cowplot/man/draw_label.html'>cowplot::draw_label()</a></code>.</p></td>
+      <th>currency</th>
+      <td><p>Symbol to use to denote currency; defaults <code><a href='https://rdrr.io/r/base/Extract.html'>"$"</a></code></p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code>ggplot</code> object.</p>
+    <p>A character vector</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>title</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>cowplot</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/cowplot/man/ggdraw.html'>ggdraw</a></span>() +
-  <span class='fu'>themed_label</span>(<span class='st'>"Plot title"</span>, <span class='kw pkg'>ggplot2</span><span class='kw ns'>::</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_bw</a></span>(), <span class='kw'>element</span> <span class='kw'>=</span> <span class='st'>"plot.title"</span>, <span class='kw'>x</span> <span class='kw'>=</span> <span class='fl'>0.05</span>)</div><div class='output co'>#&gt; <span class='error'>Error: Don't know how to add themed_label("Plot title", ggplot2::theme_bw(), element = "plot.title",     x = 0.05) to a plot</span></div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>big_number</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>123</span>, <span class='fl'>12345</span>, <span class='fl'>1234567</span>), <span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>3</span>)</div><div class='output co'>#&gt; [1] "123"   "12.3k" "1.23M"</div><div class='input'><span class='fu'>big_number</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(-<span class='fl'>12000</span>, <span class='fl'>15000</span>, <span class='fl'>16000</span>, <span class='fl'>77777</span>))</div><div class='output co'>#&gt; [1] "-12k" "15k"  "16k"  "78k" </div><div class='input'><span class='fu'>big_money</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(-<span class='fl'>12000</span>, <span class='fl'>15000</span>, <span class='fl'>16000</span>, <span class='fl'>2e6</span>))</div><div class='output co'>#&gt; [1] "-$12k" "$15k"  "$16k"  "$2M"  </div><div class='input'>
+<span class='co'># take care of your significant digits choices</span>
+<span class='kw pkg'>purrr</span><span class='kw ns'>::</span><span class='fu'><a href='https://purrr.tidyverse.org/reference/map.html'>map_chr</a></span>(<span class='fl'>1</span>:<span class='fl'>3</span>, ~<span class='fu'>big_number</span>(<span class='fl'>987</span>, <span class='kw'>digits</span> <span class='kw'>=</span> <span class='no'>.</span>))</div><div class='output co'>#&gt; [1] "1k"  "990" "987"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
