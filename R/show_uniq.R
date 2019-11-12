@@ -6,7 +6,14 @@
 #' @param col Bare column name of interest
 #' @return Original unchanged `.data`
 #' @examples
-#'
+#' # show_uniq makes it easy to see that the values of `ratio` that correspond to poverty (ratio of 0 to 0.99)
+#' # are at positions 2:4, and for low-income (ration of 0 to 1.99) are at 2:9
+#' pov_age %>%
+#'   dplyr::mutate(age = forcats::as_factor(age)) %>%
+#'   dplyr::group_by(name, age) %>%
+#'   show_uniq(ratio) %>%
+#'   add_grps(list(pov_determined = 1, poverty = 2:4, low_income = 2:9),
+#'            group = ratio)
 #' @export
 show_uniq <- function(.data, col) {
   var <- enquo(col)

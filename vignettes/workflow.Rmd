@@ -60,6 +60,15 @@ age_grps <- list(
 )
 ```
 
+Alternatively, `show_uniq` will print out the unique values of a column with their indexes, and return the original data frame unchanged. This is convenient for finding positions without having to break a workflow.
+
+```{r show_uniq}
+pov_age %>%
+  show_uniq(age) %>%
+  group_by(name, ratio)
+```
+
+
 Using `dplyr::group_by(name, ratio)` and then `add_grps` gives aggregates of estimates and MOEs for ratio levels and towns, with the original age groups collapsed into the desired, larger age groups. MOE calculations are done using `tidycensus`. For example:
 
 `c("Under 6 years", "6 to 11 years", "12 to 17 years")`
@@ -68,12 +77,12 @@ becomes `children`. The same is then done to collapse ratios. `calc_shares` then
 
 ```{r calc_shares}
 pov_rates <- pov_age %>%
-  mutate_at(vars(age, ratio), function(x) as.factor(x) %>% fct_inorder()) %>%
+  mutate_at(vars(age, ratio), as_factor) %>%
   group_by(name, ratio) %>%
-  add_grps(age_grps, group = age, estimate = estimate, moe = moe) %>%
+  add_grps(age_grps, group = age, value = estimate, moe = moe) %>%
   group_by(name, age) %>%
-  add_grps(ratio_grps, group = ratio, estimate = estimate, moe = moe) %>%
-  calc_shares(group = ratio, denom = "determined", estimate = estimate, moe = moe)
+  add_grps(ratio_grps, group = ratio, value = estimate, moe = moe) %>%
+  calc_shares(group = ratio, denom = "determined", value = estimate, moe = moe)
 ```
 
 ```{r pov_rates_out}
@@ -107,12 +116,12 @@ The `moe_test` function applies t-tests for differences between two estimates, g
 
 ```{r pov_trend}
 pov_trend <- pov_age_10_16 %>%
-  mutate_at(vars(age, ratio), function(x) as.factor(x) %>% fct_inorder()) %>%
+  mutate_at(vars(age, ratio), as_factor) %>%
   group_by(name, year, ratio) %>%
-  add_grps(age_grps, group = age, estimate = estimate, moe = moe) %>%
+  add_grps(age_grps, group = age, value = estimate, moe = moe) %>%
   group_by(name, year, age) %>%
-  add_grps(ratio_grps, group = ratio, estimate = estimate, moe = moe) %>%
-  calc_shares(group = ratio, denom = "determined", estimate = estimate, moe = moe)
+  add_grps(ratio_grps, group = ratio, value = estimate, moe = moe) %>%
+  calc_shares(group = ratio, denom = "determined", value = estimate, moe = moe)
 ```
 
 The output of `moe_test` includes optional intermediary calculations, such as standard errors and Z-scores used for significance testing.
