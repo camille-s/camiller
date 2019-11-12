@@ -38,7 +38,7 @@
   
 
 <meta property="og:title" content="Abbreviate large numbers by order of magnitude — big_number" />
-<meta property="og:description" content="This picks out the order of magnitude of each number in a vector and returns a formatted abbreviation, such as 1230 --&amp;gt; 1.2k. It handles abbreviations through the trillions; after that, it's suggested that you switch over to scientific notation. The convenience of this function over those from the scales package is that you can mix &amp;amp; match orders of magnitude. Its sibling big_money tacks on a currency symbol, placed after a negative sign if applicable." />
+<meta property="og:description" content="This picks out the order of magnitude of each number in a vector and returns a formatted abbreviation, such as 1230 --&amp;gt; 1.2k. It handles abbreviations through the trillions; after that, it's suggested that you switch over to scientific notation. The convenience of this function over those from the scales package is that you can mix &amp;amp; match orders of magnitude." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -125,7 +125,7 @@
     </div>
 
     <div class="ref-description">
-    <p>This picks out the order of magnitude of each number in a vector and returns a formatted abbreviation, such as 1230 --&gt; 1.2k. It handles abbreviations through the trillions; after that, it's suggested that you switch over to scientific notation. The convenience of this function over those from the <code>scales</code> package is that you can mix &amp; match orders of magnitude. Its sibling <code>big_money</code> tacks on a currency symbol, placed after a negative sign if applicable.</p>
+    <p>This picks out the order of magnitude of each number in a vector and returns a formatted abbreviation, such as 1230 --&gt; 1.2k. It handles abbreviations through the trillions; after that, it's suggested that you switch over to scientific notation. The convenience of this function over those from the <code>scales</code> package is that you can mix &amp; match orders of magnitude.</p>
     </div>
 
     <pre class="usage"><span class='fu'>big_number</span>(<span class='no'>x</span>, <span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>2</span>)
@@ -152,10 +152,13 @@
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A character vector</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Its sibling <code>big_money</code> tacks on a currency symbol, placed after a negative sign if applicable.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>big_number</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>123</span>, <span class='fl'>12345</span>, <span class='fl'>1234567</span>), <span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>3</span>)</div><div class='output co'>#&gt; [1] "123"   "12.3k" "1.23M"</div><div class='input'><span class='fu'>big_number</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(-<span class='fl'>12000</span>, <span class='fl'>15000</span>, <span class='fl'>16000</span>, <span class='fl'>77777</span>))</div><div class='output co'>#&gt; [1] "-12k" "15k"  "16k"  "78k" </div><div class='input'><span class='fu'>big_money</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(-<span class='fl'>12000</span>, <span class='fl'>15000</span>, <span class='fl'>16000</span>, <span class='fl'>2e6</span>))</div><div class='output co'>#&gt; [1] "-$12k" "$15k"  "$16k"  "$2M"  </div><div class='input'>
-<span class='co'># take care of your significant digits choices</span>
+<span class='co'># take care with your significant digits choices</span>
 <span class='kw pkg'>purrr</span><span class='kw ns'>::</span><span class='fu'><a href='https://purrr.tidyverse.org/reference/map.html'>map_chr</a></span>(<span class='fl'>1</span>:<span class='fl'>3</span>, ~<span class='fu'>big_number</span>(<span class='fl'>987</span>, <span class='kw'>digits</span> <span class='kw'>=</span> <span class='no'>.</span>))</div><div class='output co'>#&gt; [1] "1k"  "990" "987"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -163,6 +166,7 @@
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
+      <li><a href="#details">Details</a></li>
       <li><a href="#examples">Examples</a></li>
     </ul>
 
