@@ -148,8 +148,35 @@
     <p>Original unchanged <code>.data</code></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-</div></pre>
+    <pre class="examples"><div class='input'><span class='co'># show_uniq makes it easy to see that the values of `ratio` that correspond to poverty (ratio of 0 to 0.99)</span>
+<span class='co'># are at positions 2:4, and for low-income (ration of 0 to 1.99) are at 2:9</span>
+<span class='no'>pov_age</span> <span class='kw'>%&gt;%</span>
+  <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span>(<span class='kw'>age</span> <span class='kw'>=</span> <span class='kw pkg'>forcats</span><span class='kw ns'>::</span><span class='fu'><a href='https://forcats.tidyverse.org/reference/as_factor.html'>as_factor</a></span>(<span class='no'>age</span>)) <span class='kw'>%&gt;%</span>
+  <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span>(<span class='no'>name</span>, <span class='no'>age</span>) <span class='kw'>%&gt;%</span>
+  <span class='fu'>show_uniq</span>(<span class='no'>ratio</span>) <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='add_grps.html'>add_grps</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>pov_determined</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>poverty</span> <span class='kw'>=</span> <span class='fl'>2</span>:<span class='fl'>4</span>, <span class='kw'>low_income</span> <span class='kw'>=</span> <span class='fl'>2</span>:<span class='fl'>9</span>),
+           <span class='kw'>group</span> <span class='kw'>=</span> <span class='no'>ratio</span>)</div><div class='output co'>#&gt; 1: Poverty status determined 2: Under .50                 
+#&gt; 3: .50 to .74                4: .75 to .99                
+#&gt; 5: 1.00 to 1.24              6: 1.25 to 1.49              
+#&gt; 7: 1.50 to 1.74              8: 1.75 to 1.84              
+#&gt; 9: 1.85 to 1.99              10: 2.00 to 2.99             
+#&gt; 11: 3.00 to 3.99             12: 4.00 to 4.99             
+#&gt; 13: 5.00 and over           
+#&gt; </div><div class='output co'>#&gt; # A tibble: 390 x 4
+#&gt; # Groups:   name, age [130]
+#&gt;    name    age            ratio          estimate
+#&gt;    &lt;chr&gt;   &lt;fct&gt;          &lt;fct&gt;             &lt;dbl&gt;
+#&gt;  1 Bethany Under 6 years  pov_determined      274
+#&gt;  2 Bethany Under 6 years  poverty               8
+#&gt;  3 Bethany Under 6 years  low_income           55
+#&gt;  4 Bethany 6 to 11 years  pov_determined      539
+#&gt;  5 Bethany 6 to 11 years  poverty              17
+#&gt;  6 Bethany 6 to 11 years  low_income           26
+#&gt;  7 Bethany 12 to 17 years pov_determined      446
+#&gt;  8 Bethany 12 to 17 years poverty               0
+#&gt;  9 Bethany 12 to 17 years low_income           21
+#&gt; 10 Bethany 18 to 24 years pov_determined      249
+#&gt; # … with 380 more rows</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
