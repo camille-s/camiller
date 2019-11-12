@@ -20,13 +20,16 @@ big_money(x, digits = 2, currency = "$")
 A character vector
 }
 \description{
-This picks out the order of magnitude of each number in a vector and returns a formatted abbreviation, such as 1230 --> 1.2k. It handles abbreviations through the trillions; after that, it's suggested that you switch over to scientific notation. The convenience of this function over those from the \code{scales} package is that you can mix & match orders of magnitude. Its sibling \code{big_money} tacks on a currency symbol, placed after a negative sign if applicable.
+This picks out the order of magnitude of each number in a vector and returns a formatted abbreviation, such as 1230 --> 1.2k. It handles abbreviations through the trillions; after that, it's suggested that you switch over to scientific notation. The convenience of this function over those from the \code{scales} package is that you can mix & match orders of magnitude.
+}
+\details{
+Its sibling \code{big_money} tacks on a currency symbol, placed after a negative sign if applicable.
 }
 \examples{
 big_number(c(123, 12345, 1234567), digits = 3)
 big_number(c(-12000, 15000, 16000, 77777))
 big_money(c(-12000, 15000, 16000, 2e6))
 
-# take care of your significant digits choices
+# take care with your significant digits choices
 purrr::map_chr(1:3, ~big_number(987, digits = .))
 }

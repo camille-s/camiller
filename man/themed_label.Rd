@@ -24,9 +24,36 @@ themed_label(label, theme = NULL, element = "text", x = 0.01,
 A \code{ggplot} object.
 }
 \description{
-This is a wrapper around \code{cowplot::draw_label()} that creates a \code{ggplot}-based label that inherits formatting from a given theme element.
+This is a wrapper around \code{cowplot::draw_label()} that creates a \code{ggplot}-based label that inherits formatting from a given theme element. Updated 11/2019, it's no longer necessary to add this to a \code{ggdraw} object; see examples.
 }
 \examples{
-title <- cowplot::ggdraw() +
-  themed_label("Plot title", ggplot2::theme_bw(), element = "plot.title", x = 0.05)
+\dontrun{
+# the old way (no longer works): manually adding the label to cowplot::ggdraw()
+# title <- cowplot::ggdraw() +
+#   themed_label("Plot title", ggplot2::theme_bw(), element = "plot.title", x = 0.05)
+# }
+
+# the new way: themed_label does that for you
+if (requireNamespace("ggplot2", quietly = TRUE)) {
+  town_pops <- race_pops \%>\%
+    dplyr::filter(variable == "total") \%>\%
+    tidyr::unite(key, name, region, sep = " in ") \%>\%
+    dplyr::mutate(key = forcats::fct_reorder(as.factor(key), estimate))
+
+  library(ggplot2)
+  p <- ggplot(town_pops, aes(x = key, y = estimate)) +
+    geom_col() +
+    coord_flip()
+  # With long labels on the left, ggplot's default title placement
+  # aligned to the panel can become awkward
+  p + ggtitle("Total population by town, 2017")
+  # Instead, make a label grob and arrange plot elements how you want
+  title <- themed_label("Total population by town, 2017", element = "plot.title")
+  cowplot::plot_grid(
+    title,
+    p,
+    ncol = 1,
+    rel_heights = c(1, 10)
+  )
+}
 }
