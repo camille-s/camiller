@@ -10,6 +10,7 @@ reference:
   desc: ~
   contents:
   - '`add_grps`'
+  - '`big_number`'
   - '`bind_self`'
   - '`brk_labels`'
   - '`calc_shares`'
@@ -18,8 +19,9 @@ reference:
   - '`make_grps`'
   - '`make_wide`'
   - '`moe_test`'
-  - '`theme_din`'
+  - '`show_uniq`'
   - '`themed_label`'
+  - '`theme_din`'
   - '`town_names`'
 - title: Datasets
   contents:
