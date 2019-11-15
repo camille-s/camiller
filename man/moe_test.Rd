@@ -4,8 +4,16 @@
 \alias{moe_test}
 \title{Significance testing of differences with MOEs}
 \usage{
-moe_test(.data, est1, moe1, est2, moe2, cl = 0.9, alpha = 0.05,
-  show_calc = TRUE)
+moe_test(
+  .data,
+  est1,
+  moe1,
+  est2,
+  moe2,
+  cl = 0.9,
+  alpha = 0.05,
+  show_calc = TRUE
+)
 }
 \arguments{
 \item{.data}{A data frame}

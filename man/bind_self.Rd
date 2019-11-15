@@ -15,7 +15,7 @@ bind_self(data, group, new_value, append = TRUE, .id = NULL)
 
 \item{append}{Logical: should new values be appended to the end of \code{data} (the default), or prepended to the beginning?}
 
-\item{.id}{Optional, inheriting from \code{[dplyr::bind_rows()]}: if a string, will create IDs for each data frame and create a column of IDs with the name given as \code{.id}.}
+\item{.id}{Optional, inheriting from \verb{[dplyr::bind_rows()]}: if a string, will create IDs for each data frame and create a column of IDs with the name given as \code{.id}.}
 }
 \value{
 A data frame with twice as many rows as the original.

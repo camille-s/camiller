@@ -4,8 +4,14 @@
 \alias{color_prev}
 \title{Preview color palette}
 \usage{
-color_prev(colors, labels = T, label_color = "black", border = F,
-  border_color = "white", border_size = 0.5)
+color_prev(
+  colors,
+  labels = T,
+  label_color = "black",
+  border = F,
+  border_color = "white",
+  border_size = 0.5
+)
 }
 \arguments{
 \item{colors}{Character vector of colors}

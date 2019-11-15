@@ -4,8 +4,7 @@
 \alias{themed_label}
 \title{Create \code{cowplot} label based on a ggplot theme}
 \usage{
-themed_label(label, theme = NULL, element = "text", x = 0.01,
-  hjust = 0, ...)
+themed_label(label, theme = NULL, element = "text", x = 0.01, hjust = 0, ...)
 }
 \arguments{
 \item{label}{A string of text for label.}

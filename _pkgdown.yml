@@ -15,6 +15,7 @@ reference:
   - '`brk_labels`'
   - '`calc_shares`'
   - '`cap_first`'
+  - '`clean_titles`'
   - '`color_prev`'
   - '`make_grps`'
   - '`make_wide`'

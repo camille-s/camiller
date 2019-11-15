@@ -4,13 +4,20 @@
 \alias{brk_labels}
 \title{Create pretty breaks labels}
 \usage{
-brk_labels(x, format = NULL, custom = FALSE, mult_by = 1,
-  round_digits = NULL, sep = " to ", ...)
+brk_labels(
+  x,
+  format = NULL,
+  custom = FALSE,
+  mult_by = 1,
+  round_digits = NULL,
+  sep = " to ",
+  ...
+)
 }
 \arguments{
 \item{x}{A character vector.}
 
-\item{format}{A function for formatting text, a string giving desired output format, or \code{NULL} (the default) for no formatting. Built-in shorthands are \code{"percent"}, \code{"dollar"}, and \code{"dollark"}, the last of which formats numbers like \code{$12.3k}. Alternatively, provide a character argument to be used by \code{base::formatC} and set \code{custom = TRUE}.}
+\item{format}{A function for formatting text, a string giving desired output format, or \code{NULL} (the default) for no formatting. Built-in shorthands are \code{"percent"}, \code{"dollar"}, and \code{"dollark"}, the last of which formats numbers like \verb{$12.3k}. Alternatively, provide a character argument to be used by \code{base::formatC} and set \code{custom = TRUE}.}
 
 \item{custom}{Logical, whether to use custom formatting, triggering a call to \code{formatC} with the arguments supplied to \code{format} and \code{...}. Defaults \code{FALSE}.}
 

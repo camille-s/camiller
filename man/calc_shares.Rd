@@ -4,8 +4,16 @@
 \alias{calc_shares}
 \title{Make table of rates given a denominator}
 \usage{
-calc_shares(.data, ..., group = group, denom = "total_pop",
-  value = estimate, moe = NULL, digits = 3, estimate = NULL)
+calc_shares(
+  .data,
+  ...,
+  group = group,
+  denom = "total_pop",
+  value = estimate,
+  moe = NULL,
+  digits = 3,
+  estimate = NULL
+)
 }
 \arguments{
 \item{.data}{A data frame}

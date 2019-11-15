@@ -4,8 +4,13 @@
 \alias{theme_din}
 \title{Theme Din}
 \usage{
-theme_din(base_size = 14, base_family = "roboto", xgrid = FALSE,
-  ygrid = TRUE, fallback_google = TRUE)
+theme_din(
+  base_size = 14,
+  base_family = "roboto",
+  xgrid = FALSE,
+  ygrid = TRUE,
+  fallback_google = TRUE
+)
 }
 \arguments{
 \item{base_size}{Base font size}
