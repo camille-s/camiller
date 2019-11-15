@@ -128,8 +128,16 @@
     <p><code>calc_shares</code> makes it easy to divide values by some denominator within the same long-shaped data frame. For example, it works well for a table of population groups for multiple locations where you want to divide population counts by some total population. It optionally handles dividing margins of error. Denote locations or other groupings by using a grouped data frame, passing bare column names to <code>...</code>, or both.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>calc_shares</span>(<span class='no'>.data</span>, <span class='no'>...</span>, <span class='kw'>group</span> <span class='kw'>=</span> <span class='no'>group</span>, <span class='kw'>denom</span> <span class='kw'>=</span> <span class='st'>"total_pop"</span>,
-  <span class='kw'>value</span> <span class='kw'>=</span> <span class='no'>estimate</span>, <span class='kw'>moe</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>estimate</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>calc_shares</span>(
+  <span class='no'>.data</span>,
+  <span class='no'>...</span>,
+  <span class='kw'>group</span> <span class='kw'>=</span> <span class='no'>group</span>,
+  <span class='kw'>denom</span> <span class='kw'>=</span> <span class='st'>"total_pop"</span>,
+  <span class='kw'>value</span> <span class='kw'>=</span> <span class='no'>estimate</span>,
+  <span class='kw'>moe</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>3</span>,
+  <span class='kw'>estimate</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">

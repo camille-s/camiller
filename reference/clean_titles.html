@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create pretty breaks labels — brk_labels • camiller</title>
+<title>Several options for formatting text into neater titles — clean_titles • camiller</title>
 
 
 <!-- jquery -->
@@ -37,8 +37,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Create pretty breaks labels — brk_labels" />
-<meta property="og:description" content="This function maps over a vector of labels, such as those returned by base::cut. It works well in formatting ggplot scales, and can optionally pass parameters to an underlying call to base::formatC. Any NA values will be retained." />
+<meta property="og:title" content="Several options for formatting text into neater titles — clean_titles" />
+<meta property="og:description" content="This function combines several ways titles and names may need to be formatted. It's meant to be simple, yet flexible." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -119,23 +119,22 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create pretty breaks labels</h1>
-    <small class="dont-index">Source: <a href='https://github.com/camille-s/camiller/blob/master/R/brk_labels.R'><code>R/brk_labels.R</code></a></small>
-    <div class="hidden name"><code>brk_labels.Rd</code></div>
+    <h1>Several options for formatting text into neater titles</h1>
+    <small class="dont-index">Source: <a href='https://github.com/camille-s/camiller/blob/master/R/clean_titles.R'><code>R/clean_titles.R</code></a></small>
+    <div class="hidden name"><code>clean_titles.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This function maps over a vector of labels, such as those returned by <code><a href='https://rdrr.io/r/base/cut.html'>base::cut</a></code>. It works well in formatting <code>ggplot</code> scales, and can optionally pass parameters to an underlying call to <code><a href='https://rdrr.io/r/base/formatc.html'>base::formatC</a></code>. Any <code>NA</code> values will be retained.</p>
+    <p>This function combines several ways titles and names may need to be formatted. It's meant to be simple, yet flexible.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>brk_labels</span>(
+    <pre class="usage"><span class='fu'>clean_titles</span>(
   <span class='no'>x</span>,
-  <span class='kw'>format</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>custom</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>mult_by</span> <span class='kw'>=</span> <span class='fl'>1</span>,
-  <span class='kw'>round_digits</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>" to "</span>,
-  <span class='no'>...</span>
+  <span class='kw'>cap_all</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>split_case</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>keep_running_caps</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>space</span> <span class='kw'>=</span> <span class='st'>"_"</span>,
+  <span class='kw'>remove</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -143,49 +142,62 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>A character vector.</p></td>
+      <td><p>A character vector</p></td>
     </tr>
     <tr>
-      <th>format</th>
-      <td><p>A function for formatting text, a string giving desired output format, or <code>NULL</code> (the default) for no formatting. Built-in shorthands are <code>"percent"</code>, <code>"dollar"</code>, and <code>"dollark"</code>, the last of which formats numbers like <code>$12.3k</code>. Alternatively, provide a character argument to be used by <code><a href='https://rdrr.io/r/base/formatc.html'>base::formatC</a></code> and set <code>custom = TRUE</code>.</p></td>
+      <th>cap_all</th>
+      <td><p>Logical: if <code>TRUE</code>, first letter of each word after splitting will be capitalized. If <code>FALSE</code>, only the first character of the string will be capitalized. Note that in order to balance this with respecting consecutive capital letters, such as from acronyms,</p></td>
     </tr>
     <tr>
-      <th>custom</th>
-      <td><p>Logical, whether to use custom formatting, triggering a call to <code>formatC</code> with the arguments supplied to <code>format</code> and <code>...</code>. Defaults <code>FALSE</code>.</p></td>
+      <th>split_case</th>
+      <td><p>Logical: if <code>TRUE</code>, consecutive lowercase-uppercase pairs will be treated as two words to be separated.</p></td>
     </tr>
     <tr>
-      <th>mult_by</th>
-      <td><p>A number by which to multiply values in breaks. Defaults to 1, i.e. just the numbers input. Note that multiplication is carried out <em>before</em> rounding and formatting.</p></td>
+      <th>keep_running_caps</th>
+      <td><p>Logical: if <code>TRUE</code>, consecutive uppercase letters will be kept uppercase.</p></td>
     </tr>
     <tr>
-      <th>round_digits</th>
-      <td><p>If not <code>NULL</code> (the default), the number of digits to round to. Note that this takes place after multiplying by <code>mult_by</code>.</p></td>
+      <th>space</th>
+      <td><p>Character vector of characters and/or regex patterns that should be replaced with a space to separate words.</p></td>
     </tr>
     <tr>
-      <th>sep</th>
-      <td><p>A string by which to separate values in breaks.</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>Any additional arguments to pass on to the function given in <code>format</code>, or to <code><a href='https://rdrr.io/r/base/formatc.html'>base::formatC</a></code> if <code>custom</code> is <code>TRUE</code>.</p></td>
+      <th>remove</th>
+      <td><p>Character vector of characters and/or regex patterns that will be removed before any other operations; if <code>NULL</code>, nothing is removed.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A character vector of formatted break labels.</p>
+    <p>A character vector with each item newly formatted</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Examples of possible common operations include:</p>
+<ul>
+<li><p>"TownName" --&gt; "Town Name"</p></li>
+<li><p>"town_name" --&gt; "Town Name"</p></li>
+<li><p>"town_name" --&gt; "Town name"</p></li>
+<li><p>"RegionABC" --&gt; "Region ABC"</p></li>
+<li><p>"TOWN_NAME" --&gt; "Town Name"</p></li>
+</ul>
+
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>percentage_brks</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"[0.04,0.15]"</span>, <span class='st'>"(0.15,0.25]"</span>, <span class='st'>"(0.25,0.4]"</span>)
-<span class='fu'>brk_labels</span>(<span class='no'>percentage_brks</span>)</div><div class='output co'>#&gt; [1] "0.04 to 0.15" "0.15 to 0.25" "0.25 to 0.4" </div><div class='input'><span class='fu'>brk_labels</span>(<span class='no'>percentage_brks</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"percent"</span>, <span class='kw'>mult_by</span> <span class='kw'>=</span> <span class='fl'>100</span>)</div><div class='output co'>#&gt; [1] "4 to 15%"  "15 to 25%" "25 to 40%"</div><div class='input'>
-<span class='no'>scientific_brks</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"[-15500,0]"</span>, <span class='st'>"(0,20000]"</span>, <span class='st'>"(20000,25000]"</span>)
-<span class='fu'>brk_labels</span>(<span class='no'>scientific_brks</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"e"</span>, <span class='kw'>custom</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>2</span>)</div><div class='output co'>#&gt; [1] "-1.55e+04 to 0.00e+00" "0.00e+00 to 2.00e+04"  "2.00e+04 to 2.50e+04" </div><div class='input'><span class='fu'>brk_labels</span>(<span class='no'>scientific_brks</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='kw pkg'>stringr</span><span class='kw ns'>::</span><span class='no'><a href='https://stringr.tidyverse.org/reference/str_pad.html'>str_pad</a></span>, <span class='kw'>side</span> <span class='kw'>=</span> <span class='st'>"left"</span>, <span class='kw'>pad</span> <span class='kw'>=</span> <span class='st'>"0"</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>3</span>)</div><div class='output co'>#&gt; [1] "-15500 to 000"  "000 to 20000"   "20000 to 25000"</div></pre>
+    <pre class="examples"><div class='input'><span class='no'>t1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"GreaterNewHaven"</span>, <span class='st'>"greater_new_haven"</span>, <span class='st'>"GREATER_NEW_HAVEN"</span>)
+<span class='fu'>clean_titles</span>(<span class='no'>t1</span>, <span class='kw'>cap_all</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>keep_running_caps</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; [1] "Greater New Haven" "Greater new haven" "Greater New Haven"</div><div class='input'>
+<span class='no'>t2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Male!CollegeGraduates"</span>, <span class='st'>"Male CollegeGraduates"</span>)
+<span class='fu'>clean_titles</span>(<span class='no'>t2</span>, <span class='kw'>space</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"_"</span>, <span class='st'>"!"</span>))</div><div class='output co'>#&gt; [1] "Male college graduates" "Male college graduates"</div><div class='input'>
+<span class='no'>t3</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Greater BPT Men"</span>, <span class='st'>"Greater BPT Men HBP"</span>, <span class='st'>"GreaterBPT_men"</span>, <span class='st'>"greaterBPT"</span>)
+<span class='fu'>clean_titles</span>(<span class='no'>t3</span>, <span class='kw'>cap_all</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; [1] "Greater BPT men"     "Greater BPT men HBP" "Greater BPT men"    
+#&gt; [4] "Greater BPT"        </div><div class='input'>
+<span class='no'>t4</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"New Haven town, New Haven County, Connecticut"</span>, <span class='st'>"Newtown town, Fairfield County, Connecticut"</span>)
+<span class='fu'>clean_titles</span>(<span class='no'>t4</span>, <span class='kw'>cap_all</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>remove</span> <span class='kw'>=</span> <span class='st'>" town,.+"</span>)</div><div class='output co'>#&gt; [1] "New Haven" "Newtown"  </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
+      <li><a href="#details">Details</a></li>
       <li><a href="#examples">Examples</a></li>
     </ul>
 
