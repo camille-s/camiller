@@ -21,6 +21,7 @@ show_uniq <- function(.data, col) {
     dplyr::pull(!!var) %>%
     unique() %>%
     purrr::imap_chr(~paste(.y, .x, sep = ": "))
+  cat("\n")
   cat(prettycols(values, requireNamespace("crayon", quietly = TRUE)), fill = TRUE)
   cat("\n")
   return(.data)
