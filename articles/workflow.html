@@ -141,25 +141,26 @@
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">pov_age <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb5-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/show_uniq.html">show_uniq</a></span>(age) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb5-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(name, ratio)</a>
-<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co">#&gt; 1: Under 6 years      2: 6 to 11 years      3: 12 to 17 years     </span></a>
-<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="co">#&gt; 4: 18 to 24 years     5: 25 to 34 years     6: 35 to 44 years     </span></a>
-<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">#&gt; 7: 45 to 54 years     8: 55 to 64 years     9: 65 to 74 years     </span></a>
-<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="co">#&gt; 10: 75 years and over</span></a>
-<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="co">#&gt; # A tibble: 1,690 x 5</span></a>
-<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="co">#&gt; # Groups:   name, ratio [169]</span></a>
-<a class="sourceLine" id="cb5-10" data-line-number="10"><span class="co">#&gt;    name    age           ratio                     estimate   moe</span></a>
-<a class="sourceLine" id="cb5-11" data-line-number="11"><span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt;         &lt;chr&gt;                        &lt;dbl&gt; &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb5-12" data-line-number="12"><span class="co">#&gt;  1 Bethany Under 6 years Poverty status determined      274   146</span></a>
-<a class="sourceLine" id="cb5-13" data-line-number="13"><span class="co">#&gt;  2 Bethany Under 6 years Under .50                        0    17</span></a>
-<a class="sourceLine" id="cb5-14" data-line-number="14"><span class="co">#&gt;  3 Bethany Under 6 years .50 to .74                       0    17</span></a>
-<a class="sourceLine" id="cb5-15" data-line-number="15"><span class="co">#&gt;  4 Bethany Under 6 years .75 to .99                       8    15</span></a>
-<a class="sourceLine" id="cb5-16" data-line-number="16"><span class="co">#&gt;  5 Bethany Under 6 years 1.00 to 1.24                     0    17</span></a>
-<a class="sourceLine" id="cb5-17" data-line-number="17"><span class="co">#&gt;  6 Bethany Under 6 years 1.25 to 1.49                     0    17</span></a>
-<a class="sourceLine" id="cb5-18" data-line-number="18"><span class="co">#&gt;  7 Bethany Under 6 years 1.50 to 1.74                    47    66</span></a>
-<a class="sourceLine" id="cb5-19" data-line-number="19"><span class="co">#&gt;  8 Bethany Under 6 years 1.75 to 1.84                     0    17</span></a>
-<a class="sourceLine" id="cb5-20" data-line-number="20"><span class="co">#&gt;  9 Bethany Under 6 years 1.85 to 1.99                     0    17</span></a>
-<a class="sourceLine" id="cb5-21" data-line-number="21"><span class="co">#&gt; 10 Bethany Under 6 years 2.00 to 2.99                    20    23</span></a>
-<a class="sourceLine" id="cb5-22" data-line-number="22"><span class="co">#&gt; # … with 1,680 more rows</span></a></code></pre></div>
+<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="co">#&gt; 1: Under 6 years      2: 6 to 11 years      3: 12 to 17 years     </span></a>
+<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">#&gt; 4: 18 to 24 years     5: 25 to 34 years     6: 35 to 44 years     </span></a>
+<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="co">#&gt; 7: 45 to 54 years     8: 55 to 64 years     9: 65 to 74 years     </span></a>
+<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="co">#&gt; 10: 75 years and over</span></a>
+<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="co">#&gt; # A tibble: 1,690 x 5</span></a>
+<a class="sourceLine" id="cb5-10" data-line-number="10"><span class="co">#&gt; # Groups:   name, ratio [169]</span></a>
+<a class="sourceLine" id="cb5-11" data-line-number="11"><span class="co">#&gt;    name    age           ratio                     estimate   moe</span></a>
+<a class="sourceLine" id="cb5-12" data-line-number="12"><span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt;         &lt;chr&gt;                        &lt;dbl&gt; &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb5-13" data-line-number="13"><span class="co">#&gt;  1 Bethany Under 6 years Poverty status determined      274   146</span></a>
+<a class="sourceLine" id="cb5-14" data-line-number="14"><span class="co">#&gt;  2 Bethany Under 6 years Under .50                        0    17</span></a>
+<a class="sourceLine" id="cb5-15" data-line-number="15"><span class="co">#&gt;  3 Bethany Under 6 years .50 to .74                       0    17</span></a>
+<a class="sourceLine" id="cb5-16" data-line-number="16"><span class="co">#&gt;  4 Bethany Under 6 years .75 to .99                       8    15</span></a>
+<a class="sourceLine" id="cb5-17" data-line-number="17"><span class="co">#&gt;  5 Bethany Under 6 years 1.00 to 1.24                     0    17</span></a>
+<a class="sourceLine" id="cb5-18" data-line-number="18"><span class="co">#&gt;  6 Bethany Under 6 years 1.25 to 1.49                     0    17</span></a>
+<a class="sourceLine" id="cb5-19" data-line-number="19"><span class="co">#&gt;  7 Bethany Under 6 years 1.50 to 1.74                    47    66</span></a>
+<a class="sourceLine" id="cb5-20" data-line-number="20"><span class="co">#&gt;  8 Bethany Under 6 years 1.75 to 1.84                     0    17</span></a>
+<a class="sourceLine" id="cb5-21" data-line-number="21"><span class="co">#&gt;  9 Bethany Under 6 years 1.85 to 1.99                     0    17</span></a>
+<a class="sourceLine" id="cb5-22" data-line-number="22"><span class="co">#&gt; 10 Bethany Under 6 years 2.00 to 2.99                    20    23</span></a>
+<a class="sourceLine" id="cb5-23" data-line-number="23"><span class="co">#&gt; # … with 1,680 more rows</span></a></code></pre></div>
 <p>Using <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">dplyr::group_by(name, ratio)</a></code> and then <code>add_grps</code> gives aggregates of estimates and MOEs for ratio levels and towns, with the original age groups collapsed into the desired, larger age groups. MOE calculations are done using <code>tidycensus</code>. For example:</p>
 <p><code><a href="https://rdrr.io/r/base/c.html">c("Under 6 years", "6 to 11 years", "12 to 17 years")</a></code></p>
 <p>becomes <code>children</code>. The same is then done to collapse ratios. <code>calc_shares</code> then calculates shares of residents in each group over the denominator <code>"determined"</code>, and, optionally, calculates MOEs for this proportion.</p>
