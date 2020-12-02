@@ -4,3 +4,5 @@
 inst/doc
 .httr-oauth
 docs/*
+.DS_Store
+**/.DS_Store
