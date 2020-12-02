@@ -4,12 +4,14 @@
 \name{acs_vars}
 \alias{acs_vars}
 \title{2016 ACS variables}
-\format{A tibble with 22815 rows and 3 columns:
+\format{
+A tibble with 22815 rows and 3 columns:
 \describe{
 \item{name}{Variable code}
 \item{label}{Variable label}
 \item{concept}{Name of table that contains variable}
-}}
+}
+}
 \source{
 US Census Bureau, American Community Survey 2016 5-year estimates
 }

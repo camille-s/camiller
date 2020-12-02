@@ -4,7 +4,8 @@
 \name{pov_age_10_16}
 \alias{pov_age_10_16}
 \title{Ratios to poverty by age for 2 years}
-\format{A tibble with 3380 rows and 6 columns
+\format{
+A tibble with 3380 rows and 6 columns
 \describe{
 \item{name}{Town name}
 \item{year}{Endyear of estimates}
@@ -12,7 +13,8 @@
 \item{ratio}{Ratio bracket}
 \item{estimate}{Estimated count}
 \item{moe}{Margin of error of estimates}
-}}
+}
+}
 \source{
 US Census Bureau, American Community Survey 2010 and 2016 5-year estimates
 }

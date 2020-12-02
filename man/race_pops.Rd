@@ -4,14 +4,16 @@
 \name{race_pops}
 \alias{race_pops}
 \title{Populations by race}
-\format{A tibble with 65 rows and 5 columns
+\format{
+A tibble with 65 rows and 5 columns
 \describe{
 \item{name}{Town name}
 \item{variable}{Racial group}
 \item{estimate}{Estimated count}
 \item{moe}{Margin of error of estimates}
 \item{region}{Region of town}
-}}
+}
+}
 \source{
 US Census Bureau, American Community Survey 2016 5-year estimates
 }

@@ -4,11 +4,13 @@
 \name{gnh}
 \alias{gnh}
 \title{Greater New Haven towns}
-\format{A tibble with 13 rows and 2 columns
+\format{
+A tibble with 13 rows and 2 columns
 \describe{
 \item{town}{Town name}
 \item{region}{Region name}
-}}
+}
+}
 \usage{
 gnh
 }

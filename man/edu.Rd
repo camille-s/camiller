@@ -5,13 +5,19 @@
 \alias{edu}
 \alias{edu_detail}
 \title{Education levels}
-\format{A tibble with 4 columns. For \code{edu}, 15 rows; for \code{edu_detail}, 125 rows.
+\format{
+A tibble with 4 columns. For \code{edu}, 15 rows; for \code{edu_detail}, 125 rows.
 \describe{
 \item{name}{Town name}
 \item{variable}{Education level}
 \item{estimate}{Estimated count}
 \item{moe}{Margin of error of estimates}
-}}
+}
+
+An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 15 rows and 4 columns.
+
+An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 125 rows and 4 columns.
+}
 \source{
 US Census Bureau, American Community Survey 2016 5-year estimates
 }
