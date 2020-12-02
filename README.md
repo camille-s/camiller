@@ -52,7 +52,7 @@ edu_rates
 #>  8 East Haven high_school               8612   554  0.406    0.024
 #>  9 East Haven some_college_or_aa        5334   511  0.251    0.023
 #> 10 East Haven bachelors_plus            4904   468  0.231    0.021
-#> # ... with 15 more rows
+#> # … with 15 more rows
 ```
 
 Plus this `ggplot` theme.
@@ -64,19 +64,17 @@ library(showtext)
 
 font_add_google("Archivo Narrow", "archivo")
 showtext_auto()
-showtext_opts(dpi = 150)
+showtext_opts(dpi = 300)
 
 edu_rates %>%
   ungroup() %>%
   filter(!is.na(share)) %>%
   arrange(variable, share) %>%
-  mutate(name = as.factor(name) %>% fct_inorder() %>% fct_rev()) %>%
-  mutate(variable = fct_relabel(variable, function(x) {
-    stringr::str_replace_all(x, "_", " ") %>% cap_first()
-    })) %>%
-  mutate(variable = fct_recode(variable, "Bachelor's or higher" = "Bachelors plus", 
-                               "Some college or Associate's" = "Some college or aa")) %>%
-  mutate(variable = fct_rev(variable)) %>%
+  mutate(name = as_factor(name) %>% fct_rev()) %>%
+  mutate(variable = fct_rev(variable) %>%
+           fct_relabel(clean_titles) %>%
+           fct_recode("Bachelor's or higher" = "Bachelors plus", 
+                      "Some college or Associate's" = "Some college or aa")) %>%
   ggplot(aes(x = name, y = share, fill = variable)) +
     geom_col(position = "fill", width = 0.8, alpha = 0.9) +
     scale_y_continuous(labels = scales::percent) +
