@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
 	out.width = "100%",
 	fig.showtext = TRUE,
 	dev = "png",
-	dpi = 150
+	dpi = 300
 )
 ```
 # camiller
@@ -60,19 +60,17 @@ library(showtext)
 
 font_add_google("Archivo Narrow", "archivo")
 showtext_auto()
-showtext_opts(dpi = 150)
+showtext_opts(dpi = 300)
 
 edu_rates %>%
   ungroup() %>%
   filter(!is.na(share)) %>%
   arrange(variable, share) %>%
-  mutate(name = as.factor(name) %>% fct_inorder() %>% fct_rev()) %>%
-  mutate(variable = fct_relabel(variable, function(x) {
-    stringr::str_replace_all(x, "_", " ") %>% cap_first()
-    })) %>%
-  mutate(variable = fct_recode(variable, "Bachelor's or higher" = "Bachelors plus", 
-                               "Some college or Associate's" = "Some college or aa")) %>%
-  mutate(variable = fct_rev(variable)) %>%
+  mutate(name = as_factor(name) %>% fct_rev()) %>%
+  mutate(variable = fct_rev(variable) %>%
+           fct_relabel(clean_titles) %>%
+           fct_recode("Bachelor's or higher" = "Bachelors plus", 
+                      "Some college or Associate's" = "Some college or aa")) %>%
   ggplot(aes(x = name, y = share, fill = variable)) +
     geom_col(position = "fill", width = 0.8, alpha = 0.9) +
     scale_y_continuous(labels = scales::percent) +
@@ -83,4 +81,3 @@ edu_rates %>%
          caption = "Source: US Census Bureau ACS 2016 5-year estimates") +
     theme_din(base_family = "archivo")
 ```
-
