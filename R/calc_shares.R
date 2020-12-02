@@ -62,40 +62,40 @@ calc_shares <- function(.data, ..., group = group, denom = "total_pop", value = 
       df2 %>%
         dplyr::filter(!!grp_var == denom) %>%
         dplyr::select(-!!grp_var) %>%
-        dplyr::rename(total_est = !!val_var, total_moe = !!moe_var),
+        dplyr::rename(ZZZ__est = !!val_var, ZZZ__moe = !!moe_var),
       df2 %>%
         dplyr::filter(!!grp_var != denom),
       by = join_names
     ) %>%
-      dplyr::mutate(share = round((!!val_var) / total_est, digits = digits)) %>%
-      dplyr::mutate(sharemoe = round(tidycensus::moe_prop(!!val_var, total_est, !!moe_var, total_moe), digits = 3))
+      dplyr::mutate(share = round((!!val_var) / ZZZ__est, digits = digits)) %>%
+      dplyr::mutate(sharemoe = round(tidycensus::moe_prop(!!val_var, ZZZ__est, !!moe_var, ZZZ__moe), digits = 3))
 
     bound <- dplyr::bind_rows(
       calcs %>%
-        dplyr::select(!!!join_cols, !!rlang::quo_name(est_name) := total_est, !!rlang::quo_name(moe_name) := total_moe) %>%
+        dplyr::select(!!!join_cols, !!rlang::quo_name(est_name) := ZZZ__est, !!rlang::quo_name(moe_name) := ZZZ__moe) %>%
         dplyr::mutate(!!rlang::quo_name(grp_var) := denom) %>%
         unique(),
-      calcs %>% dplyr::select(-dplyr::starts_with("total"))
+      calcs %>% dplyr::select(-dplyr::starts_with("ZZZ__"))
     )
   } else {
     calcs <- dplyr::inner_join(
       df2 %>%
         dplyr::filter(!!grp_var == denom) %>%
         dplyr::select(-!!grp_var) %>%
-        dplyr::rename(total_est = !!val_var),
+        dplyr::rename(ZZZ__est = !!val_var),
       df2 %>%
         dplyr::filter(!!grp_var != denom),
       by = join_names
     ) %>%
-      dplyr::mutate(share = round((!!val_var) / total_est, digits = digits))
+      dplyr::mutate(share = round((!!val_var) / ZZZ__est, digits = digits))
 
     bound <- dplyr::bind_rows(
       calcs %>%
-        dplyr::select(!!!join_cols, !!rlang::quo_name(est_name) := total_est) %>%
+        dplyr::select(!!!join_cols, !!rlang::quo_name(est_name) := ZZZ__est) %>%
         dplyr::mutate(!!rlang::quo_name(grp_var) := denom) %>%
         unique(),
       calcs %>%
-        dplyr::select(-dplyr::starts_with("total"))
+        dplyr::select(-dplyr::starts_with("ZZZ__"))
     )
   }
 
