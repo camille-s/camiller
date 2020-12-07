@@ -4,7 +4,7 @@ edu <- c(age25plus = "B15003_001", bachelors = "B15003_022", masters = "B15003_0
   dplyr::select(name = NAME, variable:moe) %>%
   dplyr::filter(name %in% c("New Haven", "Hamden", "West Haven", "East Haven", "Bethany"))
 
-use_data(edu, overwrite = T)
+usethis::use_data(edu, overwrite = TRUE)
 
 
 edu_detail <- tidycensus::get_acs(geography = "county subdivision", table = "B15003", state = "09", county = "09", year = 2016) %>%
@@ -16,4 +16,4 @@ edu_detail <- tidycensus::get_acs(geography = "county subdivision", table = "B15
   tidyr::replace_na(list(variable = "ages25plus")) %>%
   dplyr::select(-total)
 
-usethis::use_data(edu_detail, overwrite = T)
+usethis::use_data(edu_detail, overwrite = TRUE)

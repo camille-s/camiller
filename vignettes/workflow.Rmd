@@ -13,9 +13,8 @@ knitr::opts_chunk$set(
 	warning = FALSE,
 	collapse = TRUE,
 	comment = "#>",
-	fig.showtext = T
+	fig.showtext = TRUE
 )
-
 ```
 
 This is a simple workflow that makes use of functions in `camiller` to analyze and visualize some Census American Community Survey data. The data was downloaded with `tidycensus`, cleaned up a little bit, and is all included in this package.
@@ -77,7 +76,7 @@ becomes `children`. The same is then done to collapse ratios. `calc_shares` then
 
 ```{r calc_shares}
 pov_rates <- pov_age %>%
-  mutate_at(vars(age, ratio), as_factor) %>%
+  mutate(across(c(age, ratio), as_factor)) %>%
   group_by(name, ratio) %>%
   add_grps(age_grps, group = age, value = estimate, moe = moe) %>%
   group_by(name, age) %>%
@@ -116,7 +115,7 @@ The `moe_test` function applies t-tests for differences between two estimates, g
 
 ```{r pov_trend}
 pov_trend <- pov_age_10_16 %>%
-  mutate_at(vars(age, ratio), as_factor) %>%
+  mutate(across(c(age, ratio), as_factor)) %>%
   group_by(name, year, ratio) %>%
   add_grps(age_grps, group = age, value = estimate, moe = moe) %>%
   group_by(name, year, age) %>%

@@ -18,7 +18,7 @@
 #'               value = estimate, moe = moe)
 #'
 #' race_pops %>%
-#'   calc_shares(region, name, group = variable, denom = "total",
+#'   calc_shares(name, group = variable, denom = "total",
 #'               value = estimate, moe = moe)
 #' @export
 calc_shares <- function(.data, ..., group = group, denom = "total_pop", value = estimate, moe = NULL, digits = 3, estimate = NULL) {

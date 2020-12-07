@@ -4,16 +4,16 @@
 \alias{bind_self}
 \title{Neatly bind a data frame to itself, with a column changed}
 \usage{
-bind_self(data, group, new_value, append = TRUE, .id = NULL)
+bind_self(.data, group, new_value, append = FALSE, .id = NULL)
 }
 \arguments{
-\item{data}{A data frame.}
+\item{.data}{A data frame.}
 
 \item{group}{Bare column name of the column needing to be changed.}
 
 \item{new_value}{String giving the new value for column \code{group}.}
 
-\item{append}{Logical: should new values be appended to the end of \code{data} (the default), or prepended to the beginning?}
+\item{append}{Logical: should new values be appended to the end of \code{data}, or prepended to the beginning (the default)?}
 
 \item{.id}{Optional, inheriting from \verb{[dplyr::bind_rows()]}: if a string, will create IDs for each data frame and create a column of IDs with the name given as \code{.id}.}
 }

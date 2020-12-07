@@ -45,6 +45,6 @@ edu \%>\%
               value = estimate, moe = moe)
 
 race_pops \%>\%
-  calc_shares(region, name, group = variable, denom = "total",
+  calc_shares(name, group = variable, denom = "total",
               value = estimate, moe = moe)
 }

@@ -1,11 +1,10 @@
 context("test-make_wide")
-library(dplyr)
 library(camiller)
 library(testthat)
 
 test_that("makes expected number of columns", {
   edu_rates <- edu %>%
-    group_by(name) %>%
+    dplyr::group_by(name) %>%
     calc_shares(group = variable, denom = "age25plus", moe = moe)
   num_groups <- length(unique(edu_rates$variable))
   edu_wide <- edu_rates %>% make_wide(estimate:sharemoe, group = variable)
@@ -16,7 +15,7 @@ test_that("makes expected number of columns", {
 
 test_that("handles : notation", {
   edu_rates <- edu %>%
-    group_by(name) %>%
+    dplyr::group_by(name) %>%
     calc_shares(group = variable, denom = "age25plus", moe = moe)
 
   edu1 <- edu_rates %>% make_wide(estimate, moe, share, sharemoe, group = variable)

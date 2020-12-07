@@ -1,21 +1,20 @@
 context("test-moe_test")
-library(dplyr)
 library(camiller)
 library(testthat)
 
 test_that("handles keeping or dropping intermediaries", {
   pov_change <- pov_age_10_16 %>%
-    mutate_at(vars(age, ratio), function(x) as.factor(x) %>% forcats::fct_inorder()) %>%
-    group_by(name, year, ratio) %>%
+    dplyr::mutate(dplyr::across(c(age, ratio), function(x) as.factor(x) %>% forcats::fct_inorder())) %>%
+    dplyr::group_by(name, year, ratio) %>%
     add_grps(list(kids = 1:3), group = age, moe = moe) %>%
-    group_by(name, year, age) %>%
+    dplyr::group_by(name, year, age) %>%
     add_grps(list(determined = 1, low_income = 2:9), group = ratio, moe = moe) %>%
     calc_shares(group = ratio, denom = "determined", moe = moe) %>%
-    filter(!is.na(share)) %>%
-    ungroup() %>%
-    mutate(year = paste0("y", year)) %>%
+    dplyr::filter(!is.na(share)) %>%
+    dplyr::ungroup() %>%
+    dplyr::mutate(year = paste0("y", year)) %>%
     tidyr::unite("group", age, ratio) %>%
-    select(-estimate:-moe) %>%
+    dplyr::select(-estimate:-moe) %>%
     make_wide(share:sharemoe, group = year)
 
   test1 <- pov_change %>%
@@ -32,17 +31,17 @@ test_that("handles keeping or dropping intermediaries", {
 
 test_that("handles naming based on alpha", {
   pov_change <- pov_age_10_16 %>%
-    mutate_at(vars(age, ratio), function(x) as.factor(x) %>% forcats::fct_inorder()) %>%
-    group_by(name, year, ratio) %>%
+    dplyr::mutate(dplyr::across(c(age, ratio), function(x) as.factor(x) %>% forcats::fct_inorder())) %>%
+    dplyr::group_by(name, year, ratio) %>%
     add_grps(list(kids = 1:3), group = age, moe = moe) %>%
-    group_by(name, year, age) %>%
+    dplyr::group_by(name, year, age) %>%
     add_grps(list(determined = 1, low_income = 2:9), group = ratio, moe = moe) %>%
     calc_shares(group = ratio, denom = "determined", moe = moe) %>%
-    filter(!is.na(share)) %>%
-    ungroup() %>%
-    mutate(year = paste0("y", year)) %>%
+    dplyr::filter(!is.na(share)) %>%
+    dplyr::ungroup() %>%
+    dplyr::mutate(year = paste0("y", year)) %>%
     tidyr::unite("group", age, ratio) %>%
-    select(-estimate:-moe) %>%
+    dplyr::select(-estimate:-moe) %>%
     make_wide(share:sharemoe, group = year)
 
   test05 <- pov_change %>%

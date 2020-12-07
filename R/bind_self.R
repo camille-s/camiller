@@ -1,10 +1,10 @@
 #' Neatly bind a data frame to itself, with a column changed
 #'
 #' This function changes the value of a data frame's column, then binds back to itself in order to fit into a pipeline. This preserves grouping, and if `group` is a factor, returns `group` as a factor with expanded levels.
-#' @param data A data frame.
+#' @param .data A data frame.
 #' @param group Bare column name of the column needing to be changed.
 #' @param new_value String giving the new value for column `group`.
-#' @param append Logical: should new values be appended to the end of `data` (the default), or prepended to the beginning?
+#' @param append Logical: should new values be appended to the end of `data`, or prepended to the beginning (the default)?
 #' @param .id Optional, inheriting from `[dplyr::bind_rows()]`: if a string, will create IDs for each data frame and create a column of IDs with the name given as `.id`.
 #' @return A data frame with twice as many rows as the original.
 #' @examples
@@ -21,28 +21,28 @@
 #'   bind_self(group = name, new_value = "Inner Ring towns") %>%
 #'   dplyr::summarise(pop = sum(pop))
 #' @export
-bind_self <- function(data, group, new_value, append = TRUE, .id = NULL) {
+bind_self <- function(.data, group, new_value, append = FALSE, .id = NULL) {
   grp_var <- rlang::enquo(group)
 
-  is_grouped <- dplyr::is_grouped_df(data)
-  is_factor_grp <- is.factor(data[[rlang::quo_name(grp_var)]])
+  is_grouped <- dplyr::is_grouped_df(.data)
+  is_factor_grp <- is.factor(.data[[rlang::as_label(grp_var)]])
   if (is_grouped) {
-    grouped_by_vars <- dplyr::groups(data)
-    ungrouped <- data %>%
+    grouped_by_vars <- dplyr::groups(.data)
+    ungrouped <- .data %>%
       dplyr::ungroup()
   } else {
-    ungrouped <- data
+    ungrouped <- .data
   }
 
   if (is_factor_grp) {
-    all_lvls <- list(factor(new_value), ungrouped[[rlang::quo_name(grp_var)]]) %>% forcats::lvls_union()
+    all_lvls <- list(factor(new_value), ungrouped[[rlang::as_label(grp_var)]]) %>% forcats::lvls_union()
     new_data <- ungrouped %>%
-      dplyr::mutate(!!rlang::quo_name(grp_var) := factor(new_value, levels = all_lvls))
+      dplyr::mutate({{ grp_var }} := factor(new_value, levels = all_lvls))
     ungrouped <- ungrouped %>%
-      dplyr::mutate(!!rlang::quo_name(grp_var) := forcats::fct_expand(!!grp_var, new_value))
+      dplyr::mutate({{ grp_var }} := forcats::fct_expand(!!grp_var, new_value))
   } else {
     new_data <- ungrouped %>%
-      dplyr::mutate(!!rlang::quo_name(grp_var) := new_value)
+      dplyr::mutate({{ grp_var }} := new_value)
   }
 
   if (append) {

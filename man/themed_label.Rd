@@ -23,7 +23,7 @@ themed_label(label, theme = NULL, element = "text", x = 0.01, hjust = 0, ...)
 A \code{ggplot} object.
 }
 \description{
-This is a wrapper around \code{cowplot::draw_label()} that creates a \code{ggplot}-based label that inherits formatting from a given theme element. Updated 11/2019, it's no longer necessary to add this to a \code{ggdraw} object; see examples.
+This is a wrapper around \code{cowplot::draw_label()} that creates a \code{ggplot}-based label that inherits formatting from a given theme element. It's more or less been superceded by \code{ggplot}'s new \code{plot.title.position} theme argument.
 }
 \examples{
 \dontrun{
@@ -36,11 +36,10 @@ This is a wrapper around \code{cowplot::draw_label()} that creates a \code{ggplo
 if (requireNamespace("ggplot2", quietly = TRUE)) {
   town_pops <- race_pops \%>\%
     dplyr::filter(variable == "total") \%>\%
-    tidyr::unite(key, name, region, sep = " in ") \%>\%
-    dplyr::mutate(key = forcats::fct_reorder(as.factor(key), estimate))
+    dplyr::mutate(name = forcats::fct_reorder(as.factor(name), estimate))
 
   library(ggplot2)
-  p <- ggplot(town_pops, aes(x = key, y = estimate)) +
+  p <- ggplot(town_pops, aes(x = name, y = estimate)) +
     geom_col() +
     coord_flip()
   # With long labels on the left, ggplot's default title placement
