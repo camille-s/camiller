@@ -3,7 +3,7 @@ pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
   workflow: workflow.html
-last_built: 2020-12-07T01:36Z
+last_built: 2020-12-07T01:41Z
 urls:
   reference: https://camille-s.github.io/camiller/reference
   article: https://camille-s.github.io/camiller/articles
