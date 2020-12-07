@@ -6,7 +6,7 @@
 <!-- badges: start -->
 
 [![R build
-status](https://github.com/camille-s/camiller/workflows/R-CMD-check/badge.svg)](https://github.com/camille-s/camiller/actions)
+status](https://github.com/camille-s/camiller/workflows/pkgdown/badge.svg)](https://github.com/camille-s/camiller/actions)
 <!-- badges: end -->
 
 `camiller` is a set of convenience functions, functions for working with
