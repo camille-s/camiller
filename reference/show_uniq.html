@@ -10,23 +10,27 @@
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/yeti/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/yeti/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -39,7 +43,6 @@
 
 <meta property="og:title" content="Print unique values from a data frame column, then keep it moving — show_uniq" />
 <meta property="og:description" content="show_uniq gets the unique values of a column and their position within that vector, prints them neatly to the console, then returns the original data frame unchanged. It's just a convenience for showing the values in a column without breaking your workflow or train of thought, and is useful for identifying groups for add_grps." />
-<meta name="twitter:card" content="summary" />
 
 
 
@@ -57,7 +60,7 @@
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -101,7 +104,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/camille-s/camiller">
+  <a href="https://github.com/camille-s/camiller/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -128,7 +131,7 @@
     <p><code>show_uniq</code> gets the unique values of a column and their position within that vector, prints them neatly to the console, then returns the original data frame unchanged. It's just a convenience for showing the values in a column without breaking your workflow or train of thought, and is useful for identifying groups for <code>add_grps</code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>show_uniq</span>(<span class='no'>.data</span>, <span class='no'>col</span>)</pre>
+    <pre class="usage"><span class='fu'>show_uniq</span><span class='op'>(</span><span class='va'>.data</span>, <span class='va'>col</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -150,43 +153,40 @@
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># show_uniq makes it easy to see that the values of `ratio` that correspond to poverty (ratio of 0 to 0.99)</span>
 <span class='co'># are at positions 2:4, and for low-income (ration of 0 to 1.99) are at 2:9</span>
-<span class='no'>pov_age</span> <span class='kw'>%&gt;%</span>
-  <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span>(<span class='kw'>age</span> <span class='kw'>=</span> <span class='kw pkg'>forcats</span><span class='kw ns'>::</span><span class='fu'><a href='https://forcats.tidyverse.org/reference/as_factor.html'>as_factor</a></span>(<span class='no'>age</span>)) <span class='kw'>%&gt;%</span>
-  <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span>(<span class='no'>name</span>, <span class='no'>age</span>) <span class='kw'>%&gt;%</span>
-  <span class='fu'>show_uniq</span>(<span class='no'>ratio</span>) <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='add_grps.html'>add_grps</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>pov_determined</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>poverty</span> <span class='kw'>=</span> <span class='fl'>2</span>:<span class='fl'>4</span>, <span class='kw'>low_income</span> <span class='kw'>=</span> <span class='fl'>2</span>:<span class='fl'>9</span>),
-           <span class='kw'>group</span> <span class='kw'>=</span> <span class='no'>ratio</span>)</div><div class='output co'>#&gt; 
-#&gt; 1: Poverty status determined 2: Under .50                 
-#&gt; 3: .50 to .74                4: .75 to .99                
-#&gt; 5: 1.00 to 1.24              6: 1.25 to 1.49              
-#&gt; 7: 1.50 to 1.74              8: 1.75 to 1.84              
-#&gt; 9: 1.85 to 1.99              10: 2.00 to 2.99             
-#&gt; 11: 3.00 to 3.99             12: 4.00 to 4.99             
-#&gt; 13: 5.00 and over           
-#&gt; </div><div class='output co'>#&gt; # A tibble: 390 x 4
-#&gt; # Groups:   name, age [130]
+<span class='va'>pov_age</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>age <span class='op'>=</span> <span class='fu'>forcats</span><span class='fu'>::</span><span class='fu'><a href='https://forcats.tidyverse.org/reference/as_factor.html'>as_factor</a></span><span class='op'>(</span><span class='va'>age</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>name</span>, <span class='va'>age</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>show_uniq</span><span class='op'>(</span><span class='va'>ratio</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='add_grps.html'>add_grps</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>pov_determined <span class='op'>=</span> <span class='fl'>1</span>, poverty <span class='op'>=</span> <span class='fl'>2</span><span class='op'>:</span><span class='fl'>4</span>, low_income <span class='op'>=</span> <span class='fl'>2</span><span class='op'>:</span><span class='fl'>9</span><span class='op'>)</span>,
+           group <span class='op'>=</span> <span class='va'>ratio</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; 
+#&gt; <span style='color: #555555;'>1: Poverty status determined</span><span> </span><span style='color: #555555;'>2: Under .50                </span><span> 
+#&gt; </span><span style='color: #555555;'>3: .50 to .74               </span><span> </span><span style='color: #555555;'>4: .75 to .99               </span><span> 
+#&gt; </span><span style='color: #555555;'>5: 1.00 to 1.24             </span><span> </span><span style='color: #555555;'>6: 1.25 to 1.49             </span><span> 
+#&gt; </span><span style='color: #555555;'>7: 1.50 to 1.74             </span><span> </span><span style='color: #555555;'>8: 1.75 to 1.84             </span><span> 
+#&gt; </span><span style='color: #555555;'>9: 1.85 to 1.99             </span><span> </span><span style='color: #555555;'>10: 2.00 to 2.99            </span><span> 
+#&gt; </span><span style='color: #555555;'>11: 3.00 to 3.99            </span><span> </span><span style='color: #555555;'>12: 4.00 to 4.99            </span><span> 
+#&gt; </span><span style='color: #555555;'>13: 5.00 and over           </span><span>
+#&gt; </div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 390 x 4</span><span>
+#&gt; </span><span style='color: #555555;'># Groups:   name, age [130]</span><span>
 #&gt;    name    age            ratio          estimate
-#&gt;    &lt;chr&gt;   &lt;fct&gt;          &lt;fct&gt;             &lt;dbl&gt;
-#&gt;  1 Bethany Under 6 years  pov_determined      274
-#&gt;  2 Bethany Under 6 years  poverty               8
-#&gt;  3 Bethany Under 6 years  low_income           55
-#&gt;  4 Bethany 6 to 11 years  pov_determined      539
-#&gt;  5 Bethany 6 to 11 years  poverty              17
-#&gt;  6 Bethany 6 to 11 years  low_income           26
-#&gt;  7 Bethany 12 to 17 years pov_determined      446
-#&gt;  8 Bethany 12 to 17 years poverty               0
-#&gt;  9 Bethany 12 to 17 years low_income           21
-#&gt; 10 Bethany 18 to 24 years pov_determined      249
-#&gt; # … with 380 more rows</div></pre>
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span>          </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span>             </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'> 1</span><span> Bethany Under 6 years  pov_determined      274
+#&gt; </span><span style='color: #555555;'> 2</span><span> Bethany Under 6 years  poverty               8
+#&gt; </span><span style='color: #555555;'> 3</span><span> Bethany Under 6 years  low_income           55
+#&gt; </span><span style='color: #555555;'> 4</span><span> Bethany 6 to 11 years  pov_determined      539
+#&gt; </span><span style='color: #555555;'> 5</span><span> Bethany 6 to 11 years  poverty              17
+#&gt; </span><span style='color: #555555;'> 6</span><span> Bethany 6 to 11 years  low_income           26
+#&gt; </span><span style='color: #555555;'> 7</span><span> Bethany 12 to 17 years pov_determined      446
+#&gt; </span><span style='color: #555555;'> 8</span><span> Bethany 12 to 17 years poverty               0
+#&gt; </span><span style='color: #555555;'> 9</span><span> Bethany 12 to 17 years low_income           21
+#&gt; </span><span style='color: #555555;'>10</span><span> Bethany 18 to 24 years pov_determined      249
+#&gt; </span><span style='color: #555555;'># … with 380 more rows</span><span></div></span></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -197,7 +197,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

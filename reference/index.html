@@ -10,23 +10,27 @@
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/yeti/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/yeti/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -55,7 +59,7 @@
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-index">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -99,7 +103,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/camille-s/camiller">
+  <a href="https://github.com/camille-s/camiller/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -135,6 +139,11 @@
           <p class="section-desc"></p>
         </th>
       </tr>
+      
+      
+    </tbody><tbody>
+      
+      
       <tr>
         
         <td>
@@ -219,12 +228,6 @@
           <p><code><a href="theme_din.html">theme_din()</a></code> </p>
         </td>
         <td><p>Theme Din</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="town_names.html">town_names()</a></code> </p>
-        </td>
-        <td><p>Clean up town names as returned from ACS</p></td>
       </tr>
     </tbody><tbody>
       <tr>
@@ -233,12 +236,59 @@
           <p class="section-desc"></p>
         </th>
       </tr>
+      
+      
+    </tbody><tbody>
+      
+      
       <tr>
         
         <td>
-          <p><code><a href="acs_vars.html">acs_vars</a></code> </p>
+          <p><code><a href="add_grps.html">add_grps()</a></code> </p>
         </td>
-        <td><p>2016 ACS variables</p></td>
+        <td><p>Collapse variable into groups and sum</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="big_number.html">big_number()</a></code> <code><a href="big_number.html">big_money()</a></code> </p>
+        </td>
+        <td><p>Abbreviate large numbers by order of magnitude</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="bind_self.html">bind_self()</a></code> </p>
+        </td>
+        <td><p>Neatly bind a data frame to itself, with a column changed</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="brk_labels.html">brk_labels()</a></code> </p>
+        </td>
+        <td><p>Create pretty breaks labels</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="calc_shares.html">calc_shares()</a></code> </p>
+        </td>
+        <td><p>Make table of rates given a denominator</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="cap_first.html">cap_first()</a></code> </p>
+        </td>
+        <td><p>Capitalize first letter in string</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="clean_titles.html">clean_titles()</a></code> </p>
+        </td>
+        <td><p>Several options for formatting text into neater titles</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="color_prev.html">color_prev()</a></code> </p>
+        </td>
+        <td><p>Preview color palette</p></td>
       </tr><tr>
         
         <td>
@@ -248,9 +298,21 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="gnh.html">gnh</a></code> </p>
+          <p><code><a href="make_grps.html">make_grps()</a></code> </p>
         </td>
-        <td><p>Greater New Haven towns</p></td>
+        <td><p>Collapse variable into subgroup positions</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="make_wide.html">make_wide()</a></code> </p>
+        </td>
+        <td><p>Arrange estimates, MOEs, etc into wide format</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="moe_test.html">moe_test()</a></code> </p>
+        </td>
+        <td><p>Significance testing of differences with MOEs</p></td>
       </tr><tr>
         
         <td>
@@ -269,17 +331,33 @@
           <p><code><a href="race_pops.html">race_pops</a></code> </p>
         </td>
         <td><p>Populations by race</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="show_uniq.html">show_uniq()</a></code> </p>
+        </td>
+        <td><p>Print unique values from a data frame column, then keep it moving</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="theme_din.html">theme_din()</a></code> </p>
+        </td>
+        <td><p>Theme Din</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="themed_label.html">themed_label()</a></code> </p>
+        </td>
+        <td><p>Create <code>cowplot</code> label based on a ggplot theme</p></td>
       </tr>
     </tbody>
     </table>
   </div>
 
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-functions">Functions</a></li>
-      <li><a href="#section-datasets">Datasets</a></li>
-    </ul>
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -290,7 +368,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

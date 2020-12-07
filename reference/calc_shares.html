@@ -10,23 +10,27 @@
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/yeti/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/yeti/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -39,7 +43,6 @@
 
 <meta property="og:title" content="Make table of rates given a denominator — calc_shares" />
 <meta property="og:description" content="calc_shares makes it easy to divide values by some denominator within the same long-shaped data frame. For example, it works well for a table of population groups for multiple locations where you want to divide population counts by some total population. It optionally handles dividing margins of error. Denote locations or other groupings by using a grouped data frame, passing bare column names to ..., or both." />
-<meta name="twitter:card" content="summary" />
 
 
 
@@ -57,7 +60,7 @@
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -101,7 +104,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/camille-s/camiller">
+  <a href="https://github.com/camille-s/camiller/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -128,16 +131,16 @@
     <p><code>calc_shares</code> makes it easy to divide values by some denominator within the same long-shaped data frame. For example, it works well for a table of population groups for multiple locations where you want to divide population counts by some total population. It optionally handles dividing margins of error. Denote locations or other groupings by using a grouped data frame, passing bare column names to <code>...</code>, or both.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>calc_shares</span>(
-  <span class='no'>.data</span>,
-  <span class='no'>...</span>,
-  <span class='kw'>group</span> <span class='kw'>=</span> <span class='no'>group</span>,
-  <span class='kw'>denom</span> <span class='kw'>=</span> <span class='st'>"total_pop"</span>,
-  <span class='kw'>value</span> <span class='kw'>=</span> <span class='no'>estimate</span>,
-  <span class='kw'>moe</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>3</span>,
-  <span class='kw'>estimate</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
-)</pre>
+    <pre class="usage"><span class='fu'>calc_shares</span><span class='op'>(</span>
+  <span class='va'>.data</span>,
+  <span class='va'>...</span>,
+  group <span class='op'>=</span> <span class='va'>group</span>,
+  denom <span class='op'>=</span> <span class='st'>"total_pop"</span>,
+  value <span class='op'>=</span> <span class='va'>estimate</span>,
+  moe <span class='op'>=</span> <span class='cn'>NULL</span>,
+  digits <span class='op'>=</span> <span class='fl'>3</span>,
+  estimate <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -181,53 +184,51 @@
     <p>A tibble/data frame with shares (and optionally MOE of shares) of subgroup values within a denominator group. Shares given for denominator group will be blank.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>edu</span> <span class='kw'>%&gt;%</span>
-  <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span>(<span class='no'>name</span>) <span class='kw'>%&gt;%</span>
-  <span class='fu'>calc_shares</span>(<span class='kw'>group</span> <span class='kw'>=</span> <span class='no'>variable</span>, <span class='kw'>denom</span> <span class='kw'>=</span> <span class='st'>"age25plus"</span>,
-              <span class='kw'>value</span> <span class='kw'>=</span> <span class='no'>estimate</span>, <span class='kw'>moe</span> <span class='kw'>=</span> <span class='no'>moe</span>)</div><div class='output co'>#&gt; # A tibble: 15 x 6
-#&gt; # Groups:   name [5]
+    <pre class="examples"><div class='input'><span class='va'>edu</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>name</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>calc_shares</span><span class='op'>(</span>group <span class='op'>=</span> <span class='va'>variable</span>, denom <span class='op'>=</span> <span class='st'>"age25plus"</span>,
+              value <span class='op'>=</span> <span class='va'>estimate</span>, moe <span class='op'>=</span> <span class='va'>moe</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 15 x 6</span><span>
+#&gt; </span><span style='color: #555555;'># Groups:   name [5]</span><span>
 #&gt;    name       variable  estimate   moe  share sharemoe
-#&gt;    &lt;chr&gt;      &lt;fct&gt;        &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;
-#&gt;  1 Bethany    age25plus     4013   148 NA       NA    
-#&gt;  2 Bethany    bachelors      994   174  0.248    0.042
-#&gt;  3 Bethany    masters        655   153  0.163    0.038
-#&gt;  4 East Haven age25plus    21230   490 NA       NA    
-#&gt;  5 East Haven bachelors     2998   361  0.141    0.017
-#&gt;  6 East Haven masters       1280   229  0.06     0.011
-#&gt;  7 Hamden     age25plus    40110   721 NA       NA    
-#&gt;  8 Hamden     bachelors     8587   669  0.214    0.016
-#&gt;  9 Hamden     masters       6171   568  0.154    0.014
-#&gt; 10 New Haven  age25plus    81231  1252 NA       NA    
-#&gt; 11 New Haven  bachelors    12582   820  0.155    0.01 
-#&gt; 12 New Haven  masters       8236   582  0.101    0.007
-#&gt; 13 West Haven age25plus    36031   765 NA       NA    
-#&gt; 14 West Haven bachelors     4865   533  0.135    0.015
-#&gt; 15 West Haven masters       2267   388  0.063    0.011</div><div class='input'>
-<span class='no'>race_pops</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'>calc_shares</span>(<span class='no'>region</span>, <span class='no'>name</span>, <span class='kw'>group</span> <span class='kw'>=</span> <span class='no'>variable</span>, <span class='kw'>denom</span> <span class='kw'>=</span> <span class='st'>"total"</span>,
-              <span class='kw'>value</span> <span class='kw'>=</span> <span class='no'>estimate</span>, <span class='kw'>moe</span> <span class='kw'>=</span> <span class='no'>moe</span>)</div><div class='output co'>#&gt; # A tibble: 65 x 7
-#&gt;    region     name       variable estimate   moe  share sharemoe
-#&gt;    &lt;fct&gt;      &lt;chr&gt;      &lt;fct&gt;       &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;
-#&gt;  1 New Haven  New Haven  total      130405    60 NA       NA    
-#&gt;  2 New Haven  New Haven  white       40164  1395  0.308    0.011
-#&gt;  3 New Haven  New Haven  black       42970  1383  0.33     0.011
-#&gt;  4 New Haven  New Haven  asian        6042   697  0.046    0.005
-#&gt;  5 New Haven  New Haven  latino      37231  1688  0.286    0.013
-#&gt;  6 Inner Ring East Haven total       29015    24 NA       NA    
-#&gt;  7 Inner Ring East Haven white       22898   785  0.789    0.027
-#&gt;  8 Inner Ring East Haven black         693   400  0.024    0.014
-#&gt;  9 Inner Ring East Haven asian        1123   595  0.039    0.021
-#&gt; 10 Inner Ring East Haven latino       3820   641  0.132    0.022
-#&gt; # … with 55 more rows</div></pre>
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'> 1</span><span> Bethany    age25plus     </span><span style='text-decoration: underline;'>4</span><span>013   148 </span><span style='color: #BB0000;'>NA</span><span>       </span><span style='color: #BB0000;'>NA</span><span>    
+#&gt; </span><span style='color: #555555;'> 2</span><span> Bethany    bachelors      994   174  0.248    0.042
+#&gt; </span><span style='color: #555555;'> 3</span><span> Bethany    masters        655   153  0.163    0.038
+#&gt; </span><span style='color: #555555;'> 4</span><span> East Haven age25plus    </span><span style='text-decoration: underline;'>21</span><span>230   490 </span><span style='color: #BB0000;'>NA</span><span>       </span><span style='color: #BB0000;'>NA</span><span>    
+#&gt; </span><span style='color: #555555;'> 5</span><span> East Haven bachelors     </span><span style='text-decoration: underline;'>2</span><span>998   361  0.141    0.017
+#&gt; </span><span style='color: #555555;'> 6</span><span> East Haven masters       </span><span style='text-decoration: underline;'>1</span><span>280   229  0.06     0.011
+#&gt; </span><span style='color: #555555;'> 7</span><span> Hamden     age25plus    </span><span style='text-decoration: underline;'>40</span><span>110   721 </span><span style='color: #BB0000;'>NA</span><span>       </span><span style='color: #BB0000;'>NA</span><span>    
+#&gt; </span><span style='color: #555555;'> 8</span><span> Hamden     bachelors     </span><span style='text-decoration: underline;'>8</span><span>587   669  0.214    0.016
+#&gt; </span><span style='color: #555555;'> 9</span><span> Hamden     masters       </span><span style='text-decoration: underline;'>6</span><span>171   568  0.154    0.014
+#&gt; </span><span style='color: #555555;'>10</span><span> New Haven  age25plus    </span><span style='text-decoration: underline;'>81</span><span>231  </span><span style='text-decoration: underline;'>1</span><span>252 </span><span style='color: #BB0000;'>NA</span><span>       </span><span style='color: #BB0000;'>NA</span><span>    
+#&gt; </span><span style='color: #555555;'>11</span><span> New Haven  bachelors    </span><span style='text-decoration: underline;'>12</span><span>582   820  0.155    0.01 
+#&gt; </span><span style='color: #555555;'>12</span><span> New Haven  masters       </span><span style='text-decoration: underline;'>8</span><span>236   582  0.101    0.007
+#&gt; </span><span style='color: #555555;'>13</span><span> West Haven age25plus    </span><span style='text-decoration: underline;'>36</span><span>031   765 </span><span style='color: #BB0000;'>NA</span><span>       </span><span style='color: #BB0000;'>NA</span><span>    
+#&gt; </span><span style='color: #555555;'>14</span><span> West Haven bachelors     </span><span style='text-decoration: underline;'>4</span><span>865   533  0.135    0.015
+#&gt; </span><span style='color: #555555;'>15</span><span> West Haven masters       </span><span style='text-decoration: underline;'>2</span><span>267   388  0.063    0.011</div><div class='input'>
+<span class='va'>race_pops</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>calc_shares</span><span class='op'>(</span><span class='va'>name</span>, group <span class='op'>=</span> <span class='va'>variable</span>, denom <span class='op'>=</span> <span class='st'>"total"</span>,
+              value <span class='op'>=</span> <span class='va'>estimate</span>, moe <span class='op'>=</span> <span class='va'>moe</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 65 x 6</span><span>
+#&gt;    name     variable estimate   moe  share sharemoe
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'> 1</span><span> Bethany  total        </span><span style='text-decoration: underline;'>5</span><span>521    24 </span><span style='color: #BB0000;'>NA</span><span>       </span><span style='color: #BB0000;'>NA</span><span>    
+#&gt; </span><span style='color: #555555;'> 2</span><span> Bethany  white        </span><span style='text-decoration: underline;'>4</span><span>769   267  0.864    0.048
+#&gt; </span><span style='color: #555555;'> 3</span><span> Bethany  black          69    79  0.012    0.014
+#&gt; </span><span style='color: #555555;'> 4</span><span> Bethany  asian         313   118  0.057    0.021
+#&gt; </span><span style='color: #555555;'> 5</span><span> Bethany  latino        286   208  0.052    0.038
+#&gt; </span><span style='color: #555555;'> 6</span><span> Branford total       </span><span style='text-decoration: underline;'>28</span><span>084    28 </span><span style='color: #BB0000;'>NA</span><span>       </span><span style='color: #BB0000;'>NA</span><span>    
+#&gt; </span><span style='color: #555555;'> 7</span><span> Branford white       </span><span style='text-decoration: underline;'>25</span><span>096   435  0.894    0.015
+#&gt; </span><span style='color: #555555;'> 8</span><span> Branford black         349   165  0.012    0.006
+#&gt; </span><span style='color: #555555;'> 9</span><span> Branford asian        </span><span style='text-decoration: underline;'>1</span><span>211   304  0.043    0.011
+#&gt; </span><span style='color: #555555;'>10</span><span> Branford latino       </span><span style='text-decoration: underline;'>1</span><span>033   285  0.037    0.01 
+#&gt; </span><span style='color: #555555;'># … with 55 more rows</span><span></div></span></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -238,7 +239,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
