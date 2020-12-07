@@ -10,12 +10,6 @@
 #' @return A `ggplot` object.
 #' @examples
 #' \dontrun{
-#' # the old way (no longer works): manually adding the label to cowplot::ggdraw()
-#' # title <- cowplot::ggdraw() +
-#' #   themed_label("Plot title", ggplot2::theme_bw(), element = "plot.title", x = 0.05)
-#' # }
-#'
-#' # the new way: themed_label does that for you
 #' if (requireNamespace("ggplot2", quietly = TRUE)) {
 #'   town_pops <- race_pops %>%
 #'     dplyr::filter(variable == "total") %>%

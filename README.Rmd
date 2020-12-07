@@ -19,7 +19,9 @@ knitr::opts_chunk$set(
 ```
 # camiller
 
-[![Travis build status](https://travis-ci.org/camille-s/camiller.svg?branch=master)](https://travis-ci.org/camille-s/camiller) [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/camille-s/camiller?branch=master&svg=true)](https://ci.appveyor.com/project/camille-s/camiller)
+<!-- badges: start -->
+[![R build status](https://github.com/camille-s/camiller/workflows/R-CMD-check/badge.svg)](https://github.com/camille-s/camiller/actions)
+<!-- badges: end -->
 
 `camiller` is a set of convenience functions, functions for working with ACS data via `tidycensus`, and a `ggplot` theme.
 
