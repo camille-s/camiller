@@ -18,7 +18,8 @@ Original unchanged \code{.data}
 \code{show_uniq} gets the unique values of a column and their position within that vector, prints them neatly to the console, then returns the original data frame unchanged. It's just a convenience for showing the values in a column without breaking your workflow or train of thought, and is useful for identifying groups for \code{add_grps}.
 }
 \examples{
-# show_uniq makes it easy to see that the values of `ratio` that correspond to poverty (ratio of 0 to 0.99)
+# show_uniq makes it easy to see that the values of `ratio` that correspond to
+# poverty (ratio of 0 to 0.99)
 # are at positions 2:4, and for low-income (ration of 0 to 1.99) are at 2:9
 pov_age \%>\%
   dplyr::mutate(age = forcats::as_factor(age)) \%>\%

@@ -53,6 +53,7 @@ clean_titles(t2, space = c("_", "!"))
 t3 <- c("Greater BPT Men", "Greater BPT Men HBP", "GreaterBPT_men", "greaterBPT")
 clean_titles(t3, cap_all = FALSE)
 
-t4 <- c("New Haven town, New Haven County, Connecticut", "Newtown town, Fairfield County, Connecticut")
+t4 <- c("New Haven town, New Haven County, Connecticut",
+        "Newtown town, Fairfield County, Connecticut")
 clean_titles(t4, cap_all = TRUE, remove = " town,.+")
 }

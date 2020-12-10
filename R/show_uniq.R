@@ -6,7 +6,8 @@
 #' @param col Bare column name of interest
 #' @return Original unchanged `.data`
 #' @examples
-#' # show_uniq makes it easy to see that the values of `ratio` that correspond to poverty (ratio of 0 to 0.99)
+#' # show_uniq makes it easy to see that the values of `ratio` that correspond to
+#' # poverty (ratio of 0 to 0.99)
 #' # are at positions 2:4, and for low-income (ration of 0 to 1.99) are at 2:9
 #' pov_age %>%
 #'   dplyr::mutate(age = forcats::as_factor(age)) %>%
@@ -30,7 +31,7 @@ show_uniq <- function(.data, col) {
 prettycols <- function(x, cray) {
   w <- floor(options("width")$width * 0.98)
   l <- max(nchar(x))
-  cols <- floor(w / l)
+  cols <- max(floor(w / l), 1)
   padded <- stringr::str_pad(x, width = l, side = "right")
 
   if (cray) {
