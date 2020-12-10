@@ -151,7 +151,8 @@
     <p>Original unchanged <code>.data</code></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># show_uniq makes it easy to see that the values of `ratio` that correspond to poverty (ratio of 0 to 0.99)</span>
+    <pre class="examples"><div class='input'><span class='co'># show_uniq makes it easy to see that the values of `ratio` that correspond to</span>
+<span class='co'># poverty (ratio of 0 to 0.99)</span>
 <span class='co'># are at positions 2:4, and for low-income (ration of 0 to 1.99) are at 2:9</span>
 <span class='va'>pov_age</span> <span class='op'>%&gt;%</span>
   <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>age <span class='op'>=</span> <span class='fu'>forcats</span><span class='fu'>::</span><span class='fu'><a href='https://forcats.tidyverse.org/reference/as_factor.html'>as_factor</a></span><span class='op'>(</span><span class='va'>age</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
