@@ -31,6 +31,7 @@
 #'     rel_heights = c(1, 10)
 #'   )
 #' }
+#' }
 #' @export
 themed_label <- function(label, theme = NULL, element = "text", x = 0.01, hjust = 0, ...) {
   if (is.null(theme)) {

@@ -7,7 +7,6 @@
 #' @param xgrid A logical for turning x-grid on or off, or "dotted", for a light dotted grid
 #' @param ygrid A logical for turning y-grid on or off, or "dotted", for a light dotted grid
 #' @param fallback_google Logical: if `TRUE` and `base_family` not currently loaded, will load Roboto Condensed from Google. If `FALSE`, will load system sans font. Defaults `TRUE`.
-#' @inheritParams ggplot2::theme_light
 #' @seealso [sysfonts::font_add()], [sysfonts::font_add_google()]
 #' @export
 theme_din <- function(base_size = 14, base_family = "roboto", xgrid = FALSE, ygrid = TRUE, fallback_google = TRUE) {

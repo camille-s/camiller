@@ -25,3 +25,28 @@ A \code{ggplot} object.
 \description{
 This is a wrapper around \code{cowplot::draw_label()} that creates a \code{ggplot}-based label that inherits formatting from a given theme element. It's more or less been superceded by \code{ggplot}'s new \code{plot.title.position} theme argument.
 }
+\examples{
+\dontrun{
+if (requireNamespace("ggplot2", quietly = TRUE)) {
+  town_pops <- race_pops \%>\%
+    dplyr::filter(variable == "total") \%>\%
+    dplyr::mutate(name = forcats::fct_reorder(as.factor(name), estimate))
+
+  library(ggplot2)
+  p <- ggplot(town_pops, aes(x = name, y = estimate)) +
+    geom_col() +
+    coord_flip()
+  # With long labels on the left, ggplot's default title placement
+  # aligned to the panel can become awkward
+  p + ggtitle("Total population by town, 2017")
+  # Instead, make a label grob and arrange plot elements how you want
+  title <- themed_label("Total population by town, 2017", element = "plot.title")
+  cowplot::plot_grid(
+    title,
+    p,
+    ncol = 1,
+    rel_heights = c(1, 10)
+  )
+}
+}
+}
