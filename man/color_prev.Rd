@@ -6,15 +6,15 @@
 \usage{
 color_prev(
   colors,
-  labels = T,
+  labels = TRUE,
   label_color = "black",
-  border = F,
+  border = FALSE,
   border_color = "white",
   border_size = 0.5
 )
 }
 \arguments{
-\item{colors}{Character vector of colors}
+\item{colors}{Character vector of colors. If a named vector, those names will be shown above the color blocks; otherwise, index numbers will be shown.}
 
 \item{labels}{Logical; whether to show color name/hexcode labels}
 
