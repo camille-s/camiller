@@ -1,8 +1,7 @@
-context("test-filter_down")
 library(camiller)
 library(testthat)
 
-test_that("Rows properly excluded", {
+test_that("filter_down properly excludes rows", {
   messy_summary <- tibble::tribble(
     ~x1,        ~x2,
     "A",        1,
@@ -18,7 +17,7 @@ test_that("Rows properly excluded", {
   expect_equal(nrow(a1), 2)
 })
 
-test_that("Rows properly included", {
+test_that("filter_down properly includes rows", {
   messy_summary <- tibble::tribble(
     ~x1,        ~x2,
     "A",        1,
@@ -34,7 +33,7 @@ test_that("Rows properly included", {
   expect_equal(nrow(a2), 3)
 })
 
-test_that("Handles multiple conditions", {
+test_that("filter_down handles multiple conditions", {
   messy_notes <- tibble::tribble(
     ~x1,       ~x2,        ~x3,
     "A",       "dog",      0,
@@ -46,7 +45,7 @@ test_that("Handles multiple conditions", {
   expect_equal(nrow(a1), 1)
 })
 
-test_that("Throws error for commas", {
+test_that("filter_down throws error for commas", {
   messy_notes <- tibble::tribble(
     ~x1,       ~x2,        ~x3,
     "A",       "dog",      0,

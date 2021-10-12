@@ -1,8 +1,7 @@
-context("test-make_grps")
 library(camiller)
 library(testthat)
 
-test_that("gets group names", {
+test_that("make_grps gets group names", {
   ages <- c("Under 6 years", "Under 6 years", "Under 6 years", "6 to 11 years",
             "6 to 11 years", "6 to 11 years", "12 to 17 years", "12 to 17 years",
             "12 to 17 years", "18 to 24 years", "18 to 24 years", "18 to 24 years",
@@ -18,7 +17,7 @@ test_that("gets group names", {
   expect_named(make_grps(ages, age_list), names(age_list))
 })
 
-test_that("makes groups from positions or values", {
+test_that("make_grps makes groups from positions or values", {
   ages <- c("Under 6 years", "Under 6 years", "Under 6 years", "6 to 11 years",
             "6 to 11 years", "6 to 11 years", "12 to 17 years", "12 to 17 years",
             "12 to 17 years", "18 to 24 years", "18 to 24 years", "18 to 24 years",
@@ -33,7 +32,7 @@ test_that("makes groups from positions or values", {
   expect_equal(make_grps(ages, age_list_num), make_grps(ages, age_list_char))
 })
 
-test_that("checks if strings are in vector", {
+test_that("make_grps checks if strings are in vector", {
   ages <- c("Under 6 years", "Under 6 years", "Under 6 years", "6 to 11 years",
             "6 to 11 years", "6 to 11 years", "12 to 17 years", "12 to 17 years",
             "12 to 17 years", "18 to 24 years", "18 to 24 years", "18 to 24 years",

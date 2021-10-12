@@ -1,8 +1,7 @@
-context("test-themed_label")
 library(camiller)
 library(testthat)
 
-test_that("handles theme argument", {
+test_that("themed_label handles theme argument", {
   el1 <- themed_label("the title", element = "plot.title")
   el2 <- themed_label("the title", theme = ggplot2::theme_void(), element = "plot.title")
 
@@ -10,11 +9,11 @@ test_that("handles theme argument", {
   expect_is(el2, "gg")
 })
 
-test_that("handles invalid element name", {
+test_that("themed_label handles invalid element name", {
   expect_error(themed_label("caption", element = "source"), "valid ggplot theme")
 })
 
-test_that("handles theme as function", {
+test_that("themed_label handles theme as function", {
   el1 <- themed_label("the caption", theme = ggplot2::theme_classic, element = "plot.caption")
   el2 <- themed_label("the caption", theme = ggplot2::theme_classic(), element = "plot.caption")
 

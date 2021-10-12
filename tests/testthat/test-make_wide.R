@@ -1,8 +1,7 @@
-context("test-make_wide")
 library(camiller)
 library(testthat)
 
-test_that("makes expected number of columns", {
+test_that("make_wide makes expected number of columns", {
   edu_rates <- edu %>%
     dplyr::group_by(name) %>%
     calc_shares(group = variable, denom = "age25plus", moe = moe)
@@ -13,7 +12,7 @@ test_that("makes expected number of columns", {
   expect_equal(ncol(edu_wide), 1 + 2 * 1 + 4 * (num_groups - 1))
 })
 
-test_that("handles : notation", {
+test_that("make_wide handles : notation", {
   edu_rates <- edu %>%
     dplyr::group_by(name) %>%
     calc_shares(group = variable, denom = "age25plus", moe = moe)

@@ -1,8 +1,7 @@
-context("test-moe_test")
 library(camiller)
 library(testthat)
 
-test_that("handles keeping or dropping intermediaries", {
+test_that("moe_test handles keeping or dropping intermediaries", {
   pov_change <- pov_age_10_16 %>%
     dplyr::mutate(dplyr::across(c(age, ratio), function(x) as.factor(x) %>% forcats::fct_inorder())) %>%
     dplyr::group_by(name, year, ratio) %>%
@@ -29,7 +28,7 @@ test_that("handles keeping or dropping intermediaries", {
   expect_equal(nrow(test2), nrow(pov_change))
 })
 
-test_that("handles naming based on alpha", {
+test_that("moe_test handles naming based on alpha", {
   pov_change <- pov_age_10_16 %>%
     dplyr::mutate(dplyr::across(c(age, ratio), function(x) as.factor(x) %>% forcats::fct_inorder())) %>%
     dplyr::group_by(name, year, ratio) %>%

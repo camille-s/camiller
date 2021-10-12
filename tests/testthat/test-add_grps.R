@@ -1,8 +1,7 @@
-context("test-add_grps")
 library(camiller)
 library(testthat)
 
-test_that("retains grouping", {
+test_that("add_grps retains grouping", {
   edu_list <- list(total = 1, less_than_hs = 2:16, bach_plus = 22:25)
 
   edu1 <- edu_detail %>%
@@ -15,7 +14,7 @@ test_that("retains grouping", {
   expect_false(dplyr::is_grouped_df(edu2))
 })
 
-test_that("properly creates factor", {
+test_that("add_grps properly creates factor", {
   edu_list <- list(total = 1, less_than_hs = 2:16, bach_plus = 22:25)
 
   edu1 <- edu_detail %>%
@@ -26,7 +25,7 @@ test_that("properly creates factor", {
   expect_equal(levels(edu1$variable), names(edu_list))
 })
 
-test_that("retains or drops MOE", {
+test_that("add_grps retains or drops MOE", {
   edu_list <- list(total = 1, less_than_hs = 2:16, bach_plus = 22:25)
 
   edu_no_moe <- edu_detail %>%
