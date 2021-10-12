@@ -1,6 +1,6 @@
 Package: camiller
 Title: Lots of convenience functions
-Version: 0.2.1
+Version: 0.2.2
 Authors@R: person("Camille", "Seaberry", email = "camille.seaberry@gmail.com", role = c("aut", "cre"))
 Description: Convenience functions, plus a ggplot theme. Basic stuff to prep analysis of Census data at DataHaven.
 License: MIT + file LICENSE
