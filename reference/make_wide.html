@@ -74,7 +74,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">camiller</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.3</span>
       </span>
     </div>
 
@@ -155,17 +155,18 @@
     <p>A tibble/data frame in wide format</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>edu</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>make_wide</span><span class='op'>(</span><span class='va'>estimate</span>, <span class='va'>moe</span>, group <span class='op'>=</span> <span class='va'>variable</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 5 × 7</span>
-#&gt;   name       age25plus_estimate age25plus_moe bachelors_estimate bachelors_moe
-#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>              <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
-#&gt; <span style='color: #BCBCBC;'>1</span> Bethany                  <span style='text-decoration: underline;'>4</span>013           148                994           174
-#&gt; <span style='color: #BCBCBC;'>2</span> East Haven              <span style='text-decoration: underline;'>21</span>230           490               <span style='text-decoration: underline;'>2</span>998           361
-#&gt; <span style='color: #BCBCBC;'>3</span> Hamden                  <span style='text-decoration: underline;'>40</span>110           721               <span style='text-decoration: underline;'>8</span>587           669
-#&gt; <span style='color: #BCBCBC;'>4</span> New Haven               <span style='text-decoration: underline;'>81</span>231          <span style='text-decoration: underline;'>1</span>252              <span style='text-decoration: underline;'>12</span>582           820
-#&gt; <span style='color: #BCBCBC;'>5</span> West Haven              <span style='text-decoration: underline;'>36</span>031           765               <span style='text-decoration: underline;'>4</span>865           533
-#&gt; <span style='color: #949494;'># … with 2 more variables: masters_estimate &lt;dbl&gt;, masters_moe &lt;dbl&gt;</span></div></pre>
+    <pre class="examples"><span class='r-in'><span class='va'>edu</span> <span class='op'><a href='%>%.html'>%&gt;%</a></span></span>
+<span class='r-in'>  <span class='fu'>make_wide</span><span class='op'>(</span><span class='va'>estimate</span>, <span class='va'>moe</span>, group <span class='op'>=</span> <span class='va'>variable</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 5 × 7</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   name       age25plus_estimate age25plus_moe bachelors_estimate bachelors_moe</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>              <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>1</span> Bethany                  <span style='text-decoration: underline;'>4</span>013           148                994           174</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>2</span> East Haven              <span style='text-decoration: underline;'>21</span>230           490               <span style='text-decoration: underline;'>2</span>998           361</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>3</span> Hamden                  <span style='text-decoration: underline;'>40</span>110           721               <span style='text-decoration: underline;'>8</span>587           669</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>4</span> New Haven               <span style='text-decoration: underline;'>81</span>231          <span style='text-decoration: underline;'>1</span>252              <span style='text-decoration: underline;'>12</span>582           820</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>5</span> West Haven              <span style='text-decoration: underline;'>36</span>031           765               <span style='text-decoration: underline;'>4</span>865           533</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># … with 2 more variables: masters_estimate &lt;dbl&gt;, masters_moe &lt;dbl&gt;</span></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
