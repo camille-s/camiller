@@ -7,7 +7,7 @@
 \usage{
 filter_until(.data, ...)
 
-filter_after(.data, ..., .include_first = FALSE)
+filter_after(.data, ..., .streak = TRUE)
 }
 \arguments{
 \item{.data}{A data frame.}
@@ -16,7 +16,11 @@ filter_after(.data, ..., .include_first = FALSE)
 allowed for \code{dplyr::filter}, though without the comma shorthand to combine
 multiple conditions.}
 
-\item{.include_first}{For \code{filter_after}, logical: if \code{FALSE} (the default),
+\item{.streak}{For \code{filter_after}, logical: if \code{TRUE} (the default),
+all consecutive occurrences of the logical conditions are considered a match,
+rather than just the first occurrence.}
+
+\item{.include_first}{(DEPRECATED) For \code{filter_after}, logical: if \code{FALSE} (the default),
 the row that flags the condition will be excluded, returning only the rows
 after the occurrence. If \code{TRUE}, the row that matches the condition is included.
 If this is multiple rows, only the last is included. Using this will likely
@@ -63,8 +67,6 @@ filter_until(messy_notes, grepl("\\\\:", x1))
 filter_until(messy_summary, x1 == "Weights" & is.na(x2))
 filter_after(messy_summary, x1 == "Weights" & is.na(x2))
 
-# In some cases, it would be useful to hold onto those headings:
-filter_after(messy_summary, x1 == "Weights" & is.na(x2), .include_first = TRUE)
 }
 \seealso{
 dplyr::filter
