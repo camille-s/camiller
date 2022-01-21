@@ -17,6 +17,7 @@ reference:
   - '`cap_first`'
   - '`clean_titles`'
   - '`color_prev`'
+  - '`filter_after`'
   - '`make_grps`'
   - '`make_wide`'
   - '`moe_test`'
