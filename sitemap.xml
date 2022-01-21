@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://camille-s.github.io/camiller/404.html</loc>
+  </url>
+  <url>
+    <loc>https://camille-s.github.io/camiller/LICENSE-text.html</loc>
+  </url>
+  <url>
+    <loc>https://camille-s.github.io/camiller/LICENSE.html</loc>
+  </url>
+  <url>
+    <loc>https://camille-s.github.io/camiller/articles/index.html</loc>
+  </url>
+  <url>
+    <loc>https://camille-s.github.io/camiller/articles/workflow.html</loc>
+  </url>
+  <url>
+    <loc>https://camille-s.github.io/camiller/authors.html</loc>
+  </url>
+  <url>
     <loc>https://camille-s.github.io/camiller/index.html</loc>
   </url>
   <url>
@@ -34,6 +52,9 @@
     <loc>https://camille-s.github.io/camiller/reference/filter_down.html</loc>
   </url>
   <url>
+    <loc>https://camille-s.github.io/camiller/reference/index.html</loc>
+  </url>
+  <url>
     <loc>https://camille-s.github.io/camiller/reference/make_grps.html</loc>
   </url>
   <url>
@@ -65,8 +86,5 @@
   </url>
   <url>
     <loc>https://camille-s.github.io/camiller/reference/tidyeval.html</loc>
-  </url>
-  <url>
-    <loc>https://camille-s.github.io/camiller/articles/workflow.html</loc>
   </url>
 </urlset>
